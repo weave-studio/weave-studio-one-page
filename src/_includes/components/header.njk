@@ -15,20 +15,24 @@
       <!-- Main navigation -->
       {% include "components/navigation.njk" %}
 
-      <!-- Header actions: Search, Language, Theme, Mobile Menu -->
+      <!-- Header actions: Language, Theme, Mobile Menu -->
       <div class="site-header__actions">
-        <!-- Search (desktop and tablet) -->
-        <div class="site-header__search">
-          {% include "components/search.njk" %}
+        <!-- Enhanced Language Switcher -->
+        <div class="language-switcher">
+          <button class="language-toggle active" 
+                  onclick="switchLanguage('en')"
+                  data-lang="en"
+                  aria-label="Switch to English">
+            EN
+          </button>
+          <span class="language-divider">|</span>
+          <button class="language-toggle" 
+                  onclick="switchLanguage('he')"
+                  data-lang="he"
+                  aria-label="עבור לעברית">
+            עב
+          </button>
         </div>
-        
-        <!-- Language toggle -->
-        <button class="language-toggle" 
-                aria-label="Change language"
-                data-language-toggle
-                title="Click to change language">
-          EN
-        </button>
         
         <!-- Theme toggle -->
         {% include "components/theme-toggle.njk" %}

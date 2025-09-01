@@ -1,102 +1,93 @@
-// src/_data/navigation.js - Navigation structure
+// src/_data/navigation.js - English-primary with Hebrew auto-detection
 module.exports = {
-    main: [
-      {
-        text: "Home",
-        url: "/"
-      },
-      {
-        text: "About",
-        url: "/about/"
-      },
-      {
-        text: "Services",
-        url: "/services/",
-        children: [
-          {
-            text: "Web Design",
-            url: "/services/web-design/"
-          },
-          {
-            text: "Development",
-            url: "/services/development/"
-          },
-          {
-            text: "Consulting",
-            url: "/services/consulting/"
-          }
-        ]
-      },
-      {
-        text: "Blog",
-        url: "/blog/"
-      },
-      {
-        text: "Contact",
-        url: "/contact/"
-      }
-    ],
-    
-    footer: [
-      {
-        title: "Services",
-        links: [
-          {
-            text: "Web Design",
-            url: "/services/web-design/"
-          },
-          {
-            text: "Development",
-            url: "/services/development/"
-          },
-          {
-            text: "Consulting",
-            url: "/services/consulting/"
-          }
-        ]
-      },
-      {
-        title: "Company",
-        links: [
-          {
-            text: "About",
-            url: "/about/"
-          },
-          {
-            text: "Blog",
-            url: "/blog/"
-          },
-          {
-            text: "Case Studies",
-            url: "/case-studies/"
-          },
-          {
-            text: "Contact",
-            url: "/contact/"
-          }
-        ]
-      },
-      {
-        title: "Resources",
-        links: [
-          {
-            text: "Documentation",
-            url: "/docs/",
-            external: true
-          },
-          {
-            text: "Style Guide",
-            url: "/style-guide/"
-          },
-          {
-            text: "FAQ",
-            url: "/faq/"
-          },
-          {
-            text: "Support",
-            url: "/support/"
-          }
-        ]
-      }
-    ]
-  };
+  // Main navigation - English primary with Hebrew support
+  main: [
+    {
+      text: "Home",
+      text_he: "בית",
+      url: "#home",
+      smooth_scroll: true
+    },
+    {
+      text: "About",
+      text_he: "אודות", 
+      url: "#about",
+      smooth_scroll: true
+    },
+    {
+      text: "Services",
+      text_he: "שירותים",
+      url: "#services",
+      smooth_scroll: true
+    },
+    {
+      text: "Portfolio",
+      text_he: "עבודות",
+      url: "#portfolio", 
+      smooth_scroll: true
+    },
+    {
+      text: "Blog",
+      text_he: "בלוג",
+      url: "#blog",
+      smooth_scroll: true
+    },
+    {
+      text: "FAQ",
+      text_he: "שאלות נפוצות",
+      url: "#faq",
+      smooth_scroll: true
+    },
+    {
+      text: "Contact",
+      text_he: "צור קשר",
+      url: "#contact",
+      smooth_scroll: true
+    }
+  ],
+  
+  // Footer navigation - bilingual support
+  footer: [
+    {
+      title: "Quick Links",
+      title_he: "מפת אתר",
+      links: [
+        {
+          text: "Home",
+          text_he: "בית",
+          url: "#home"
+        },
+        {
+          text: "About",
+          text_he: "אודות",
+          url: "#about"
+        },
+        {
+          text: "Services",
+          text_he: "שירותים",
+          url: "#services"
+        },
+        {
+          text: "Portfolio", 
+          text_he: "עבודות",
+          url: "#portfolio"
+        },
+        {
+          text: "Blog",
+          text_he: "בלוג",
+          url: "#blog/"
+        },
+        {
+          text: "FAQ",
+          text_he: "שאלות נפוצות",
+          url: "#faq"
+        },
+        {
+          text: "Contact",
+          text_he: "צור קשר",
+          url: "#contact"
+        }
+      ]
+    }
+  ]
+};

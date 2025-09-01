@@ -1,73 +1,163 @@
 ---
-title: "Weave Studio"
-description: "High-performance starter template for freelance web design projects"
+title: "Weave Studio - Beautiful Websites That Actually Work"
+title_he: "Weave Studio - אתרים יפים שבאמת עובדים"
+description: "Professional web design and development services in Tel Aviv"
+description_he: "שירותי עיצוב ופיתוח אתרים מקצועיים בתל אביב"
 layout: "layouts/home.njk"
 permalink: "/"
 ---
 
-<section class="hero">
+<!-- Hero Section with Bilingual Content -->
+<section id="home" class="hero">
   <div class="container">
     <div class="hero__content">
-      <h1>
-        Modern Web Design
-        <span style="display: block; color: var(--color-primary-600); font-weight: var(--font-weight-extrabold);">Made Simple</span>
-      </h1>
-      <p class="lead">
-        High-performance, accessible starter template for freelance web design projects. 
-        Built with 11ty, Vite, and modern best practices.
-      </p>
-      <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
-        <a href="/about/" class="btn btn--primary btn--lg" aria-label="Learn more about our web design services and approach">About Us</a>
-        <a href="/contact/" class="btn btn--secondary btn--lg" aria-label="Get started with your web design project by contacting us">Get Started</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background-color: var(--color-bg-secondary);">
-  <div class="container">
-    <h2 class="text-center mb-8">Template Features</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="card text-center">
-        <div class="card__content">
-          <h3>⚡ Lightning Fast</h3>
-          <p>Optimized for performance with 90+ Lighthouse scores and Core Web Vitals compliance.</p>
+      <!-- English Content -->
+      <div class="lang-content" data-lang="en">
+        <h1>
+          We Create Beautiful
+          <span id="rotating-text" style="color: var(--color-primary-600); font-weight: var(--font-weight-extrabold);">Websites</span>
+          <span style="display: block;">That Actually Work</span>
+        </h1>
+        <p class="lead">
+          Professional web design and development in Tel Aviv. 
+          We help small businesses succeed online with beautiful, fast, and results-driven websites.
+        </p>
+        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+          <a href="#contact" class="btn btn--primary btn--lg">Start Your Project</a>
+          <a href="#portfolio" class="btn btn--secondary btn--lg">View Our Work</a>
         </div>
       </div>
       
-      <div class="card text-center">
-        <div class="card__content">
-          <h3>♿ Accessible</h3>
-          <p>WCAG 2.1 AA compliant with automated testing and screen reader optimization.</p>
+      <!-- Hebrew Content -->
+      <div class="lang-content" data-lang="he">
+        <h1>
+          אנחנו יוצרים
+          <span id="rotating-text-he" style="color: var(--color-primary-600); font-weight: var(--font-weight-extrabold);">אתרים יפים</span>
+          <span style="display: block;">שבאמת עובדים</span>
+        </h1>
+        <p class="lead">
+          עיצוב ופיתוח אתרים מקצועי בתל אביב. 
+          אנו עוזרים לעסקים קטנים להצליח ברשת עם אתרים יפים, מהירים וממוקדי תוצאות.
+        </p>
+        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+          <a href="#contact" class="btn btn--primary btn--lg">התחל את הפרויקט</a>
+          <a href="#portfolio" class="btn btn--secondary btn--lg">צפה בעבודות</a>
         </div>
       </div>
       
-      <div class="card text-center">
-        <div class="card__content">
-          <h3>🛠️ Modern Tooling</h3>
-          <p>Built with 11ty, Vite, and comprehensive development workflows.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="section" style="background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%); color: white;">
-  <div class="container">
-    <div class="text-center">
-      <h2 style="color: white;">Ready to Get Started?</h2>
-      <p class="lead" style="color: rgba(255, 255, 255, 0.9);">Download the template and start building amazing websites today.</p>
-      <div style="margin-top: var(--space-6);">
-        <a href="https://github.com/weave-studio/weave-starter-template" 
-           class="btn btn--xl btn--light"
-           style="background-color: white; color: var(--color-primary-600); border-color: white;"
-           target="_blank" 
-           rel="noopener noreferrer">
-          Download Template
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" style="margin-top: var(--space-12);">
+        <a href="#about" aria-label="Scroll to learn more">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section with Bilingual Content -->
+<section id="about" class="section">
+  <div class="container">
+    <!-- English Content -->
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-8">Welcome to Weave Studio</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3>Hi, I'm Assaf Yechiel</h3>
+          <p>Professional web designer and developer based in Tel Aviv. I help small businesses create beautiful, effective websites that drive results.</p>
+          <p>With years of experience in web design and development, I specialize in creating custom websites that not only look amazing but also perform exceptionally well.</p>
+        </div>
+        <div>
+          <div class="aspect-ratio aspect-square">
+            <img src="/assets/images/assaf-profile.jpg" alt="Assaf Yechiel - Web Designer" style="border-radius: var(--radius-lg);">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hebrew Content -->
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-8">ברוכים הבאים ל-Weave Studio</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3>היי, אני אסף יחיאל</h3>
+          <p>מעצב ומפתח אתרים מקצועי הממוקם בתל אביב. אני עוזר לעסקים קטנים ליצור אתרים יפים ויעילים שמביאים תוצאות.</p>
+          <p>עם שנים של ניסיון בעיצוב ופיתוח אתרים, אני מתמחה ביצירת אתרים מותאמים אישית שלא רק נראים מדהימים אלא גם מתפקדים בצורה יוצאת דופן.</p>
+        </div>
+        <div>
+          <div class="aspect-ratio aspect-square">
+            <img src="/assets/images/assaf-profile.jpg" alt="אסף יחיאל - מעצב אתרים" style="border-radius: var(--radius-lg);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Placeholder sections for later phases -->
+<section id="services" class="section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-12">Our Services</h2>
+      <p class="text-center">Services grid coming in Phase B3...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-12">השירותים שלנו</h2>
+      <p class="text-center">רשת השירותים תגיע בשלב B3...</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-12">Featured Work</h2>
+      <p class="text-center">Portfolio showcase coming in Phase B3...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-12">עבודות מובילות</h2>
+      <p class="text-center">תיק העבודות יגיע בשלב B3...</p>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-12">Latest Insights</h2>
+      <p class="text-center">Blog preview coming in Phase B4...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-12">תובנות אחרונות</h2>
+      <p class="text-center">תצוגה מקדימה של הבלוג תגיע בשלב B4...</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-12">Frequently Asked Questions</h2>
+      <p class="text-center">FAQ section coming in Phase B4...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-12">שאלות נפוצות</h2>
+      <p class="text-center">מדור שאלות נפוצות יגיע בשלב B4...</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="text-center mb-12">Get In Touch</h2>
+      <p class="text-center">Contact form coming in Phase B5...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="text-center mb-12">צור קשר</h2>
+      <p class="text-center">טופס יצירת קשר יגיע בשלב B5...</p>
     </div>
   </div>
 </section>

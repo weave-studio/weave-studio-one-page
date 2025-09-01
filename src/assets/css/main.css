@@ -511,3 +511,26 @@ button[class*="btn"]:hover,
   text-decoration: none !important;
   color: inherit;
 }
+
+/* ==========================================================================
+   Language Content Visibility 
+   ========================================================================== */
+
+/* Language-specific content visibility */
+.lang-content {
+  display: none;
+}
+
+/* Show English content by default */
+.lang-content[data-lang="en"] {
+  display: block;
+}
+
+/* Show Hebrew content when Hebrew is active */
+.lang-he .lang-content[data-lang="en"] {
+  display: none;
+}
+
+.lang-he .lang-content[data-lang="he"] {
+  display: block;
+}
