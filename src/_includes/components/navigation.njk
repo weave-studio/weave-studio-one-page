@@ -1,0 +1,33 @@
+<nav class="main-navigation" id="main-navigation" role="navigation" aria-label="Main">
+  <ul class="main-navigation__list">
+    {% for item in navigation.main %}
+      <li class="main-navigation__item">
+        <a href="{{ item.url }}" 
+           class="main-navigation__link{% if page.url == item.url %} main-navigation__link--active{% endif %}"
+           {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ item.text }}
+          {% if item.external %}
+            <span class="sr-only">(opens in new window)</span>
+            <svg class="main-navigation__external-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3.5 3C3.22386 3 3 3.22386 3 3.5C3 3.77614 3.22386 4 3.5 4H7.29289L3.14645 8.14645C2.95118 8.34171 2.95118 8.65829 3.14645 8.85355C3.34171 9.04882 3.65829 9.04882 3.85355 8.85355L8 4.70711V8.5C8 8.77614 8.22386 9 8.5 9C8.77614 9 9 8.77614 9 8.5V3.5C9 3.22386 8.77614 3 8.5 3H3.5Z" fill="currentColor"/>
+            </svg>
+          {% endif %}
+        </a>
+        
+        {% if item.children %}
+          <ul class="main-navigation__submenu">
+            {% for subitem in item.children %}
+              <li class="main-navigation__subitem">
+                <a href="{{ subitem.url }}" 
+                   class="main-navigation__sublink"
+                   {% if subitem.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                  {{ subitem.text }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

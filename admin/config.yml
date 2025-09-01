@@ -1,0 +1,79 @@
+backend:
+  name: test-repo
+
+local_backend: true
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Enhanced with preview templates and image widgets
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "src/blog/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "blog/posts/{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", hint: "SEO-friendly title (50-60 characters ideal)"}
+      - {label: "Description", name: "description", widget: "text", hint: "Meta description (150-160 characters)"}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Recommended size: 1200x630px"}
+      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false, hint: "Describe the image for accessibility"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Weave Studio"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["posts"], hint: "Add relevant tags for categorization"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Body", name: "body", widget: "markdown", hint: "Main content - supports markdown formatting"}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Permalink", name: "permalink", widget: "string", hint: "URL path, e.g., /about/"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "case_studies"
+    label: "Case Studies"
+    folder: "src/case-studies"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "case-studies/{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Client", name: "client", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Image", name: "featured_image", widget: "image"}
+      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string"}
+      - {label: "Project URL", name: "project_url", widget: "string", required: false}
+      - {label: "Technologies", name: "technologies", widget: "list", hint: "Technologies used in this project"}
+      - {label: "Completion Date", name: "completion_date", widget: "date"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/case-study.njk"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "src/_data/site.js"
+        fields:
+          - {label: "Site Name", name: "name", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Site URL", name: "url", widget: "string"}
+          - {label: "Contact Email", name: "email", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string", required: false}
+          - {label: "Address", name: "address", widget: "text", required: false}
+
+# Editor preview templates
+editor:
+  preview: true

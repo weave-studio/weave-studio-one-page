@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="post">
+  <header class="post__header">
+    <div class="container">
+      {% if tags %}
+        <div class="post__meta">
+          {% for tag in tags %}
+            {% if tag != "posts" %}
+              <span class="post__tag">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <h1 class="post__title">{{ title }}</h1>
+      
+      {% if description %}
+        <p class="post__description">{{ description }}</p>
+      {% endif %}
+      
+      <div class="post__details">
+        <time class="post__date">{{ date | readableDate }}</time>
+        {% if author %}
+          <span class="post__author">by {{ author }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="post__content">
+    <div class="container">
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+
+  <footer class="post__footer">
+    <div class="container">
+      {% if tags %}
+        <div class="post__tags">
+          <h3>Tagged with:</h3>
+          {% for tag in tags %}
+            {% if tag != "posts" %}
+              <a href="/blog/tags/{{ tag | slugify }}/" class="post__tag-link">{{ tag }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+            
+      {% include "components/post-navigation.njk" %} 
+    </div>
+  </footer>
+</article>

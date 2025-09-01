@@ -1,0 +1,20 @@
+<nav class="post-navigation" aria-label="Post navigation">
+  <div class="post-navigation__links">
+    {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+    {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+    
+    {% if previousPost %}
+      <a href="{{ previousPost.url }}" class="post-navigation__link post-navigation__link--previous">
+        <span class="post-navigation__label">← Previous</span>
+        <span class="post-navigation__title">{{ previousPost.data.title }}</span>
+      </a>
+    {% endif %}
+    
+    {% if nextPost %}
+      <a href="{{ nextPost.url }}" class="post-navigation__link post-navigation__link--next">
+        <span class="post-navigation__label">Next →</span>
+        <span class="post-navigation__title">{{ nextPost.data.title }}</span>
+      </a>
+    {% endif %}
+  </div>
+</nav>

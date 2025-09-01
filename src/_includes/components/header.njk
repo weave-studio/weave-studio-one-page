@@ -1,0 +1,49 @@
+<!-- src/_includes/components/header.njk -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__content">
+      <!-- Logo/Site title -->
+      <div class="site-header__branding">
+        <a href="/" class="site-header__logo" aria-label="Home">
+          {% if site.logo %}
+            <img src="{{ site.logo }}" alt="{{ site.name }}" width="40" height="40">
+          {% endif %}
+          <span class="site-header__title">{{ site.name }}</span>
+        </a>
+      </div>
+
+      <!-- Main navigation -->
+      {% include "components/navigation.njk" %}
+
+      <!-- Header actions: Search, Language, Theme, Mobile Menu -->
+      <div class="site-header__actions">
+        <!-- Search (desktop and tablet) -->
+        <div class="site-header__search">
+          {% include "components/search.njk" %}
+        </div>
+        
+        <!-- Language toggle -->
+        <button class="language-toggle" 
+                aria-label="Change language"
+                data-language-toggle
+                title="Click to change language">
+          EN
+        </button>
+        
+        <!-- Theme toggle -->
+        {% include "components/theme-toggle.njk" %}
+        
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-toggle" 
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

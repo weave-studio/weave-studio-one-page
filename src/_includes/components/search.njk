@@ -1,0 +1,36 @@
+<div class="search" data-search>
+  <div class="search__input-wrapper">
+    <label for="search-input" class="sr-only">Search site content</label>
+    <input type="search" 
+           id="search-input"
+           class="search__input"
+           placeholder="Search..."
+           aria-label="Search site content"
+           data-search-input
+           autocomplete="off"
+           spellcheck="false">
+    
+    <svg class="search__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667ZM14 14l-2.9-2.9" 
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    
+    <button class="search__clear" 
+            aria-label="Clear search"
+            data-search-clear
+            style="display: none;"
+            type="button">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="search-results" 
+       data-search-results 
+       aria-live="polite"
+       role="region"
+       aria-label="Search results">
+    <!-- Results populated by JavaScript -->
+  </div>
+</div>

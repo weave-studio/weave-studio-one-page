@@ -1,0 +1,44 @@
+<!-- Primary Meta Tags -->
+{% set pageTitle = title + " | " + site.name if title and title != site.name else site.name %}
+{% if site.tagline and not title %}
+  {% set pageTitle = site.name + " - " + site.tagline %}
+{% endif %}
+
+<title>{{ pageTitle }}</title>
+<meta name="title" content="{{ pageTitle }}">
+<meta name="description" content="{{ description or site.description }}">
+<meta name="keywords" content="{{ keywords or site.keywords }}">
+<meta name="author" content="{{ author or site.author }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="{{ site.locale or 'en_US' }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
+<meta property="twitter:title" content="{{ pageTitle }}">
+<meta property="twitter:description" content="{{ description or site.description }}">
+
+{% if site.twitter %}
+<meta property="twitter:site" content="@{{ site.twitter }}">
+<meta property="twitter:creator" content="@{{ site.twitter }}">
+{% endif %}
+
+<!-- Additional Meta Tags -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="theme-color" content="{{ themeColor or site.themeColor or '#1a1a1a' }}">
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS Feed" href="/feed.xml">

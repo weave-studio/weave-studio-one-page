@@ -1,0 +1,607 @@
+/* ==========================================================================
+   Services Main Page
+   ========================================================================== */
+
+   .services-page {
+    min-height: 100vh;
+  }
+  
+  .services-hero {
+    background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
+    padding: var(--space-12) 0 var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border-light);
+    text-align: center;
+  }
+  
+  [data-theme="dark"] .services-hero {
+    background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
+    border-bottom-color: var(--color-gray-700);
+  }
+  
+  .services-hero h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .services-hero .lead {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .services-grid {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-primary);
+  }
+  
+  /* Service Cards */
+  .service-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    transition: all var(--duration-normal) var(--ease-out);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-200);
+  }
+  
+  [data-theme="dark"] .service-card {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  [data-theme="dark"] .service-card:hover {
+    border-color: var(--color-primary-600);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  }
+  
+  .service-card__icon {
+    color: var(--color-primary-600);
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+  
+  [data-theme="dark"] .service-card__icon {
+    color: var(--color-primary-400);
+  }
+  
+  .service-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-card__content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+  
+  .service-card__content p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: var(--line-height-relaxed);
+    text-align: center;
+  }
+  
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+    flex: 1;
+  }
+  
+  .service-features li {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-6);
+    position: relative;
+    font-size: var(--font-size-sm);
+  }
+  
+  .service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-600);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  [data-theme="dark"] .service-features li::before {
+    color: var(--color-primary-400);
+  }
+  
+  .service-card .btn {
+    margin-top: auto;
+    align-self: center;
+  }
+  
+  /* Process Section */
+  .services-process {
+    background: var(--color-bg-secondary);
+    padding: var(--space-16) 0;
+  }
+  
+  [data-theme="dark"] .services-process {
+    background: var(--color-gray-900);
+  }
+  
+  .services-process h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+  
+  .services-process .lead {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+  }
+  
+  .process-steps {
+    margin-top: var(--space-12);
+  }
+  
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+  
+  .process-step__number {
+    width: 60px;
+    height: 60px;
+    background: var(--color-primary-600);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 auto var(--space-4) auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  [data-theme="dark"] .process-step__number {
+    background: var(--color-primary-500);
+  }
+  
+  .process-step h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .process-step p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Connect process steps with lines on larger screens */
+  @media (min-width: 768px) {
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      right: -50%;
+      width: 100%;
+      height: 2px;
+      background: var(--color-border-medium);
+      z-index: 0;
+    }
+    
+    [data-theme="dark"] .process-step:not(:last-child)::after {
+      background: var(--color-gray-600);
+    }
+  }
+  
+  /* Services CTA Section */
+  .services-cta {
+    padding: var(--space-16) 0;
+    text-align: center;
+  }
+  
+  .services-cta h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+  }
+  
+  .services-cta .lead {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-8);
+  }
+  
+  /* ==========================================================================
+     Service Detail Pages
+     ========================================================================== */
+  
+  .service-detail-page {
+    min-height: 100vh;
+  }
+  
+  .service-hero {
+    background: var(--color-bg-secondary);
+    padding: var(--space-12) 0 var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .service-hero {
+    background: var(--color-gray-900);
+    border-bottom-color: var(--color-gray-700);
+  }
+  
+  /* Breadcrumbs */
+  .breadcrumbs {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+    text-align: left;
+  }
+  
+  .breadcrumbs a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+  }
+  
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+  
+  [data-theme="dark"] .breadcrumbs a {
+    color: var(--color-primary-400);
+  }
+  
+  .service-hero h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .service-hero .lead {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+  }
+  
+  .service-content {
+    padding: var(--space-16) 0;
+  }
+  
+  /* Service Sidebar */
+  .service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .service-info-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  [data-theme="dark"] .service-info-card {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  .service-info-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .service-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+  }
+  
+  .service-facts li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+  }
+  
+  .service-facts li:last-child {
+    border-bottom: none;
+  }
+  
+  [data-theme="dark"] .service-facts li {
+    border-bottom-color: var(--color-gray-600);
+  }
+  
+  .service-cta {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .service-cta {
+    border-top-color: var(--color-gray-600);
+  }
+  
+  .service-cta h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+  
+  .service-cta p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+  
+  .related-services {
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .related-services {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  .related-services h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .related-services ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .related-services li {
+    margin-bottom: var(--space-2);
+  }
+  
+  .related-services a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+  }
+  
+  .related-services a:hover {
+    text-decoration: underline;
+  }
+  
+  [data-theme="dark"] .related-services a {
+    color: var(--color-primary-400);
+  }
+  
+  /* Tech Stack Display */
+  .tech-stack {
+    margin: var(--space-8) 0;
+  }
+  
+  .tech-category {
+    margin-bottom: var(--space-6);
+  }
+  
+  .tech-category h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .industry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-4) 0;
+  }
+  
+  /* Consulting Services */
+  .consulting-service {
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .consulting-service {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  .consulting-service h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .consulting-service p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  
+  .consulting-service ul {
+    margin: 0;
+  }
+  
+  .consulting-service li {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Timeline Display */
+  .timeline {
+    margin: var(--space-6) 0;
+  }
+  
+  .timeline-item {
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    position: relative;
+    border: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .timeline-item {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  .timeline-item h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .timeline-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Process List */
+  .process-list {
+    margin: var(--space-6) 0;
+  }
+  
+  .process-item {
+    background: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--color-border-light);
+  }
+  
+  [data-theme="dark"] .process-item {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+  
+  .process-item h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  
+  .process-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+  
+  /* ==========================================================================
+     Mobile Optimizations
+     ========================================================================== */
+  
+  @media (max-width: 768px) {
+    .services-hero h1,
+    .service-hero h1 {
+      font-size: var(--font-size-3xl);
+    }
+    
+    .services-hero .lead,
+    .service-hero .lead {
+      font-size: var(--font-size-lg);
+    }
+    
+    .service-card {
+      padding: var(--space-6);
+    }
+    
+    .service-info-card {
+      position: static;
+      margin-bottom: var(--space-6);
+    }
+    
+    .tech-tags,
+    .industry-tags {
+      justify-content: center;
+    }
+    
+    .process-step:not(:last-child)::after {
+      display: none;
+    }
+    
+    .services-hero,
+    .service-hero {
+      padding: var(--space-8) 0 var(--space-6) 0;
+    }
+    
+    .breadcrumbs {
+      text-align: center;
+    }
+  }
+  
+  /* ==========================================================================
+     Accessibility Enhancements
+     ========================================================================== */
+  
+  /* Focus management for service cards */
+  .service-card:focus-within {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .service-card,
+    .service-info-card,
+    .consulting-service,
+    .timeline-item,
+    .process-item {
+      border-width: 2px;
+    }
+    
+    .process-step__number {
+      border: 2px solid currentColor;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .service-card:hover {
+      transform: none;
+    }
+    
+    .process-step__number {
+      transition: none;
+    }
+  }

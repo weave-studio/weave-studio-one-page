@@ -1,0 +1,169 @@
+[
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40,
+      40,
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:8080/",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40,
+      40,
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:8080/about/",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  },
+  {
+    "name": "minScore",
+    "expected": 1,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "heading-order",
+    "level": "error",
+    "url": "http://localhost:8080/about/",
+    "auditTitle": "Heading elements are not in a sequentially-descending order",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/heading-order"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.95,
+    "actual": 0.9,
+    "values": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "seo",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:8080/services/"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40,
+      40,
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:8080/services/",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  },
+  {
+    "name": "minScore",
+    "expected": 1,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "heading-order",
+    "level": "error",
+    "url": "http://localhost:8080/services/",
+    "auditTitle": "Heading elements are not in a sequentially-descending order",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.6/heading-order"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40,
+      40,
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:8080/contact/",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.89,
+    "values": [
+      0.86,
+      0.85,
+      0.89
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:8080/blog/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.83,
+    "values": [
+      0.83,
+      0.83,
+      0.83
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "best-practices",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:8080/blog/"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40,
+      40,
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unminified-javascript",
+    "level": "error",
+    "url": "http://localhost:8080/faq/",
+    "auditTitle": "Minify JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/"
+  }
+]

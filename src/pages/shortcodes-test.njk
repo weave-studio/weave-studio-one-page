@@ -1,0 +1,31 @@
+---
+title: "Shortcode Test"
+layout: "layouts/base.njk"
+permalink: "/shortcodes-test/"
+description: "Testing our new shortcodes"
+---
+
+<h1>Testing Shortcodes</h1>
+
+{% callout "info" %}
+This is an information callout! It should have a blue background and be clearly visible.
+{% endcallout %}
+
+{% callout "warning" %}
+This is a warning callout with yellow styling - great for important notes!
+{% endcallout %}
+
+{% callout "success" %}
+Success! This callout celebrates achievements and positive outcomes.
+{% endcallout %}
+
+{% callout "error" %}
+Error callouts help highlight problems or critical issues that need attention.
+{% endcallout %}
+
+<hr>
+
+<p><strong>Copyright {% year %} Weave Studio</strong></p>
+<p><em>Built on: {% buildTime %}</em></p>
+
+<p><a href="/">← Back to Home</a></p>

@@ -1,0 +1,211 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Home" [ref=e7]:
+        - /url: /
+        - img "Weave Studio Template" [ref=e8]
+        - generic [ref=e9]: Weave Studio Template
+      - navigation "Main" [ref=e10]:
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "Home" [ref=e13]:
+              - /url: /
+          - listitem [ref=e14]:
+            - link "About" [ref=e15]:
+              - /url: /about/
+          - listitem [ref=e16]:
+            - link "Services" [ref=e17]:
+              - /url: /services/
+          - listitem [ref=e18]:
+            - link "Blog" [ref=e19]:
+              - /url: /blog/
+          - listitem [ref=e20]:
+            - link "Contact" [ref=e21]:
+              - /url: /contact/
+      - generic [ref=e22]:
+        - generic [ref=e25]:
+          - generic [ref=e26]: Search site content
+          - searchbox "Search site content" [ref=e27]
+          - img
+        - 'button "Current language: en. Click to change." [ref=e28] [cursor=pointer]': EN
+        - button "Switch to dark mode" [ref=e29] [cursor=pointer]:
+          - img [ref=e31] [cursor=pointer]
+          - img [ref=e34] [cursor=pointer]
+          - generic [ref=e36] [cursor=pointer]: Toggle dark mode
+  - main [ref=e37]:
+    - article [ref=e38]:
+      - generic [ref=e40]:
+        - heading "Blog" [level=1] [ref=e41]
+        - paragraph [ref=e42]: Latest articles, insights, and tips on web design and development
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - heading "Latest Articles" [level=1] [ref=e48]
+            - paragraph [ref=e49]: Insights, tips, and trends in web design and development
+          - article [ref=e50]:
+            - generic [ref=e51]:
+              - img "Random image" [ref=e53]
+              - generic [ref=e54]:
+                - time [ref=e56]: 22 Aug 2025
+                - heading "A Super Cool Blog Post" [level=2] [ref=e57]:
+                  - link "A Super Cool Blog Post" [ref=e58]:
+                    - /url: /blog/posts/2025-08-22-a-super-cool-blog-post/
+                - paragraph [ref=e59]: This is a toasty post
+                - link "Read More →" [ref=e60] [cursor=pointer]:
+                  - /url: /blog/posts/2025-08-22-a-super-cool-blog-post/
+          - generic [ref=e61]:
+            - article [ref=e62]:
+              - link "Modern website design showcase" [ref=e64]:
+                - /url: /blog/posts/2025-08-17-getting-started-with-modern-web-design/
+                - img "Modern website design showcase" [ref=e65]
+              - generic [ref=e66]:
+                - generic [ref=e67]:
+                  - time [ref=e68]: 17 Aug 2025
+                  - generic [ref=e69]: by Weave Studio
+                - heading "Getting Started with Modern Web Design" [level=3] [ref=e70]:
+                  - link "Getting Started with Modern Web Design" [ref=e71]:
+                    - /url: /blog/posts/2025-08-17-getting-started-with-modern-web-design/
+                - paragraph [ref=e72]: Essential principles and best practices for creating modern, user-friendly websites that convert visitors into customers.
+                - generic [ref=e73]:
+                  - link "web-design" [ref=e74]:
+                    - /url: /blog/tags/web-design/
+                  - link "getting-started" [ref=e75]:
+                    - /url: /blog/tags/getting-started/
+            - article [ref=e76]:
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - time [ref=e79]: 11 Aug 2025
+                  - generic [ref=e80]: by Weave Studio
+                - heading "Test 2" [level=3] [ref=e81]:
+                  - link "Test 2" [ref=e82]:
+                    - /url: /blog/posts/2025-08-11-test-2/
+                - paragraph [ref=e83]: Another test
+            - article [ref=e84]:
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - time [ref=e87]: 11 Aug 2025
+                  - generic [ref=e88]: by Weave Studio
+                - heading "Test" [level=3] [ref=e89]:
+                  - link "Test" [ref=e90]:
+                    - /url: /blog/posts/2025-08-11-test/
+                - paragraph [ref=e91]: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            - article [ref=e92]:
+              - generic [ref=e93]:
+                - generic [ref=e94]:
+                  - time [ref=e95]: 16 Jan 2025
+                  - generic [ref=e96]: by Weave Studio
+                - heading "Second Blog Post" [level=3] [ref=e97]:
+                  - link "Second Blog Post" [ref=e98]:
+                    - /url: /blog/posts/second-post/
+                - paragraph [ref=e99]: Another test post to verify navigation
+                - link "test" [ref=e101]:
+                  - /url: /blog/tags/test/
+            - article [ref=e102]:
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - time [ref=e105]: 15 Jan 2025
+                  - generic [ref=e106]: by Weave Studio
+                - heading "Test Blog Post" [level=3] [ref=e107]:
+                  - link "Test Blog Post" [ref=e108]:
+                    - /url: /blog/posts/test-post/
+                - paragraph [ref=e109]: This is a sample blog post to test the layout
+                - generic [ref=e110]:
+                  - link "test" [ref=e111]:
+                    - /url: /blog/tags/test/
+                  - link "demo" [ref=e112]:
+                    - /url: /blog/tags/demo/
+        - complementary [ref=e113]:
+          - generic [ref=e114]:
+            - heading "Browse by Topic" [level=3] [ref=e115]
+            - generic [ref=e116]:
+              - link "demo" [ref=e117]:
+                - /url: /blog/tags/demo/
+              - link "getting-started" [ref=e118]:
+                - /url: /blog/tags/getting-started/
+              - link "test" [ref=e119]:
+                - /url: /blog/tags/test/
+              - link "web-design" [ref=e120]:
+                - /url: /blog/tags/web-design/
+  - contentinfo [ref=e121]:
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - heading "Weave Studio Template" [level=3] [ref=e126]
+          - paragraph [ref=e127]: A modern, accessible starter template for freelance web design projects built with 11ty, Vite, and Decap CMS.
+          - generic [ref=e128]:
+            - heading "Follow us" [level=4] [ref=e129]
+            - link "Twitter" [ref=e130]:
+              - /url: https://twitter.com/weavestudio
+              - img [ref=e131]
+              - generic [ref=e133]: Twitter
+            - link "GitHub" [ref=e134]:
+              - /url: https://github.com/weave-studio
+              - img [ref=e135]
+              - generic [ref=e137]: GitHub
+            - link "LinkedIn" [ref=e138]:
+              - /url: https://linkedin.com/company/weavestudio
+              - img [ref=e139]
+              - generic [ref=e141]: LinkedIn
+            - link "Instagram" [ref=e142]:
+              - /url: https://instagram.com/weavestudio
+              - img [ref=e143]
+              - generic [ref=e145]: Instagram
+        - generic [ref=e146]:
+          - heading "Services" [level=3] [ref=e147]
+          - list [ref=e148]:
+            - listitem [ref=e149]:
+              - link "Web Design" [ref=e150]:
+                - /url: /services/web-design/
+            - listitem [ref=e151]:
+              - link "Development" [ref=e152]:
+                - /url: /services/development/
+            - listitem [ref=e153]:
+              - link "Consulting" [ref=e154]:
+                - /url: /services/consulting/
+        - generic [ref=e155]:
+          - heading "Company" [level=3] [ref=e156]
+          - list [ref=e157]:
+            - listitem [ref=e158]:
+              - link "About" [ref=e159]:
+                - /url: /about/
+            - listitem [ref=e160]:
+              - link "Blog" [ref=e161]:
+                - /url: /blog/
+            - listitem [ref=e162]:
+              - link "Case Studies" [ref=e163]:
+                - /url: /case-studies/
+            - listitem [ref=e164]:
+              - link "Contact" [ref=e165]:
+                - /url: /contact/
+        - generic [ref=e166]:
+          - heading "Resources" [level=3] [ref=e167]
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - link "Documentation" [ref=e170]:
+                - /url: /docs/
+            - listitem [ref=e171]:
+              - link "Style Guide" [ref=e172]:
+                - /url: /style-guide/
+            - listitem [ref=e173]:
+              - link "FAQ" [ref=e174]:
+                - /url: /faq/
+            - listitem [ref=e175]:
+              - link "Support" [ref=e176]:
+                - /url: /support/
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - paragraph [ref=e179]: © 2025 Weave Studio Template. All rights reserved.
+          - link "Privacy Policy" [ref=e180]:
+            - /url: /privacy/
+          - link "Terms of Service" [ref=e181]:
+            - /url: /terms/
+        - paragraph [ref=e183]:
+          - text: Built with
+          - link "11ty" [ref=e184]:
+            - /url: https://11ty.dev
+```

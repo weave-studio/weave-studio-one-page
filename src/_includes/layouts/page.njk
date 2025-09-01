@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="page">
+  {% if title %}
+    <header class="page__header">
+      <div class="container">
+        <h1 class="page__title">{{ title }}</h1>
+        {% if description %}
+          <p class="page__description">{{ description }}</p>
+        {% endif %}
+        {% if breadcrumbs %}
+          {% include "components/breadcrumbs.njk" %}
+        {% endif %}
+      </div>
+    </header>
+  {% endif %}
+
+  <div class="page__content">
+    <div class="container">
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+</article>

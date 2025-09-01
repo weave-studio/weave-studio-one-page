@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+
+
+
+<title>Second Blog Post | Weave Studio Template</title>
+<meta name="title" content="Second Blog Post | Weave Studio Template">
+<meta name="description" content="Another test post to verify navigation">
+<meta name="keywords" content="web design, 11ty, jamstack, starter template, accessible, performance">
+<meta name="author" content="Weave Studio">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="http://localhost:8080/blog/posts/second-post/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:8080/blog/posts/second-post/">
+<meta property="og:title" content="Second Blog Post | Weave Studio Template">
+<meta property="og:description" content="Another test post to verify navigation">
+<meta property="og:site_name" content="Weave Studio Template">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="http://localhost:8080/blog/posts/second-post/">
+<meta property="twitter:title" content="Second Blog Post | Weave Studio Template">
+<meta property="twitter:description" content="Another test post to verify navigation">
+
+
+<meta property="twitter:site" content="@weavestudio">
+<meta property="twitter:creator" content="@weavestudio">
+
+
+<!-- Additional Meta Tags -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="theme-color" content="#1a1a1a">
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title="Weave Studio Template RSS Feed" href="/feed.xml">
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Theme detection script (inline for performance) -->
+  <script>
+    // Set theme before content loads to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js-enabled');
+    })();
+  </script>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Site header -->
+  <!-- src/_includes/components/header.njk -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__content">
+      <!-- Logo/Site title -->
+      <div class="site-header__branding">
+        <a href="/" class="site-header__logo" aria-label="Home">
+          
+            <img src="/assets/images/logo.svg" alt="Weave Studio Template" width="40" height="40">
+          
+          <span class="site-header__title">Weave Studio Template</span>
+        </a>
+      </div>
+
+      <!-- Main navigation -->
+      <nav class="main-navigation" id="main-navigation" role="navigation" aria-label="Main">
+  <ul class="main-navigation__list">
+    
+      <li class="main-navigation__item">
+        <a href="/" 
+           class="main-navigation__link"
+           >
+          Home
+          
+        </a>
+        
+        
+      </li>
+    
+      <li class="main-navigation__item">
+        <a href="/about/" 
+           class="main-navigation__link"
+           >
+          About
+          
+        </a>
+        
+        
+      </li>
+    
+      <li class="main-navigation__item">
+        <a href="/services/" 
+           class="main-navigation__link"
+           >
+          Services
+          
+        </a>
+        
+        
+          <ul class="main-navigation__submenu">
+            
+              <li class="main-navigation__subitem">
+                <a href="/services/web-design/" 
+                   class="main-navigation__sublink"
+                   >
+                  Web Design
+                </a>
+              </li>
+            
+              <li class="main-navigation__subitem">
+                <a href="/services/development/" 
+                   class="main-navigation__sublink"
+                   >
+                  Development
+                </a>
+              </li>
+            
+              <li class="main-navigation__subitem">
+                <a href="/services/consulting/" 
+                   class="main-navigation__sublink"
+                   >
+                  Consulting
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li class="main-navigation__item">
+        <a href="/blog/" 
+           class="main-navigation__link"
+           >
+          Blog
+          
+        </a>
+        
+        
+      </li>
+    
+      <li class="main-navigation__item">
+        <a href="/contact/" 
+           class="main-navigation__link"
+           >
+          Contact
+          
+        </a>
+        
+        
+      </li>
+    
+  </ul>
+</nav>
+
+      <!-- Header actions: Search, Language, Theme, Mobile Menu -->
+      <div class="site-header__actions">
+        <!-- Search (desktop and tablet) -->
+        <div class="site-header__search">
+          <div class="search" data-search>
+  <div class="search__input-wrapper">
+    <label for="search-input" class="sr-only">Search site content</label>
+    <input type="search" 
+           id="search-input"
+           class="search__input"
+           placeholder="Search..."
+           aria-label="Search site content"
+           data-search-input
+           autocomplete="off"
+           spellcheck="false">
+    
+    <svg class="search__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667ZM14 14l-2.9-2.9" 
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    
+    <button class="search__clear" 
+            aria-label="Clear search"
+            data-search-clear
+            style="display: none;"
+            type="button">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="search-results" 
+       data-search-results 
+       aria-live="polite"
+       role="region"
+       aria-label="Search results">
+    <!-- Results populated by JavaScript -->
+  </div>
+</div>
+        </div>
+        
+        <!-- Language toggle -->
+        <button class="language-toggle" 
+                aria-label="Change language"
+                data-language-toggle
+                title="Click to change language">
+          EN
+        </button>
+        
+        <!-- Theme toggle -->
+        <button class="theme-toggle" 
+        aria-label="Toggle dark mode"
+        aria-pressed="false"
+        data-theme-toggle>
+  <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+    <!-- Sun icon -->
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.364 4.636L14.05 5.95M5.95 14.05L4.636 15.364M15.364 15.364L14.05 14.05M5.95 5.95L4.636 4.636M13 10C13 11.657 11.657 13 10 13C8.343 13 7 11.657 7 10C7 8.343 8.343 7 10 7C11.657 7 13 8.343 13 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">
+    <!-- Moon icon -->
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <span class="sr-only">Toggle dark mode</span>
+</button>
+        
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-toggle" 
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+  
+  <!-- Main content -->
+  <main id="main-content" class="main-content" role="main">
+    
+<article class="post">
+  <header class="post__header">
+    <div class="container">
+      
+        <div class="post__meta">
+          
+            
+          
+            
+              <span class="post__tag">test</span>
+            
+          
+        </div>
+      
+      
+      <h1 class="post__title">Second Blog Post</h1>
+      
+      
+        <p class="post__description">Another test post to verify navigation</p>
+      
+      
+      <div class="post__details">
+        <time class="post__date">16 Jan 2025</time>
+        
+          <span class="post__author">by Weave Studio</span>
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post__content">
+    <div class="container">
+      <div class="prose">
+        <h1 id="second-post" tabindex="-1">Second Post <a class="header-anchor" href="#second-post" aria-hidden="true">#</a></h1>
+<p>This is another test post to verify the post navigation works.</p>
+<p>Now you should see “Previous” and “Next” links between posts.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="post__footer">
+    <div class="container">
+      
+        <div class="post__tags">
+          <h3>Tagged with:</h3>
+          
+            
+          
+            
+              <a href="/blog/tags/test/" class="post__tag-link">test</a>
+            
+          
+        </div>
+      
+            
+      <nav class="post-navigation" aria-label="Post navigation">
+  <div class="post-navigation__links">
+    
+    
+    
+    
+      <a href="/blog/posts/test-post/" class="post-navigation__link post-navigation__link--previous">
+        <span class="post-navigation__label">← Previous</span>
+        <span class="post-navigation__title">Test Blog Post</span>
+      </a>
+    
+    
+    
+      <a href="/blog/posts/2025-08-11-test/" class="post-navigation__link post-navigation__link--next">
+        <span class="post-navigation__label">Next →</span>
+        <span class="post-navigation__title">Test</span>
+      </a>
+    
+  </div>
+</nav> 
+    </div>
+  </footer>
+</article>
+  </main>
+  
+  <!-- Site footer -->
+  <footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__content">
+      
+      <!-- Footer main content -->
+      <div class="site-footer__main">
+        <div class="site-footer__section">
+          <h3 class="site-footer__heading">Weave Studio Template</h3>
+          <p class="site-footer__description">A modern, accessible starter template for freelance web design projects built with 11ty, Vite, and Decap CMS.</p>
+          
+          
+            <div class="site-footer__social">
+              <h4 class="sr-only">Follow us</h4>
+              
+                <a href="https://twitter.com/weavestudio" 
+                   class="site-footer__social-link"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Twitter">
+                  <!-- Simple icon placeholder -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <circle cx="10" cy="10" r="8"/>
+                  </svg>
+                  <span class="sr-only">Twitter</span>
+                </a>
+              
+                <a href="https://github.com/weave-studio" 
+                   class="site-footer__social-link"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="GitHub">
+                  <!-- Simple icon placeholder -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <circle cx="10" cy="10" r="8"/>
+                  </svg>
+                  <span class="sr-only">GitHub</span>
+                </a>
+              
+                <a href="https://linkedin.com/company/weavestudio" 
+                   class="site-footer__social-link"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="LinkedIn">
+                  <!-- Simple icon placeholder -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <circle cx="10" cy="10" r="8"/>
+                  </svg>
+                  <span class="sr-only">LinkedIn</span>
+                </a>
+              
+                <a href="https://instagram.com/weavestudio" 
+                   class="site-footer__social-link"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+                  <!-- Simple icon placeholder -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <circle cx="10" cy="10" r="8"/>
+                  </svg>
+                  <span class="sr-only">Instagram</span>
+                </a>
+              
+            </div>
+          
+        </div>
+
+        
+          
+            <div class="site-footer__section">
+              <h3 class="site-footer__heading">Services</h3>
+              <ul class="site-footer__links">
+                
+                  <li>
+                    <a href="/services/web-design/" 
+                       class="site-footer__link"
+                       >
+                      Web Design
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/services/development/" 
+                       class="site-footer__link"
+                       >
+                      Development
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/services/consulting/" 
+                       class="site-footer__link"
+                       >
+                      Consulting
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+            <div class="site-footer__section">
+              <h3 class="site-footer__heading">Company</h3>
+              <ul class="site-footer__links">
+                
+                  <li>
+                    <a href="/about/" 
+                       class="site-footer__link"
+                       >
+                      About
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/blog/" 
+                       class="site-footer__link"
+                       >
+                      Blog
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/case-studies/" 
+                       class="site-footer__link"
+                       >
+                      Case Studies
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/contact/" 
+                       class="site-footer__link"
+                       >
+                      Contact
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+            <div class="site-footer__section">
+              <h3 class="site-footer__heading">Resources</h3>
+              <ul class="site-footer__links">
+                
+                  <li>
+                    <a href="/docs/" 
+                       class="site-footer__link"
+                       target="_blank" rel="noopener noreferrer">
+                      Documentation
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/style-guide/" 
+                       class="site-footer__link"
+                       >
+                      Style Guide
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/faq/" 
+                       class="site-footer__link"
+                       >
+                      FAQ
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/support/" 
+                       class="site-footer__link"
+                       >
+                      Support
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+        
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="site-footer__bottom">
+        <div class="site-footer__legal">
+          <p>&copy; 2025 Weave Studio Template. All rights reserved.</p>
+          
+            
+              <a href="/privacy/" class="site-footer__legal-link">Privacy Policy</a>
+            
+              <a href="/terms/" class="site-footer__legal-link">Terms of Service</a>
+            
+          
+        </div>
+        
+        <div class="site-footer__meta">
+          <p>Built with <a href="https://11ty.dev" target="_blank" rel="noopener noreferrer">11ty</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <!-- Main JavaScript -->
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

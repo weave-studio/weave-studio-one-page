@@ -1,0 +1,24 @@
+# Text Compression for all content types
+/*
+  Content-Encoding: gzip
+  Cache-Control: public, max-age=3600
+
+# CSS files - long cache since they're versioned
+/*.css
+  Content-Type: text/css
+  Cache-Control: public, max-age=31536000
+  Content-Encoding: gzip
+  
+# JavaScript files - long cache since they're versioned  
+/*.js
+  Content-Type: application/javascript
+  Cache-Control: public, max-age=31536000
+  Content-Encoding: gzip
+
+# Images - aggressive caching
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - short cache for dynamic content
+/*.html
+  Cache-Control: public, max-age=300

@@ -1,0 +1,47 @@
+---
+title: "Case Studies"
+description: "Portfolio of client projects and web design work"
+layout: "layouts/page.njk"
+permalink: "/case-studies/"
+---
+
+<div class="case-studies-grid">
+  {% for study in collections.case_studies %}
+    <article class="case-study-card">
+      {% if study.data.featured_image %}
+        <div class="case-study-card__image">
+          {% if loop.index <= 2 %}
+            {% image study.data.featured_image, study.data.featured_image_alt or study.data.title, "(min-width: 768px) 50vw, 100vw", "eager" %}
+          {% else %}
+            {% image study.data.featured_image, study.data.featured_image_alt or study.data.title, "(min-width: 768px) 50vw, 100vw", "lazy" %}
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      <div class="case-study-card__content">
+        <div class="case-study-card__meta">
+          <span class="case-study-card__client">{{ study.data.client }}</span>
+          {% if study.data.completion_date %}
+            <time class="case-study-card__date">{{ study.data.completion_date | readableDate }}</time>
+          {% endif %}
+        </div>
+        
+        <h3 class="case-study-card__title">
+          <a href="{{ study.url }}">{{ study.data.title }}</a>
+        </h3>
+        
+        <p class="case-study-card__description">{{ study.data.description }}</p>
+        
+        {% if study.data.technologies %}
+          <div class="case-study-card__technologies">
+            {% for tech in study.data.technologies %}
+              <span class="case-study-card__tech">{{ tech }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <a href="{{ study.url }}" class="case-study-card__link btn btn--read-more">View Case Study →</a>
+      </div>
+    </article>
+  {% endfor %}
+</div>

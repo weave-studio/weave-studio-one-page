@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ site.language or 'en' }}" dir="{{ site.direction or 'ltr' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {% include "components/seo.njk" %}
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Theme detection script (inline for performance) -->
+  <script>
+    // Set theme before content loads to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js-enabled');
+    })();
+  </script>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Site header -->
+  {% include "components/header.njk" %}
+  
+  <!-- Main content -->
+  <main id="main-content" class="main-content" role="main">
+    {{ content | safe }}
+  </main>
+  
+  <!-- Site footer -->
+  {% include "components/footer.njk" %}
+  
+  <!-- Main JavaScript -->
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

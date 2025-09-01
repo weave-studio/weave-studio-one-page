@@ -1,0 +1,34 @@
+backend:
+  name: test-repo
+
+local_backend: true
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "src/blog/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Weave Studio"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["posts"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Permalink", name: "permalink", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}

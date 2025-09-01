@@ -1,0 +1,117 @@
+{
+    "name": "weave-starter-template",
+    "version": "1.0.0",
+    "description": "High-performance, accessible starter template for freelance web design projects",
+    "main": "index.js",
+    "scripts": {
+        "dev": "eleventy --serve --watch",
+        "build": "eleventy",
+        "build:prod": "NODE_ENV=production eleventy",
+        "preview": "npx serve _site -p 8080",
+        "debug": "DEBUG=Eleventy* eleventy --serve --watch",
+        "clean": "rm -rf _site",
+        "lint": "eslint src/**/*.js",
+        "lint:fix": "eslint src/**/*.js --fix",
+        "format": "prettier --write \"**/*.{js,md,njk,json,css}\"",
+        "format:check": "prettier --check \"**/*.{js,md,njk,json,css}\"",
+        "test": "npm run test:a11y && npm run test:performance",
+        "test:a11y": "playwright test tests/accessibility.spec.js --reporter=html",
+        "test:performance": "playwright test tests/performance.spec.js --reporter=html",
+        "test:functionality": "playwright test tests/functionality.spec.js --reporter=html",
+        "lighthouse": "lhci autorun",
+        "lighthouse:ci": "lhci autorun --upload.target=temporary-public-storage",
+        "deploy": "npm run build && gh-pages -d _site",
+        "cms:dev": "concurrently \"npx decap-server\" \"npm run dev\"",
+        "cms:proxy": "npx decap-server",
+        "build:cms": "npm run build && cp -r admin _site/admin",
+        "deploy:netlify": "npm run build && netlify deploy --prod --dir=_site",
+        "deploy:vercel": "npm run build && vercel --prod",
+        "prepare": "husky install"
+    },
+    "keywords": [
+        "11ty",
+        "eleventy",
+        "vite",
+        "starter-template",
+        "jamstack",
+        "decap-cms",
+        "accessible",
+        "performance",
+        "seo"
+    ],
+    "author": "Weave Studio",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/weave-studio/weave-starter-template.git"
+    },
+    "bugs": {
+        "url": "https://github.com/weave-studio/weave-starter-template/issues"
+    },
+    "homepage": "https://github.com/weave-studio/weave-starter-template#readme",
+    "devDependencies": {
+        "@11ty/eleventy": "^2.0.1",
+        "@11ty/eleventy-img": "^4.0.2",
+        "@11ty/eleventy-navigation": "^0.3.5",
+        "@11ty/eleventy-plugin-rss": "^1.2.0",
+        "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+        "@11ty/eleventy-plugin-vite": "^1.0.0",
+        "@axe-core/playwright": "^4.8.3",
+        "@eslint/js": "^9.19.0",
+        "@lhci/cli": "^0.12.0",
+        "@playwright/test": "^1.40.0",
+        "autoprefixer": "^10.4.16",
+        "concurrently": "^8.2.2",
+        "cross-env": "^7.0.3",
+        "cssnano": "^6.0.1",
+        "eslint": "^9.19.0",
+        "eslint-config-prettier": "^10.0.1",
+        "gh-pages": "^6.1.0",
+        "globals": "^15.14.0",
+        "html-minifier": "^4.0.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.4.3",
+        "netlify-cli": "^17.10.1",
+        "postcss": "^8.4.32",
+        "postcss-cli": "^11.0.0",
+        "postcss-import": "^15.1.0",
+        "postcss-nested": "^6.0.1",
+        "prettier": "^3.4.2",
+        "sass": "^1.69.5",
+        "sharp": "^0.33.0",
+        "vite": "^5.0.10",
+        "workbox-cli": "^7.0.0"
+    },
+    "dependencies": {
+        "luxon": "^3.7.1",
+        "markdown-it": "^14.1.0",
+        "markdown-it-anchor": "^8.6.7",
+        "slugify": "^1.6.6"
+    },
+    "lint-staged": {
+        "*.{js,njk}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{md,json,css}": [
+            "prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "npm run test",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ],
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    }
+}

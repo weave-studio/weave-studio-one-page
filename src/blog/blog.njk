@@ -1,0 +1,136 @@
+---
+title: "Blog"
+description: "Latest articles, insights, and tips on web design and development"
+layout: "layouts/page.njk"
+permalink: "/blog/"
+pagination:
+  data: collections.posts
+  size: 6
+  alias: posts
+  reverse: true
+---
+
+<div class="blog-page">
+  <div class="blog-header">
+    <h1>Latest Articles</h1>
+    <p class="lead">Insights, tips, and trends in web design and development</p>
+  </div>
+
+<!-- Featured Post -->
+{% set featuredPost = collections.featuredPosts[0] or posts[0] %}
+{% if featuredPost %}
+  <article class="featured-post">
+    <div class="featured-post__content">
+      {% if featuredPost.data.featured_image %}
+        <div class="featured-post__image">
+          {% image featuredPost.data.featured_image, featuredPost.data.featured_image_alt or featuredPost.data.title, "(min-width: 768px) 50vw, 100vw", "eager" %}
+        </div>
+      {% endif %}
+      
+      <div class="featured-post__text">
+        <div class="featured-post__meta">
+          <time class="featured-post__date">{{ featuredPost.date | readableDate }}</time>
+          {% if featuredPost.data.tags %}
+            {% for tag in featuredPost.data.tags %}
+              {% if tag != "posts" %}
+                <a href="/blog/tags/{{ tag | slugify }}/" class="featured-post__tag">{{ tag }}</a>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        
+        <h2 class="featured-post__title">
+          <a href="{{ featuredPost.url }}">{{ featuredPost.data.title }}</a>
+        </h2>
+        
+        <p class="featured-post__excerpt">{{ featuredPost.data.description }}</p>
+        
+        <a href="{{ featuredPost.url }}" class="featured-post__link btn btn--primary">Read More →</a>
+      </div>
+    </div>
+  </article>
+{% endif %}
+
+  <!-- Blog Grid -->
+  <div class="blog-grid">
+    {% for post in posts %}
+      {% if loop.index > 1 %}
+        <article class="blog-card">
+          {% if post.data.featured_image %}
+            <div class="blog-card__image">
+              <a href="{{ post.url }}">
+                {% if loop.index <= 3 %}
+                  {% image post.data.featured_image, post.data.featured_image_alt or post.data.title, "(min-width: 768px) 33vw, 100vw", "eager" %}
+                {% else %}
+                  {% image post.data.featured_image, post.data.featured_image_alt or post.data.title, "(min-width: 768px) 33vw, 100vw", "lazy" %}
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date">{{ post.date | readableDate }}</time>
+              {% if post.data.author %}
+                <span class="blog-card__author">by {{ post.data.author }}</span>
+              {% endif %}
+            </div>
+            
+            <h3 class="blog-card__title">
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+            
+            <p class="blog-card__excerpt">{{ post.data.description }}</p>
+            
+            {% if post.data.tags %}
+              <div class="blog-card__tags">
+                {% for tag in post.data.tags %}
+                  {% if tag != "posts" %}
+                    <a href="/blog/tags/{{ tag | slugify }}/" class="blog-card__tag">{{ tag }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  {% if pagination.href.previous or pagination.href.next %}
+    <nav class="pagination" aria-label="Blog pagination">
+      <div class="pagination__links">
+        {% if pagination.href.previous %}
+          <a href="{{ pagination.href.previous }}" class="pagination__link pagination__link--prev">
+            ← Newer Posts
+          </a>
+        {% endif %}
+        
+        <span class="pagination__info">
+          Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs.length }}
+        </span>
+        
+        {% if pagination.href.next %}
+          <a href="{{ pagination.href.next }}" class="pagination__link pagination__link--next">
+            Older Posts →
+          </a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+</div>
+
+<!-- Blog Tags -->
+<aside class="blog-sidebar">
+  <div class="blog-tags">
+    <h3>Browse by Topic</h3>
+    <div class="tag-cloud">
+      {% for tag in collections.tagList %}
+        <a href="/blog/tags/{{ tag | slugify }}/" class="tag-cloud__tag">
+          {{ tag }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</aside>
