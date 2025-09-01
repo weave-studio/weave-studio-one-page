@@ -1,25 +1,19 @@
-// src/_data/social.js - Social media configuration
+// src/_data/social.js - Weave Studio social media
 module.exports = {
-    social: [
-      {
-        name: "Twitter",
-        url: "https://twitter.com/weavestudio",
-        icon: "twitter"
-      },
-      {
-        name: "GitHub", 
-        url: "https://github.com/weave-studio",
-        icon: "github"
-      },
-      {
-        name: "LinkedIn",
-        url: "https://linkedin.com/company/weavestudio", 
-        icon: "linkedin"
-      },
-      {
-        name: "Instagram",
-        url: "https://instagram.com/weavestudio",
-        icon: "instagram"
-      }
-    ]
-  };
+  social: [
+    {
+      name: "LinkedIn",
+      name_he: "לינקדאין",
+      url: "https://linkedin.com/in/weave-studio-web",
+      icon: "linkedin",
+      primary: true
+    },
+    {
+      name: "GitHub", 
+      name_he: "גיטהאב",
+      url: "https://github.com/weave-studio",
+      icon: "github",
+      primary: true
+    }
+  ]
+};
