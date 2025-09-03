@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ site.language or 'en' }}" dir="{{ site.direction or 'ltr' }}">
+<html lang="{{ site.language or 'en' }}" dir="{{ site.direction or 'ltr' }}" class="js-enabled">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   {% include "components/seo.njk" %}
 
-  <!-- Preload critical fonts -->
+  <!-- Optimized Font Loading - English Primary with Hebrew Support -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+
+  <!-- English fonts (primary) - loaded immediately -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Hebrew fonts (conditional) - loaded when Hebrew detected -->
+  <link id="hebrew-fonts" href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&display=swap" rel="stylesheet" disabled>
+ 
   <!-- Main CSS -->
   <link rel="stylesheet" href="/assets/css/main.css">
   
@@ -25,125 +30,30 @@
     })();
   </script>
 
-  <!-- Auto language detection script -->
+  <!--  -->
+  <script>
+  document.documentElement.setAttribute('lang', 'en');
+  document.documentElement.setAttribute('dir', 'ltr');
+  </script>
+
+  <!-- Font loading script -->
   <script>
   (function() {
-    // Check if user has manually selected a language
-    const savedLang = localStorage.getItem('user-language');
-    const urlLang = new URLSearchParams(window.location.search).get('lang');
-    
-    let detectedLang = 'en'; // Default fallback
-    
-    if (urlLang && ['en', 'he'].includes(urlLang)) {
-      // URL parameter takes highest priority
-      detectedLang = urlLang;
-      localStorage.setItem('user-language', detectedLang);
-    } else if (savedLang && ['en', 'he'].includes(savedLang)) {
-      // User's saved preference
-      detectedLang = savedLang;
-    } else {
-      // Auto-detect based on location and browser
-      const userLang = navigator.language || navigator.userLanguage;
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      
-      // Check if user is likely in Israel
-      const israelTimezone = timezone === 'Asia/Jerusalem' || timezone === 'Asia/Tel_Aviv';
-      const hebrewBrowser = userLang.startsWith('he') || userLang.startsWith('iw');
-      const israelRegion = userLang.includes('IL');
-      
-      // Use Hebrew if strong indicators suggest Israeli user
-      if (israelTimezone || hebrewBrowser || israelRegion) {
-        detectedLang = 'he';
-      }
-      
-      // Additional geolocation check (optional, requires HTTPS)
-      if ('geolocation' in navigator && window.location.protocol === 'https:') {
-        navigator.geolocation.getCurrentPosition(
-          function(position) {
-            // Israel coordinates: roughly 29-34°N, 34-36°E
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            
-            if (lat >= 29 && lat <= 34 && lon >= 34 && lon <= 36) {
-              detectedLang = 'he';
-              applyLanguage(detectedLang);
-            }
-          },
-          function() {
-            // Geolocation failed, use existing detection
-          },
-          { timeout: 2000 }
-        );
-      }
-    }
-    
-    // Apply the detected language
-    document.addEventListener('DOMContentLoaded', function() {
-      applyLanguage(detectedLang);
-    });
-
-    function applyLanguage(lang) {
-      document.documentElement.setAttribute('lang', lang);
-      
-      if (lang === 'he') {
-        document.documentElement.setAttribute('dir', 'rtl');
-        if (document.body) {
-          document.body.classList.add('lang-he');
-          document.body.classList.remove('lang-en');
-        }
+    // Enable Hebrew fonts when Hebrew is detected
+    window.addEventListener('languageChanged', function(e) {
+      const hebrewFonts = document.getElementById('hebrew-fonts');
+      if (e.detail.lang === 'he') {
+        hebrewFonts.disabled = false;
+        hebrewFonts.rel = 'stylesheet';
       } else {
-        document.documentElement.setAttribute('dir', 'ltr');
-        if (document.body) {
-          document.body.classList.add('lang-en');
-          document.body.classList.remove('lang-he');
-        }
+        hebrewFonts.disabled = true;
       }
-      
-      // Update navigation text
-      updateNavigationText(lang);
-      
-      // Store detected language
-      localStorage.setItem('detected-language', lang);
-      
-      // Trigger language change event
-      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: lang } }));
-    }
+    });
     
-    function updateNavigationText(lang) {
-      const navItems = document.querySelectorAll('[data-nav-text]');
-      navItems.forEach(item => {
-        const englishText = item.getAttribute('data-nav-text');
-        const hebrewText = item.getAttribute('data-nav-text-he');
-        
-        if (lang === 'he' && hebrewText) {
-          item.textContent = hebrewText;
-        } else {
-          item.textContent = englishText;
-        }
-      });
-    }
-    
-    // Make language switching function globally available
-    window.switchLanguage = function(newLang) {
-      if (['en', 'he'].includes(newLang)) {
-        localStorage.setItem('user-language', newLang);
-        applyLanguage(newLang);
-        
-        // Update active language button
-        updateLanguageButtons(newLang);
-      }
-    };
-    
-    function updateLanguageButtons(activeLang) {
-      const buttons = document.querySelectorAll('.language-toggle');
-      buttons.forEach(btn => {
-        const btnLang = btn.getAttribute('data-lang');
-        if (btnLang === activeLang) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+    // Check if Hebrew was detected on initial load
+    if (localStorage.getItem('detected-language') === 'he' || 
+        localStorage.getItem('user-language') === 'he') {
+      document.getElementById('hebrew-fonts').disabled = false;
     }
   })();
   </script>
@@ -163,6 +73,129 @@
   <!-- Site footer -->
   {% include "components/footer.njk" %}
   
+  <!-- Auto language detection script -->
+  <script>
+    (function() {
+      // Check if user has manually selected a language
+      const savedLang = localStorage.getItem('user-language');
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      
+      let detectedLang = 'en'; // Default fallback
+      
+      if (urlLang && ['en', 'he'].includes(urlLang)) {
+        // URL parameter takes highest priority
+        detectedLang = urlLang;
+        localStorage.setItem('user-language', detectedLang);
+      } else if (savedLang && ['en', 'he'].includes(savedLang)) {
+        // User's saved preference
+        detectedLang = savedLang;
+      } else {
+        // Auto-detect based on location and browser
+        const userLang = navigator.language || navigator.userLanguage;
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        
+        // Check if user is likely in Israel
+        const israelTimezone = timezone === 'Asia/Jerusalem' || timezone === 'Asia/Tel_Aviv';
+        const hebrewBrowser = userLang.startsWith('he') || userLang.startsWith('iw');
+        const israelRegion = userLang.includes('IL');
+        
+        // Use Hebrew if strong indicators suggest Israeli user
+        if (israelTimezone || hebrewBrowser || israelRegion) {
+          detectedLang = 'he';
+        }
+        
+        // Additional geolocation check (optional, requires HTTPS)
+        if ('geolocation' in navigator && window.location.protocol === 'https:') {
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              // Israel coordinates: roughly 29-34°N, 34-36°E
+              const lat = position.coords.latitude;
+              const lon = position.coords.longitude;
+              
+              if (lat >= 29 && lat <= 34 && lon >= 34 && lon <= 36) {
+                detectedLang = 'he';
+                applyLanguage(detectedLang);
+              }
+            },
+            function() {
+              // Geolocation failed, use existing detection
+            },
+            { timeout: 2000 }
+          );
+        }
+      }
+      
+      // Apply the detected language
+      document.addEventListener('DOMContentLoaded', function() {
+        applyLanguage(detectedLang);
+      });
+
+      function applyLanguage(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        
+        if (lang === 'he') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          if (document.body) {
+            document.body.classList.add('lang-he');
+            document.body.classList.remove('lang-en');
+          }
+        } else {
+          document.documentElement.setAttribute('dir', 'ltr');
+          if (document.body) {
+            document.body.classList.add('lang-en');
+            document.body.classList.remove('lang-he');
+          }
+        }
+        
+        // Update navigation text
+        updateNavigationText(lang);
+        
+        // Store detected language
+        localStorage.setItem('detected-language', lang);
+        
+        // Trigger language change event
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: lang } }));
+      }
+      
+      function updateNavigationText(lang) {
+        const navItems = document.querySelectorAll('[data-nav-text]');
+        navItems.forEach(item => {
+          const englishText = item.getAttribute('data-nav-text');
+          const hebrewText = item.getAttribute('data-nav-text-he');
+          
+          if (lang === 'he' && hebrewText) {
+            item.textContent = hebrewText;
+          } else {
+            item.textContent = englishText;
+          }
+        });
+      }
+      
+      // Make language switching function globally available
+      window.switchLanguage = function(newLang) {
+        if (['en', 'he'].includes(newLang)) {
+          localStorage.setItem('user-language', newLang);
+          applyLanguage(newLang);
+          
+          // Update active language button
+          updateLanguageButtons(newLang);
+        }
+      };
+      
+      function updateLanguageButtons(activeLang) {
+        const buttons = document.querySelectorAll('.language-toggle');
+        buttons.forEach(btn => {
+          const btnLang = btn.getAttribute('data-lang');
+          if (btnLang === activeLang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    })();
+  </script>
+
   <!-- Main JavaScript -->
   <script src="/assets/js/main.js" defer></script>
 </body>

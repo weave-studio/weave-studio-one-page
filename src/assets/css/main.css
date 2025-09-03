@@ -81,11 +81,18 @@
   --color-border-medium: var(--color-gray-300);
   --color-border-strong: var(--color-gray-400);
   
-  /* Typography Scale */
-  --font-family-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
-  --font-family-serif: 'Lora', 'Georgia', 'Times New Roman', serif;
+  /* Typography Scale - English Primary with Hebrew Conditional Loading */
+  --font-family-serif-en: 'DM Serif Display', 'Georgia', 'Times New Roman', serif;
+  --font-family-sans-en: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-serif-he: 'Alef', 'DM Serif Display', 'Times New Roman', serif;
+  --font-family-sans-he: 'Noto Sans Hebrew', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-  
+
+  /* Default fonts (English) */
+  --font-family-heading: var(--font-family-serif-en);
+  --font-family-body: var(--font-family-sans-en);
+
+  /* Font sizes optimized for both languages */
   --font-size-xs: 0.75rem;     /* 12px */
   --font-size-sm: 0.875rem;    /* 14px */
   --font-size-base: 1rem;      /* 16px */
@@ -96,18 +103,20 @@
   --font-size-4xl: 2.25rem;    /* 36px */
   --font-size-5xl: 3rem;       /* 48px */
   --font-size-6xl: 3.75rem;    /* 60px */
-  
+
+  /* Font weights */
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  
+
+  /* Line heights for optimal readability */
   --line-height-tight: 1.25;
   --line-height-snug: 1.375;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.625;
+  --line-height-normal: 1.5;    /* Good for English */
+  --line-height-relaxed: 1.625; /* Better for Hebrew when needed */
   --line-height-loose: 2;
   
   /* Spacing Scale */
@@ -329,7 +338,7 @@
   }
 
   /* Dark mode fixes for all pages */
-[data-theme="dark"] {
+  [data-theme="dark"] {
     /* Ensure all backgrounds are properly dark */
     background-color: var(--color-bg-primary);
   }
@@ -384,7 +393,8 @@
   [data-theme="dark"] .prose a:hover {
     color: var(--color-primary-300);
   }/* Dark mode fixes for all pages */
-[data-theme="dark"] {
+  
+  [data-theme="dark"] {
   /* Ensure all backgrounds are properly dark */
   background-color: var(--color-bg-primary);
 }
@@ -442,44 +452,291 @@
 
 /* Override CSS custom properties directly in dark mode */
 [data-theme="dark"] {
-    --color-bg-primary: #111827 !important;
-    --color-bg-secondary: #1f2937 !important;
-    --color-bg-muted: #374151 !important;
-    --color-text-primary: #f9fafb !important;
-    --color-text-secondary: #d1d5db !important;
+  --color-bg-primary: #111827 !important;
+  --color-bg-secondary: #1f2937 !important;
+  --color-bg-muted: #374151 !important;
+  --color-text-primary: #f9fafb !important;
+  --color-text-secondary: #d1d5db !important;
+}
+
+/* Force all major elements to use correct dark backgrounds */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+[data-theme="dark"] main,
+[data-theme="dark"] .page,
+[data-theme="dark"] .post,
+[data-theme="dark"] .home {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+/* Force page content areas */
+[data-theme="dark"] .page__content,
+[data-theme="dark"] .post__content,
+[data-theme="dark"] .main-content {
+  background-color: #111827 !important;
+}
+
+/* Force section backgrounds */
+[data-theme="dark"] .section {
+  background-color: #111827 !important;
+}
+
+/* Override any inline styles that might be causing issues */
+[data-theme="dark"] [style*="background-color: var(--color-bg-primary)"] {
+  background-color: #111827 !important;
+}
+
+[data-theme="dark"] [style*="background-color: var(--color-bg-secondary)"] {
+  background-color: #1f2937 !important;
+}
+
+/* ==========================================================================
+   Dynamic Typography System - Auto Language Switching
+   ========================================================================== */
+
+/* Default English Typography */
+body {
+  font-family: var(--font-family-body);
+  direction: ltr;
+  text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+}
+
+p {
+  line-height: var(--line-height-normal);
+  text-align: left;
+}
+
+/* Hebrew Typography (when .lang-he class is applied) */
+.lang-he {
+  direction: rtl;
+  text-align: right;
+}
+
+.lang-he body,
+.lang-he .main-content,
+.lang-he p,
+.lang-he .lang-content[data-lang="he"] {
+  font-family: var(--font-family-sans-he);
+  text-align: right;
+  line-height: var(--line-height-relaxed); /* Better for Hebrew */
+}
+
+.lang-he h1, .lang-he h2, .lang-he h3,
+.lang-he h4, .lang-he h5, .lang-he h6,
+.lang-he .lang-content[data-lang="he"] h1,
+.lang-he .lang-content[data-lang="he"] h2,
+.lang-he .lang-content[data-lang="he"] h3 {
+  font-family: var(--font-family-serif-he);
+  text-align: right;
+  line-height: var(--line-height-snug);
+}
+
+/* English Typography (explicit when switching from Hebrew) */
+.lang-en body,
+.lang-en .main-content,
+.lang-en p,
+.lang-en .lang-content[data-lang="en"] {
+  font-family: var(--font-family-sans-en);
+  text-align: left;
+  line-height: var(--line-height-normal);
+}
+
+.lang-en h1, .lang-en h2, .lang-en h3,
+.lang-en h4, .lang-en h5, .lang-en h6,
+.lang-en .lang-content[data-lang="en"] h1,
+.lang-en .lang-content[data-lang="en"] h2,
+.lang-en .lang-content[data-lang="en"] h3 {
+  font-family: var(--font-family-serif-en);
+  text-align: left;
+  line-height: var(--line-height-tight);
+}
+
+/* Language-specific content visibility */
+.lang-content {
+  display: none;
+}
+
+/* Show English content by default */
+.lang-content[data-lang="en"] {
+  display: block;
+}
+
+/* Show Hebrew content when Hebrew is active */
+.lang-he .lang-content[data-lang="en"] {
+  display: none;
+}
+
+.lang-he .lang-content[data-lang="he"] {
+  display: block;
+}
+
+/* Navigation typography switching */
+.main-navigation__link {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+}
+
+.lang-he .main-navigation__link {
+  font-family: var(--font-family-sans-he);
+}
+
+/* Button typography */
+.btn {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-semibold);
+}
+
+.lang-he .btn {
+  font-family: var(--font-family-sans-he);
+}
+
+/* Form elements */
+input, textarea, select {
+  font-family: var(--font-family-body);
+}
+
+.lang-he input,
+.lang-he textarea,
+.lang-he select {
+  font-family: var(--font-family-sans-he);
+  text-align: right;
+}
+
+/* Code elements remain monospace */
+code, pre, kbd, samp {
+  font-family: var(--font-family-mono);
+  direction: ltr; /* Code always LTR */
+  text-align: left;
+}
+
+/* Mixed content handling */
+.mixed-content {
+  unicode-bidi: bidi-override;
+}
+
+.english-term {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  font-family: var(--font-family-sans-en);
+}
+
+.hebrew-term {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  font-family: var(--font-family-sans-he);
+}
+
+/* Numbers, URLs, emails remain LTR */
+.number, .phone, .email, .url {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  display: inline-block;
+}
+
+/* Language switcher typography */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.language-toggle {
+  background: none;
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-toggle:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-muted);
+}
+
+.language-toggle:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.language-toggle.active {
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-300);
+  background-color: var(--color-primary-50);
+  font-weight: var(--font-weight-semibold);
+}
+
+.language-divider {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Dark mode language switcher */
+[data-theme="dark"] .language-toggle.active {
+  color: var(--color-primary-400);
+  border-color: var(--color-primary-600);
+  background-color: var(--color-primary-900);
+}
+
+/* Performance optimizations */
+@supports (font-display: swap) {
+  @font-face {
+    font-family: 'Inter';
+    font-display: swap;
   }
   
-  /* Force all major elements to use correct dark backgrounds */
-  [data-theme="dark"] html,
-  [data-theme="dark"] body,
-  [data-theme="dark"] main,
-  [data-theme="dark"] .page,
-  [data-theme="dark"] .post,
-  [data-theme="dark"] .home {
-    background-color: #111827 !important;
-    color: #f9fafb !important;
+  @font-face {
+    font-family: 'DM Serif Display';
+    font-display: swap;
   }
   
-  /* Force page content areas */
-  [data-theme="dark"] .page__content,
-  [data-theme="dark"] .post__content,
-  [data-theme="dark"] .main-content {
-    background-color: #111827 !important;
+  @font-face {
+    font-family: 'Noto Sans Hebrew';
+    font-display: swap;
   }
   
-  /* Force section backgrounds */
-  [data-theme="dark"] .section {
-    background-color: #111827 !important;
+  @font-face {
+    font-family: 'Noto Serif Hebrew';
+    font-display: swap;
   }
-  
-  /* Override any inline styles that might be causing issues */
-  [data-theme="dark"] [style*="background-color: var(--color-bg-primary)"] {
-    background-color: #111827 !important;
-  }
-  
-  [data-theme="dark"] [style*="background-color: var(--color-bg-secondary)"] {
-    background-color: #1f2937 !important;
-  }
+}
+
+/* Prevent layout shift during font loading */
+html {
+  font-display: swap;
+}
+
+/* Quote marks for Hebrew */
+.lang-he q,
+.lang-he blockquote {
+  quotes: "„" """;
+}
+
+.lang-he q:before {
+  content: open-quote;
+}
+
+.lang-he q:after {
+  content: close-quote;
+}
 
   /* ==========================================================================
    BUTTON SYSTEM OVERRIDES - Ensure new system takes precedence
