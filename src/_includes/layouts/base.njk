@@ -9,6 +9,7 @@
   <!-- Optimized Font Loading - English Primary with Hebrew Support -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- English fonts (primary) - loaded immediately -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -57,6 +58,10 @@
     }
   })();
   </script>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/assets/css/main.css" as="style">
+  <link rel="preload" href="/assets/js/main.js" as="script">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -198,5 +203,18 @@
 
   <!-- Main JavaScript -->
   <script src="/assets/js/main.js" defer></script>
+
+  <!-- Netlify Identity Widget for CMS access -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

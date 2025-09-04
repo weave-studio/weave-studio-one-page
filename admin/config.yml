@@ -1,79 +1,197 @@
 backend:
-  name: test-repo
+  name: git-gateway # Use git-gateway for production
+  branch: main
 
+# For development - comment out for production
 local_backend: true
 
 media_folder: "src/assets/images/uploads"
 public_folder: "/assets/images/uploads"
 
-# Enhanced with preview templates and image widgets
+# Site configuration for Weave Studio
+site_url: https://weavewebdesign.com
+locale: 'en' # English primary interface
+display_url: https://weavewebdesign.com
+
+# Logo and branding
+logo_url: "/assets/images/weave-studio-logo.svg"
+
 collections:
+  # Blog posts with bilingual support
   - name: "posts"
     label: "Blog Posts"
+    label_singular: "Blog Post"
     folder: "src/blog/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "blog/posts/{{slug}}"
+    preview_path: "blog/{{slug}}"
+    editor:
+      preview: true
+    sortable_fields: ['date', 'title', 'featured', 'language']
     fields:
       - {label: "Title", name: "title", widget: "string", hint: "SEO-friendly title (50-60 characters ideal)"}
+      - {label: "Hebrew Title", name: "title_he", widget: "string", required: false, hint: "כותרת בעברית (אופציונלי)"}
       - {label: "Description", name: "description", widget: "text", hint: "Meta description (150-160 characters)"}
+      - {label: "Hebrew Description", name: "description_he", widget: "text", required: false, hint: "תיאור בעברית"}
       - {label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Recommended size: 1200x630px"}
-      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false, hint: "Describe the image for accessibility"}
+      - {label: "Image Alt Text", name: "featured_image_alt", widget: "string", required: false, hint: "Describe image for accessibility"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string", default: "Weave Studio"}
+      - {label: "Author", name: "author", widget: "string", default: "Assaf Yechiel"}
       - {label: "Tags", name: "tags", widget: "list", default: ["posts"], hint: "Add relevant tags for categorization"}
+      - {label: "Featured on Homepage", name: "featured", widget: "boolean", default: false, hint: "Display on homepage"}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
-      - {label: "Body", name: "body", widget: "markdown", hint: "Main content - supports markdown formatting"}
+      - {label: "Primary Language", name: "language", widget: "select", default: "en", options: [
+          {label: "English", value: "en"}, 
+          {label: "Hebrew", value: "he"}
+        ]}
+      - {label: "Content (English)", name: "body", widget: "markdown", hint: "Main content - supports markdown formatting"}
+      - {label: "Content (Hebrew)", name: "body_he", widget: "markdown", required: false}
 
+  # Portfolio/Case Studies
+  - name: "portfolio"
+    label: "Portfolio"
+    label_singular: "Project"
+    folder: "src/portfolio"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "portfolio/{{slug}}"
+    sortable_fields: ['completion_date', 'title', 'featured', 'category']
+    fields:
+      - {label: "Project Name", name: "title", widget: "string"}
+      - {label: "Hebrew Project Name", name: "title_he", widget: "string", required: false}
+      - {label: "Client", name: "client", widget: "string"}
+      - {label: "Short Description", name: "description", widget: "text", hint: "Brief description for project card"}
+      - {label: "Hebrew Description", name: "description_he", widget: "text", required: false}
+      - {label: "Featured Image", name: "featured_image", widget: "image", hint: "Main project image"}
+      - {label: "Image Alt Text", name: "featured_image_alt", widget: "string"}
+      - {label: "Project Gallery", name: "gallery", widget: "list", required: false, fields: [
+          {label: "Image", name: "image", widget: "image"},
+          {label: "Alt Text", name: "alt", widget: "string"},
+          {label: "Caption", name: "caption", widget: "string", required: false}
+        ]}
+      - {label: "Project URL", name: "project_url", widget: "string", required: false, hint: "Live website URL"}
+      - {label: "GitHub URL", name: "github_url", widget: "string", required: false}
+      - {label: "Technologies Used", name: "technologies", widget: "list", hint: "Technologies used in project", default: ["HTML", "CSS", "JavaScript"]}
+      - {label: "Project Category", name: "category", widget: "select", options: [
+          {label: "Web Design", value: "web-design"}, 
+          {label: "E-commerce", value: "e-commerce"}, 
+          {label: "Development", value: "development"}, 
+          {label: "SEO", value: "seo"}, 
+          {label: "Maintenance", value: "maintenance"}
+        ], default: "web-design"}
+      - {label: "Completion Date", name: "completion_date", widget: "datetime"}
+      - {label: "Featured on Homepage", name: "featured", widget: "boolean", default: false, hint: "Display on homepage"}
+      - {label: "Show in Portfolio", name: "show_in_portfolio", widget: "boolean", default: true}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/portfolio.njk"}
+      - {label: "Full Description", name: "body", widget: "markdown", hint: "Detailed project description"}
+
+  # Services
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "src/services"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ['order', 'title', 'featured']
+    fields:
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Hebrew Service Name", name: "title_he", widget: "string", required: false}
+      - {label: "Short Description", name: "short_description", widget: "text", hint: "Brief description for service card"}
+      - {label: "Hebrew Short Description", name: "short_description_he", widget: "text", required: false}
+      - {label: "Meta Description", name: "description", widget: "text"}
+      - {label: "Icon", name: "icon", widget: "select", options: [
+          {label: "Code", value: "code"},
+          {label: "Design Palette", value: "palette"},
+          {label: "Shopping Cart", value: "shopping-cart"},
+          {label: "Search", value: "search"},
+          {label: "Tools", value: "wrench"},
+          {label: "Consulting", value: "users"},
+          {label: "Mobile", value: "smartphone"},
+          {label: "Speed", value: "zap"},
+          {label: "Globe", value: "globe"},
+          {label: "Settings", value: "settings"}
+        ]}
+      - {label: "Starting Price", name: "starting_price", widget: "string", required: false, hint: "e.g., Starting at ₪3,000"}
+      - {label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 2-3 weeks"}
+      - {label: "Work Process", name: "process", widget: "list", required: false, fields: [
+          {label: "Step", name: "step", widget: "string"},
+          {label: "Description", name: "description", widget: "text"}
+        ]}
+      - {label: "Included Features", name: "features", widget: "list", hint: "List of features included in service"}
+      - {label: "Featured on Homepage", name: "featured", widget: "boolean", default: true}
+      - {label: "Display Order", name: "order", widget: "number", default: 1, hint: "Display order on page (1=first)"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/service.njk"}
+      - {label: "Detailed Content (English)", name: "body", widget: "markdown"}
+      - {label: "Detailed Content (Hebrew)", name: "body_he", widget: "markdown", required: false}
+
+  # FAQ Management
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/faq"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ['category', 'order']
+    fields:
+      - {label: "Category", name: "category", widget: "string", hint: "e.g., Design, Development, Pricing"}
+      - {label: "Question", name: "question", widget: "string"}
+      - {label: "Hebrew Question", name: "question_he", widget: "string", required: false}
+      - {label: "Answer", name: "answer", widget: "markdown"}
+      - {label: "Hebrew Answer", name: "answer_he", widget: "markdown", required: false}
+      - {label: "Display Order", name: "order", widget: "number", default: 1}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/faq.njk"}
+
+  # Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/testimonials"
+    create: true
+    slug: "{{client}}-{{slug}}"
+    sortable_fields: ['date', 'client_name', 'featured', 'rating']
+    fields:
+      - {label: "Client Name", name: "client_name", widget: "string"}
+      - {label: "Client Role", name: "client_role", widget: "string", hint: "e.g., CEO, Owner, Marketing Manager"}
+      - {label: "Company", name: "company", widget: "string"}
+      - {label: "Client Photo", name: "client_image", widget: "image", required: false}
+      - {label: "Testimonial", name: "testimonial", widget: "text"}
+      - {label: "Hebrew Testimonial", name: "testimonial_he", widget: "text", required: false}
+      - {label: "Rating", name: "rating", widget: "number", min: 1, max: 5, default: 5}
+      - {label: "Related Project", name: "related_project", widget: "string", required: false, hint: "Project name if applicable"}
+      - {label: "Featured on Homepage", name: "featured", widget: "boolean", default: false}
+      - {label: "Date", name: "date", widget: "datetime"}
+
+  # Regular Pages
   - name: "pages"
     label: "Pages"
     folder: "src/pages"
     create: true
     slug: "{{slug}}"
-    preview_path: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Page Title", name: "title", widget: "string"}
+      - {label: "Hebrew Page Title", name: "title_he", widget: "string", required: false}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
-      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false}
-      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Image Alt Text", name: "featured_image_alt", widget: "string", required: false}
+      - {label: "Layout", name: "layout", widget: "select", options: [
+          {label: "Standard Page", value: "layouts/page.njk"},
+          {label: "Minimal Page", value: "layouts/page-minimal.njk"}
+        ], default: "layouts/page.njk"}
       - {label: "Permalink", name: "permalink", widget: "string", hint: "URL path, e.g., /about/"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Content (English)", name: "body", widget: "markdown"}
+      - {label: "Content (Hebrew)", name: "body_he", widget: "markdown", required: false}
 
-  - name: "case_studies"
-    label: "Case Studies"
-    folder: "src/case-studies"
-    create: true
-    slug: "{{slug}}"
-    preview_path: "case-studies/{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Client", name: "client", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Featured Image", name: "featured_image", widget: "image"}
-      - {label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string"}
-      - {label: "Project URL", name: "project_url", widget: "string", required: false}
-      - {label: "Technologies", name: "technologies", widget: "list", hint: "Technologies used in this project"}
-      - {label: "Completion Date", name: "completion_date", widget: "date"}
-      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/case-study.njk"}
-      - {label: "Body", name: "body", widget: "markdown"}
-
-  - name: "settings"
-    label: "Site Settings"
-    files:
-      - label: "General Settings"
-        name: "general"
-        file: "src/_data/site.js"
-        fields:
-          - {label: "Site Name", name: "name", widget: "string"}
-          - {label: "Tagline", name: "tagline", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Site URL", name: "url", widget: "string"}
-          - {label: "Contact Email", name: "email", widget: "string"}
-          - {label: "Phone", name: "phone", widget: "string", required: false}
-          - {label: "Address", name: "address", widget: "text", required: false}
-
-# Editor preview templates
+# Editor configuration
 editor:
   preview: true
+
+# Media configuration for production (uncomment when ready)
+# media_library:
+#   name: uploadcare
+#   config:
+#     publicKey: your_uploadcare_public_key
+
+# Publish mode - use editorial workflow for content review
+publish_mode: editorial_workflow
+
+# Custom preview styles
+preview_path: "{{slug}}"
