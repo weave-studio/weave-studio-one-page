@@ -17,6 +17,23 @@
     --color-border-light: var(--color-gray-700);
     --color-border-medium: var(--color-gray-600);
     --color-border-strong: var(--color-gray-500);
+
+    /* Dark mode background fixes */
+    --color-bg-hero-light: var(--color-gray-800);
+    --color-bg-cta-light: var(--color-primary-900);
+    --color-bg-section-primary: var(--color-gray-800);
+    --color-bg-section-accent: var(--color-gray-900);
+    --color-bg-section-subtle: var(--color-gray-850);
+    
+    /* Dark mode text colors */
+    --color-text-on-hero-light: var(--color-gray-100);
+    --color-text-on-cta-light: var(--color-gray-100);
+    
+    /* Enhanced accent colors for dark mode */
+    --color-border-accent: var(--color-primary-700);
+    --color-accent-primary: var(--color-primary-500);
+    --color-accent-secondary: var(--color-primary-400);
+    --color-accent-tertiary: var(--color-primary-300);
     
     /* Adjust component styles for dark mode */
     color-scheme: dark;
@@ -77,4 +94,12 @@
   :root:not([data-theme="light"]) ::selection {
     background-color: var(--color-primary-800);
     color: var(--color-primary-100);
+  }
+
+  :root {
+    --color-gray-850: #1f2937;
+  }
+  
+  [data-theme="dark"] {
+    --color-gray-850: #1f2937;
   }

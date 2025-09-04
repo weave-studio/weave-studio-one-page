@@ -80,6 +80,36 @@
   --color-border-light: var(--color-gray-200);
   --color-border-medium: var(--color-gray-300);
   --color-border-strong: var(--color-gray-400);
+
+  /* ==========================================================================
+   Background-Specific Color Variables - Large Area Fixes
+   ========================================================================== */
+
+/* Softer backgrounds for large areas (hero, sections) */
+--color-bg-hero-light: var(--color-primary-50);    /* Very light blue for hero sections */
+--color-bg-hero-dark: var(--color-gray-800);       /* Charcoal for dark mode heroes */
+--color-bg-cta-light: var(--color-primary-100);    /* Soft blue for CTA sections */
+--color-bg-cta-dark: var(--color-primary-900);     /* Dark blue for dark mode CTAs */
+
+/* Section background alternatives */
+--color-bg-section-primary: var(--color-bg-cta-light);  /* Primary section background */
+--color-bg-section-accent: var(--color-gray-50);        /* Accent section background */
+--color-bg-section-subtle: var(--color-primary-25);     /* Extra subtle background */
+
+/* Keep existing primary colors for UI elements (buttons, borders, icons) */
+--color-accent-primary: var(--color-primary-600);         /* Buttons, primary actions */
+--color-accent-secondary: var(--color-primary-500);       /* Hover states, secondary actions */
+--color-accent-tertiary: var(--color-primary-400);        /* Light accents, icons */
+--color-border-accent: var(--color-primary-200);          /* Borders, dividers */
+
+/* Text colors for new backgrounds */
+--color-text-on-hero-light: var(--color-gray-800);
+--color-text-on-hero-dark: var(--color-gray-100);
+--color-text-on-cta-light: var(--color-gray-800);
+--color-text-on-cta-dark: var(--color-gray-100);
+
+/* Add missing ultra-light primary color */
+--color-primary-25: #f8faff;  /* Extra light blue for subtle backgrounds */
   
   /* Typography Scale - English Primary with Hebrew Conditional Loading */
   --font-family-serif-en: 'DM Serif Display', 'Georgia', 'Times New Roman', serif;
