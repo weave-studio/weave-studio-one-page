@@ -1,77 +1,183 @@
 ---
 title: "Weave Studio - Beautiful Websites That Actually Work"
 title_he: "Weave Studio - אתרים יפים שבאמת עובדים"
-description: "Professional web design and development services in Tel Aviv"
-description_he: "שירותי עיצוב ופיתוח אתרים מקצועיים בתל אביב"
+description: "Professional web design and development services in Tel Aviv. Fast, beautiful websites for small businesses."
+description_he: "שירותי עיצוב ופיתוח אתרים מקצועיים בתל אביב. אתרים מהירים ויפים לעסקים קטנים."
 layout: "layouts/home.njk"
 permalink: "/"
 ---
 
-<!-- Hero Section with Bilingual Content -->
+<!-- Enhanced Hero Section with Text Rotator -->
 <section id="home" class="hero">
+  <div class="hero__background">
+    <!-- Subtle gradient background -->
+    <div class="hero__gradient"></div>
+  </div>
+  
   <div class="container">
     <div class="hero__content">
       <!-- English Content -->
-      <div class="lang-content" data-lang="en">
-        <h1>
+      <div class="lang-content hero-content" data-lang="en">
+        <h1 class="hero__title">
           We Create Beautiful
-          <span id="rotating-text" style="color: var(--color-primary-600); font-weight: var(--font-weight-extrabold);">Websites</span>
-          <span style="display: block;">That Actually Work</span>
+          <span class="text-rotator" data-rotator="en" aria-live="polite" role="text">
+            <span class="text-rotator__item is-active">Websites</span>
+            <span class="text-rotator__item">E-commerce</span>
+            <span class="text-rotator__item">Web Apps</span>
+            <span class="text-rotator__item">Digital Experiences</span>
+          </span>
+          <span class="hero__subtitle">That Actually Work</span>
         </h1>
-        <p class="lead">
+        
+        <p class="hero__description lead">
           Professional web design and development in Tel Aviv. 
           We help small businesses succeed online with beautiful, fast, and results-driven websites.
         </p>
-        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
-          <a href="#contact" class="btn btn--primary btn--lg">Start Your Project</a>
-          <a href="#portfolio" class="btn btn--secondary btn--lg">View Our Work</a>
+        
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary btn--lg btn--hero" data-scroll-to="contact">
+            <span>Start Your Project</span>
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="btn btn--secondary btn--lg btn--hero" data-scroll-to="portfolio">
+            <span>View Our Work</span>
+          </a>
+        </div>
+        
+        <div class="hero__trust-signals">
+          <div class="trust-signal">
+            <span class="trust-signal__number">50+</span>
+            <span class="trust-signal__text">Projects Completed</span>
+          </div>
+          <div class="trust-signal">
+            <span class="trust-signal__number">100%</span>
+            <span class="trust-signal__text">Client Satisfaction</span>
+          </div>
+          <div class="trust-signal">
+            <span class="trust-signal__number">2-3</span>
+            <span class="trust-signal__text">Week Delivery</span>
+          </div>
         </div>
       </div>
       
       <!-- Hebrew Content -->
-      <div class="lang-content" data-lang="he">
-        <h1>
+      <div class="lang-content hero-content" data-lang="he">
+        <h1 class="hero__title">
           אנחנו יוצרים
-          <span id="rotating-text-he" style="color: var(--color-primary-600); font-weight: var(--font-weight-extrabold);">אתרים יפים</span>
-          <span style="display: block;">שבאמת עובדים</span>
+          <span class="text-rotator" data-rotator="he" aria-live="polite" role="text">
+            <span class="text-rotator__item is-active">אתרים יפים</span>
+            <span class="text-rotator__item">חנויות דיגיטליות</span>
+            <span class="text-rotator__item">אפליקציות אינטרנט</span>
+            <span class="text-rotator__item">חוויות דיגיטליות</span>
+          </span>
+          <span class="hero__subtitle">שבאמת עובדים</span>
         </h1>
-        <p class="lead">
+        
+        <p class="hero__description lead">
           עיצוב ופיתוח אתרים מקצועי בתל אביב. 
           אנו עוזרים לעסקים קטנים להצליח ברשת עם אתרים יפים, מהירים וממוקדי תוצאות.
         </p>
-        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
-          <a href="#contact" class="btn btn--primary btn--lg">התחל את הפרויקט</a>
-          <a href="#portfolio" class="btn btn--secondary btn--lg">צפה בעבודות</a>
+        
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary btn--lg btn--hero" data-scroll-to="contact">
+            <span>התחל את הפרויקט</span>
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="btn btn--secondary btn--lg btn--hero" data-scroll-to="portfolio">
+            <span>צפה בעבודות</span>
+          </a>
+        </div>
+        
+        <div class="hero__trust-signals">
+          <div class="trust-signal">
+            <span class="trust-signal__number">50+</span>
+            <span class="trust-signal__text">פרויקטים שהושלמו</span>
+          </div>
+          <div class="trust-signal">
+            <span class="trust-signal__number">100%</span>
+            <span class="trust-signal__text">שביעות רצון לקוחות</span>
+          </div>
+          <div class="trust-signal">
+            <span class="trust-signal__number">2-3</span>
+            <span class="trust-signal__text">שבועות אספקה</span>
+          </div>
         </div>
       </div>
       
-      <!-- Scroll indicator -->
-      <div class="scroll-indicator" style="margin-top: var(--space-12);">
-        <a href="#about" aria-label="Scroll to learn more">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <!-- Scroll indicator (language-agnostic) -->
+      <div class="hero__scroll-indicator">
+        <button type="button" class="scroll-indicator" data-scroll-to="about" aria-label="Scroll to learn more">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <polyline points="6,9 12,15 18,9"></polyline>
           </svg>
-        </a>
+        </button>
+        <span class="scroll-indicator__text lang-content" data-lang="en">Learn More</span>
+        <span class="scroll-indicator__text lang-content" data-lang="he">למד עוד</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section with Bilingual Content -->
+<!-- About Section - Enhanced for hero flow -->
 <section id="about" class="section">
   <div class="container">
     <!-- English Content -->
     <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-8">Welcome to Weave Studio</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
+      <div class="section__header">
+        <h2 class="section__title text-center">Welcome to Weave Studio</h2>
+        <p class="section__subtitle text-center">Where creativity meets functionality</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-content">
           <h3>Hi, I'm Assaf Yechiel</h3>
-          <p>Professional web designer and developer based in Tel Aviv. I help small businesses create beautiful, effective websites that drive results.</p>
-          <p>With years of experience in web design and development, I specialize in creating custom websites that not only look amazing but also perform exceptionally well.</p>
+          <p class="lead">Professional web designer and developer based in Tel Aviv. I help small businesses create beautiful, effective websites that drive real results.</p>
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              <div>
+                <h4>Lightning Fast</h4>
+                <p>Optimized for speed and performance</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <div>
+                <h4>Quality Focused</h4>
+                <p>Attention to detail in every pixel</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+              <div>
+                <h4>Results Driven</h4>
+                <p>Websites that convert visitors to customers</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="aspect-ratio aspect-square">
-            <img src="/assets/images/assaf-profile.jpg" alt="Assaf Yechiel - Web Designer" style="border-radius: var(--radius-lg);">
+        
+        <div class="about-image">
+          <div class="image-container">
+            <img src="/assets/images/placeholder.png" alt="Assaf Yechiel - Web Designer" loading="lazy">
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <span class="overlay-text">Let's work together</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -79,16 +185,57 @@ permalink: "/"
     
     <!-- Hebrew Content -->
     <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-8">ברוכים הבאים ל-Weave Studio</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
+      <div class="section__header">
+        <h2 class="section__title text-center">ברוכים הבאים ל-Weave Studio</h2>
+        <p class="section__subtitle text-center">כשיצירתיות פוגשת פונקציונליות</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-content">
           <h3>היי, אני אסף יחיאל</h3>
-          <p>מעצב ומפתח אתרים מקצועי הממוקם בתל אביב. אני עוזר לעסקים קטנים ליצור אתרים יפים ויעילים שמביאים תוצאות.</p>
-          <p>עם שנים של ניסיון בעיצוב ופיתוח אתרים, אני מתמחה ביצירת אתרים מותאמים אישית שלא רק נראים מדהימים אלא גם מתפקדים בצורה יוצאת דופן.</p>
+          <p class="lead">מעצב ומפתח אתרים מקצועי הממוקם בתל אביב. אני עוזר לעסקים קטנים ליצור אתרים יפים ויעילים שמביאים תוצאות אמיתיות.</p>
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              <div>
+                <h4>מהיר כברק</h4>
+                <p>מותאם למהירות וביצועים</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <div>
+                <h4>ממוקד איכות</h4>
+                <p>תשומת לב לפרטים בכל פיקסל</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <svg class="highlight-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+              <div>
+                <h4>ממוקד תוצאות</h4>
+                <p>אתרים שהופכים מבקרים ללקוחות</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="aspect-ratio aspect-square">
-            <img src="/assets/images/assaf-profile.jpg" alt="אסף יחיאל - מעצב אתרים" style="border-radius: var(--radius-lg);">
+        
+        <div class="about-image">
+          <div class="image-container">
+            <img src="/assets/images/placeholder.png" alt="אסף יחיאל - מעצב אתרים" loading="lazy">
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <span class="overlay-text">בואו נעבוד יחד</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -97,41 +244,15 @@ permalink: "/"
 </section>
 
 <!-- Placeholder sections for later phases -->
-<section id="services" class="section" style="background-color: var(--color-bg-secondary);">
+<section id="services" class="section" style="background-color: var(--color-bg-section-primary);">
   <div class="container">
     <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-12">Our Services</h2>
-      <p class="text-center">Services grid coming in Phase B3...</p>
+      <h2 class="section__title text-center">Our Services</h2>
+      <p class="text-center text-muted">Services grid coming in Phase B3...</p>
     </div>
     <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-12">השירותים שלנו</h2>
-      <p class="text-center">רשת השירותים תגיע בשלב B3...</p>
-    </div>
-  </div>
-</section>
-
-<section id="portfolio" class="section">
-  <div class="container">
-    <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-12">Featured Work</h2>
-      <p class="text-center">Portfolio showcase coming in Phase B3...</p>
-    </div>
-    <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-12">עבודות מובילות</h2>
-      <p class="text-center">תיק העבודות יגיע בשלב B3...</p>
-    </div>
-  </div>
-</section>
-
-<section id="blog" class="section" style="background-color: var(--color-bg-secondary);">
-  <div class="container">
-    <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-12">Latest Insights</h2>
-      <p class="text-center">Blog preview coming in Phase B4...</p>
-    </div>
-    <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-12">תובנות אחרונות</h2>
-      <p class="text-center">תצוגה מקדימה של הבלוג תגיע בשלב B4...</p>
+      <h2 class="section__title text-center">תובנות אחרונות</h2>
+      <p class="text-center text-muted">תצוגה מקדימה של הבלוג תגיע בשלב B4...</p>
     </div>
   </div>
 </section>
@@ -139,12 +260,12 @@ permalink: "/"
 <section id="faq" class="section">
   <div class="container">
     <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-12">Frequently Asked Questions</h2>
-      <p class="text-center">FAQ section coming in Phase B4...</p>
+      <h2 class="section__title text-center">Frequently Asked Questions</h2>
+      <p class="text-center text-muted">FAQ section coming in Phase B4...</p>
     </div>
     <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-12">שאלות נפוצות</h2>
-      <p class="text-center">מדור שאלות נפוצות יגיע בשלב B4...</p>
+      <h2 class="section__title text-center">שאלות נפוצות</h2>
+      <p class="text-center text-muted">מדור שאלות נפוצות יגיע בשלב B4...</p>
     </div>
   </div>
 </section>
@@ -152,12 +273,38 @@ permalink: "/"
 <section id="contact" class="section">
   <div class="container">
     <div class="lang-content" data-lang="en">
-      <h2 class="text-center mb-12">Get In Touch</h2>
-      <p class="text-center">Contact form coming in Phase B5...</p>
+      <h2 class="section__title text-center">Get In Touch</h2>
+      <p class="text-center text-muted">Contact form coming in Phase B5...</p>
     </div>
     <div class="lang-content" data-lang="he">
-      <h2 class="text-center mb-12">צור קשר</h2>
-      <p class="text-center">טופס יצירת קשר יגיע בשלב B5...</p>
+      <h2 class="section__title text-center">צור קשר</h2>
+      <p class="text-center text-muted">טופס יצירת קשר יגיע בשלב B5...</p>
+    </div>
+  </div>
+</section>="section__title text-center">השירותים שלנו</h2>
+      <p class="text-center text-muted">רשת השירותים תגיע בשלב B3...</p>
     </div>
   </div>
 </section>
+
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="section__title text-center">Featured Work</h2>
+      <p class="text-center text-muted">Portfolio showcase coming in Phase B3...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class="section__title text-center">עבודות מובילות</h2>
+      <p class="text-center text-muted">תיק העבודות יגיע בשלב B3...</p>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section" style="background-color: var(--color-bg-section-primary);">
+  <div class="container">
+    <div class="lang-content" data-lang="en">
+      <h2 class="section__title text-center">Latest Insights</h2>
+      <p class="text-center text-muted">Blog preview coming in Phase B4...</p>
+    </div>
+    <div class="lang-content" data-lang="he">
+      <h2 class

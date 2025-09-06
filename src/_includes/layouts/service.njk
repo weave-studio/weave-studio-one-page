@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="service">
+  <div class="container">
+    <header class="service__header">
+      <h1 class="service__title">{{ title }}</h1>
+      {% if description %}
+        <p class="service__description">{{ description }}</p>
+      {% endif %}
+    </header>
+    
+    <div class="service__content">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>

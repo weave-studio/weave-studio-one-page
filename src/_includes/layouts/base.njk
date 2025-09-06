@@ -216,5 +216,11 @@
       });
     }
   </script>
+
+<!-- Load hero components only on homepage -->
+{% if page.url == "/" %}
+<script src="/assets/js/hero-components.js" defer></script>
+{% endif %}
+
 </body>
 </html>

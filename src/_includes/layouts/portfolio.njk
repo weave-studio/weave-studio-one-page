@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="portfolio-item">
+  <div class="container">
+    <header class="portfolio-item__header">
+      <h1 class="portfolio-item__title">{{ title }}</h1>
+      {% if description %}
+        <p class="portfolio-item__description">{{ description }}</p>
+      {% endif %}
+    </header>
+    
+    <div class="portfolio-item__content">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>
