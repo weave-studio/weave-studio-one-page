@@ -16,6 +16,7 @@
 @import url('./components/page-layouts.css'); 
 @import url('./components/cms-components.css'); 
 @import url('./components/services-components.css');
+@import url('./components/portfolio-components.css');
 @import url('./components/blog-components.css');
 @import url('./components/faq-components.css');
 @import url('./components/contact-components.css');

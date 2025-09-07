@@ -134,6 +134,78 @@ eleventyConfig.addCollection('case_studies', function (collection) {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 5);
   });
+
+  // Services collection - ordered by display order, featured first
+  eleventyConfig.addCollection('services', function (collection) {
+    return collection.getFilteredByGlob('src/services/*.md')
+      .filter(service => !service.data.draft)
+      .sort((a, b) => {
+        // Sort by order field, then by featured status, then by title
+        const orderA = a.data.order || 999;
+        const orderB = b.data.order || 999;
+        
+        if (orderA !== orderB) {
+          return orderA - orderB;
+        }
+        
+        // If same order, featured items first
+        if (a.data.featured !== b.data.featured) {
+          return b.data.featured ? 1 : -1;
+        }
+        
+        // Finally sort by title
+        return a.data.title.localeCompare(b.data.title);
+      });
+  });
+
+  // Featured services for homepage - limit to 6
+  eleventyConfig.addCollection('featuredServices', function (collection) {
+    return collection.getFilteredByGlob('src/services/*.md')
+      .filter(service => service.data.featured && !service.data.draft)
+      .sort((a, b) => {
+        const orderA = a.data.order || 999;
+        const orderB = b.data.order || 999;
+        return orderA - orderB;
+      })
+      .slice(0, 6); // Limit to 6 services for homepage grid
+  });
+
+  // Portfolio/Case Studies collection (using existing structure)
+  eleventyConfig.addCollection('portfolio', function (collection) {
+    const caseStudies = collection.getFilteredByGlob('src/case-study/*.md')
+      .filter(item => !item.data.draft)
+      .sort((a, b) => {
+        if (a.data.completion_date && b.data.completion_date) {
+          return new Date(b.data.completion_date) - new Date(a.data.completion_date);
+        }
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+    const portfolioItems = collection.getFilteredByGlob('src/portfolio/*.md')
+      .filter(item => !item.data.draft)
+      .sort((a, b) => {
+        if (a.data.completion_date && b.data.completion_date) {
+          return new Date(b.data.completion_date) - new Date(a.data.completion_date);
+        }
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+    return [...caseStudies, ...portfolioItems];
+  });
+
+  // Featured portfolio items for homepage preview
+  eleventyConfig.addCollection('featuredPortfolio', function (collection) {
+    const allPortfolio = collection.getFilteredByGlob(['src/case-study/*.md', 'src/portfolio/*.md'])
+      .filter(item => item.data.featured && !item.data.draft)
+      .sort((a, b) => {
+        if (a.data.completion_date && b.data.completion_date) {
+          return new Date(b.data.completion_date) - new Date(a.data.completion_date);
+        }
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+    return allPortfolio.slice(0, 3); // Limit to 3 for preview
+  });
   
   // Add enhanced shortcodes for better content creation
   eleventyConfig.addPairedShortcode('highlight', function (content, type = 'info') {
