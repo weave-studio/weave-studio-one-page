@@ -108,10 +108,11 @@ module.exports = function (eleventyConfig) {
   });
 
   // FAQ collection
-  eleventyConfig.addCollection('faq', function (collection) {
+  eleventyConfig.addCollection('faqItems', function (collection) {
     return collection.getFilteredByGlob('src/faq/*.md')
+      .filter(item => !item.data.draft)
       .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
-  });
+});
 
   // FAQ by category collection
   eleventyConfig.addCollection('faqByCategory', function (collection) {
