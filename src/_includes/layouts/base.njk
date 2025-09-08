@@ -222,5 +222,10 @@
 <script src="/assets/js/hero-components.js" defer></script>
 {% endif %}
 
+<!-- Load blog components only when blog section is present -->
+{% if page.url == "/" or "/blog/" in page.url %}
+<script src="/assets/js/blog-components.js" defer></script>
+{% endif %}
+
 </body>
 </html>
