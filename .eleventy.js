@@ -33,6 +33,98 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy');
   });
 
+  // Date formatting filters for blog posts
+  eleventyConfig.addFilter('dateIso', (dateObj) => {
+    if (!dateObj) return '';
+    return new Date(dateObj).toISOString();
+  });
+
+  eleventyConfig.addFilter('dateReadable', (dateObj) => {
+    if (!dateObj) return '';
+    return new Date(dateObj).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  });
+
+  eleventyConfig.addFilter('dateReadableHe', (dateObj) => {
+    if (!dateObj) return '';
+    return new Date(dateObj).toLocaleDateString('he-IL', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  });
+
+  // Excerpt filter for blog previews
+  eleventyConfig.addFilter('excerpt', (content, length = 150) => {
+    if (!content) return '';
+    
+    // Remove HTML tags
+    const stripped = content.replace(/<[^>]*>/g, '');
+    
+    if (stripped.length <= length) {
+      return stripped;
+    }
+    
+    // Find the last space within the length limit
+    const truncated = stripped.substr(0, length);
+    const lastSpace = truncated.lastIndexOf(' ');
+    
+    return (lastSpace > 0 ? truncated.substr(0, lastSpace) : truncated) + '...';
+  });
+
+  // Reading time calculator
+  eleventyConfig.addFilter('readingTime', (content) => {
+    if (!content) return '1 min read';
+    
+    // Remove HTML and count words
+    const words = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+    const minutes = Math.ceil(words / 200); // Average reading speed
+    
+    return `${minutes} min read`;
+  });
+
+  // Fix the existing collections - update the recentPosts collection (find this section and replace)
+  eleventyConfig.addCollection('recentPosts', function (collection) {
+    return collection.getFilteredByGlob('src/blog/posts/*.md') // Fixed the typo
+      .filter(post => !post.data.draft)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
+  });
+
+  // Add blog preview collection for homepage
+  eleventyConfig.addCollection('blogPreview', function (collection) {
+    return collection.getFilteredByGlob('src/blog/posts/*.md')
+      .filter(post => !post.data.draft)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 4); // Only 4 posts for homepage preview
+  });
+
+  // FAQ collection
+  eleventyConfig.addCollection('faq', function (collection) {
+    return collection.getFilteredByGlob('src/faq/*.md')
+      .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+  });
+
+  // FAQ by category collection
+  eleventyConfig.addCollection('faqByCategory', function (collection) {
+    const faq = collection.getFilteredByGlob('src/faq/*.md')
+      .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+    
+    const categories = {};
+    faq.forEach(item => {
+      const category = item.data.category || 'General';
+      if (!categories[category]) {
+        categories[category] = [];
+      }
+      categories[category].push(item);
+    });
+    
+    return categories;
+  });
+
   // Blog post navigation filters
   eleventyConfig.addFilter("getPreviousCollectionItem", function(collection, page) {
     if (!collection || !page) return null;
@@ -128,12 +220,12 @@ eleventyConfig.addCollection('case_studies', function (collection) {
   });
   
   // Recent posts for sidebar/widgets
-  eleventyConfig.addCollection('recentPosts', function (collection) {
-    return collection.getFilteredByGlob('src/blog/posts/*.md')
-      .filter(post => !post.data.draft)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 5);
-  });
+  // eleventyConfig.addCollection('recentPosts', function (collection) {
+  //   return collection.getFilteredByGlob('src/blog/posts/*.md')
+  //     .filter(post => !post.data.draft)
+  //     .sort((a, b) => new Date(b.date) - new Date(a.date))
+  //     .slice(0, 5);
+  // });
 
   // Services collection - ordered by display order, featured first
   eleventyConfig.addCollection('services', function (collection) {

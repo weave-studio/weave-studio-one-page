@@ -1,92 +1,108 @@
 ---
-title: "Blog"
-description: "Latest articles, insights, and tips on web design and development"
+title: "Blog - Web Design Insights & Tips"
+title_he: "בלוג - תובנות וטיפים לעיצוב אתרים"
+description: "Latest insights on web design, development, and small business growth strategies."
+description_he: "התובנות האחרונות על עיצוב אתרים, פיתוח ואסטרטגיות צמיחה לעסקים קטנים."
 layout: "layouts/page.njk"
 permalink: "/blog/"
 pagination:
   data: collections.posts
   size: 6
-  alias: posts
   reverse: true
 ---
 
 <div class="blog-page">
-  <div class="blog-header">
-    <h1>Latest Articles</h1>
-    <p class="lead">Insights, tips, and trends in web design and development</p>
-  </div>
-
-<!-- Featured Post -->
-{% set featuredPost = collections.featuredPosts[0] or posts[0] %}
-{% if featuredPost %}
-  <article class="featured-post">
-    <div class="featured-post__content">
-      {% if featuredPost.data.featured_image %}
-        <div class="featured-post__image">
-          {% image featuredPost.data.featured_image, featuredPost.data.featured_image_alt or featuredPost.data.title, "(min-width: 768px) 50vw, 100vw", "eager" %}
+  <!-- Featured Post -->
+  {% if collections.featuredPosts.length > 0 %}
+    {% set featuredPost = collections.featuredPosts[0] %}
+    <div class="featured-post">
+      <div class="featured-post__content">
+        <div class="featured-post__text">
+          <div class="featured-post__meta lang-content" data-lang="en">
+            <span class="featured-post__tag">Featured</span>
+            <time datetime="{{ featuredPost.date | dateIso }}">{{ featuredPost.date | dateReadable }}</time>
+          </div>
+          <div class="featured-post__meta lang-content" data-lang="he">
+            <span class="featured-post__tag">מובלט</span>
+            <time datetime="{{ featuredPost.date | dateIso }}">{{ featuredPost.date | dateReadableHe }}</time>
+          </div>
+          
+          <h2 class="featured-post__title">
+            <a href="{{ featuredPost.url }}">
+              <span class="lang-content" data-lang="en">{{ featuredPost.data.title }}</span>
+              <span class="lang-content" data-lang="he">{{ featuredPost.data.title_he or featuredPost.data.title }}</span>
+            </a>
+          </h2>
+          
+          <p class="featured-post__excerpt lang-content" data-lang="en">
+            {{ featuredPost.data.description or featuredPost.templateContent | excerpt | safe }}
+          </p>
+          <p class="featured-post__excerpt lang-content" data-lang="he">
+            {{ featuredPost.data.description_he or featuredPost.data.description or featuredPost.templateContent | excerpt | safe }}
+          </p>
+          
+          <a href="{{ featuredPost.url }}" class="btn btn--primary">
+            <span class="lang-content" data-lang="en">Read More</span>
+            <span class="lang-content" data-lang="he">קרא עוד</span>
+          </a>
         </div>
-      {% endif %}
-      
-      <div class="featured-post__text">
-        <div class="featured-post__meta">
-          <time class="featured-post__date">{{ featuredPost.date | readableDate }}</time>
-          {% if featuredPost.data.tags %}
-            {% for tag in featuredPost.data.tags %}
-              {% if tag != "posts" %}
-                <a href="/blog/tags/{{ tag | slugify }}/" class="featured-post__tag">{{ tag }}</a>
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        </div>
         
-        <h2 class="featured-post__title">
-          <a href="{{ featuredPost.url }}">{{ featuredPost.data.title }}</a>
-        </h2>
-        
-        <p class="featured-post__excerpt">{{ featuredPost.data.description }}</p>
-        
-        <a href="{{ featuredPost.url }}" class="featured-post__link btn btn--primary">Read More →</a>
+        {% if featuredPost.data.featured_image %}
+          <div class="featured-post__image">
+            <img src="{{ featuredPost.data.featured_image }}" 
+                 alt="{{ featuredPost.data.featured_image_alt or featuredPost.data.title }}" 
+                 loading="lazy">
+          </div>
+        {% endif %}
       </div>
     </div>
-  </article>
-{% endif %}
+  {% endif %}
 
   <!-- Blog Grid -->
   <div class="blog-grid">
-    {% for post in posts %}
-      {% if loop.index > 1 %}
+    {% for post in pagination.items %}
+      {% if not post.data.featured or loop.index > 1 %}
         <article class="blog-card">
           {% if post.data.featured_image %}
             <div class="blog-card__image">
               <a href="{{ post.url }}">
-                {% if loop.index <= 3 %}
-                  {% image post.data.featured_image, post.data.featured_image_alt or post.data.title, "(min-width: 768px) 33vw, 100vw", "eager" %}
-                {% else %}
-                  {% image post.data.featured_image, post.data.featured_image_alt or post.data.title, "(min-width: 768px) 33vw, 100vw", "lazy" %}
-                {% endif %}
+                <img src="{{ post.data.featured_image }}" 
+                     alt="{{ post.data.featured_image_alt or post.data.title }}" 
+                     loading="lazy">
               </a>
             </div>
           {% endif %}
           
           <div class="blog-card__content">
             <div class="blog-card__meta">
-              <time class="blog-card__date">{{ post.date | readableDate }}</time>
-              {% if post.data.author %}
-                <span class="blog-card__author">by {{ post.data.author }}</span>
-              {% endif %}
+              <time datetime="{{ post.date | dateIso }}">
+                <span class="lang-content" data-lang="en">{{ post.date | dateReadable }}</span>
+                <span class="lang-content" data-lang="he">{{ post.date | dateReadableHe }}</span>
+              </time>
+              <span class="blog-card__author">{{ post.data.author or site.author }}</span>
             </div>
             
             <h3 class="blog-card__title">
-              <a href="{{ post.url }}">{{ post.data.title }}</a>
+              <a href="{{ post.url }}">
+                <span class="lang-content" data-lang="en">{{ post.data.title }}</span>
+                <span class="lang-content" data-lang="he">{{ post.data.title_he or post.data.title }}</span>
+              </a>
             </h3>
             
-            <p class="blog-card__excerpt">{{ post.data.description }}</p>
+            <p class="blog-card__excerpt">
+              <span class="lang-content" data-lang="en">
+                {{ post.data.description or post.templateContent | excerpt | safe }}
+              </span>
+              <span class="lang-content" data-lang="he">
+                {{ post.data.description_he or post.data.description or post.templateContent | excerpt | safe }}
+              </span>
+            </p>
             
             {% if post.data.tags %}
               <div class="blog-card__tags">
                 {% for tag in post.data.tags %}
                   {% if tag != "posts" %}
-                    <a href="/blog/tags/{{ tag | slugify }}/" class="blog-card__tag">{{ tag }}</a>
+                    <a href="/blog/tags/{{ tag | slug }}/" class="blog-card__tag">{{ tag }}</a>
                   {% endif %}
                 {% endfor %}
               </div>
@@ -102,35 +118,28 @@ pagination:
     <nav class="pagination" aria-label="Blog pagination">
       <div class="pagination__links">
         {% if pagination.href.previous %}
-          <a href="{{ pagination.href.previous }}" class="pagination__link pagination__link--prev">
-            ← Newer Posts
+          <a href="{{ pagination.href.previous }}" class="pagination__link">
+            <span class="lang-content" data-lang="en">← Previous</span>
+            <span class="lang-content" data-lang="he">← הקודם</span>
           </a>
         {% endif %}
         
         <span class="pagination__info">
-          Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs.length }}
+          <span class="lang-content" data-lang="en">
+            Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs.length }}
+          </span>
+          <span class="lang-content" data-lang="he">
+            עמוד {{ pagination.pageNumber + 1 }} מתוך {{ pagination.hrefs.length }}
+          </span>
         </span>
         
         {% if pagination.href.next %}
-          <a href="{{ pagination.href.next }}" class="pagination__link pagination__link--next">
-            Older Posts →
+          <a href="{{ pagination.href.next }}" class="pagination__link">
+            <span class="lang-content" data-lang="en">Next →</span>
+            <span class="lang-content" data-lang="he">הבא →</span>
           </a>
         {% endif %}
       </div>
     </nav>
   {% endif %}
 </div>
-
-<!-- Blog Tags -->
-<aside class="blog-sidebar">
-  <div class="blog-tags">
-    <h3>Browse by Topic</h3>
-    <div class="tag-cloud">
-      {% for tag in collections.tagList %}
-        <a href="/blog/tags/{{ tag | slugify }}/" class="tag-cloud__tag">
-          {{ tag }}
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</aside>
