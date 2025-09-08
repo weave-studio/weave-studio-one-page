@@ -7,143 +7,249 @@ layout: "layouts/page.njk"
 permalink: "/faq/"
 ---
 
-<div class="faq-page">
-  <!-- English Content -->
-  <div class="lang-content" data-lang="en">
-    <div class="faq-intro">
-      <h1>Frequently Asked Questions</h1>
-      <p class="lead">Find answers to common questions about our services, process, and pricing.</p>
-    </div>
-
-    {% if collections.faqByCategory %}
-      <div class="faq-sections">
-        {% for category, items in collections.faqByCategory %}
-          <section class="faq-section">
-            <h2 class="faq-section-title">{{ category }}</h2>
-            <div class="faq-list">
-              {% for item in items %}
-                <div class="faq-item" data-faq-item>
-                  <button class="faq-question" 
-                          aria-expanded="false" 
-                          aria-controls="faq-{{ loop.index }}"
-                          data-faq-toggle>
-                    <span class="faq-question__text">{{ item.data.question }}</span>
-                    <span class="faq-question__icon" aria-hidden="true">+</span>
-                  </button>
-                  <div class="faq-answer" 
-                       id="faq-{{ loop.index }}" 
-                       aria-hidden="true"
-                       data-faq-content>
-                    <div class="faq-answer__content">
-                      {% if item.data.answer %}
-                        {{ item.data.answer | safe }}
-                      {% else %}
-                        {{ item.templateContent | safe }}
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-          </section>
-        {% endfor %}
+<!-- FAQ Accordion Section - Enhanced with CMS Integration -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <!-- English Content -->
+    <div class="lang-content" data-lang="en">
+      <div class="section__header">
+        <h2 class="section__title">Frequently Asked Questions</h2>
+        <p class="section__subtitle">Get answers to common questions about our web design services</p>
       </div>
-    {% else %}
-      <div class="faq-placeholder">
-        <p>No FAQ items found. Please check the CMS or add FAQ content.</p>
-      </div>
-    {% endif %}
-
-    <div class="faq-cta">
-      <h2>Still have questions?</h2>
-      <p>We're here to help! Get in touch for a free consultation.</p>
-      <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">Contact Us</a>
-    </div>
-  </div>
-
-  <!-- Hebrew Content -->
-  <div class="lang-content" data-lang="he">
-    <div class="faq-intro">
-      <h1>שאלות נפוצות</h1>
-      <p class="lead">מצאו תשובות לשאלות נפוצות על השירותים, התהליך והתמחור שלנו.</p>
-    </div>
-
-    {% if collections.faqByCategory %}
-      <div class="faq-sections">
-        {% for category, items in collections.faqByCategory %}
-          <section class="faq-section">
-            <h2 class="faq-section-title">{{ category }}</h2>
-            <div class="faq-list">
-              {% for item in items %}
-                <div class="faq-item" data-faq-item>
-                  <button class="faq-question" 
-                          aria-expanded="false" 
-                          aria-controls="faq-he-{{ loop.index }}"
-                          data-faq-toggle>
-                    <span class="faq-question__text">{{ item.data.question_he or item.data.question }}</span>
-                    <span class="faq-question__icon" aria-hidden="true">+</span>
-                  </button>
-                  <div class="faq-answer" 
-                       id="faq-he-{{ loop.index }}" 
-                       aria-hidden="true"
-                       data-faq-content>
-                    <div class="faq-answer__content">
-                      {% if item.data.answer_he %}
-                        {{ item.data.answer_he | safe }}
-                      {% else %}
-                        {{ item.templateContent | safe }}
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-          </section>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="faq-placeholder">
-        <p>לא נמצאו פריטי שאלות נפוצות. אנא בדקו את ה-CMS או הוסיפו תוכן שאלות נפוצות.</p>
-      </div>
-    {% endif %}
-
-    <div class="faq-cta">
-      <h2>עדיין יש שאלות?</h2>
-      <p>אנחנו כאן לעזור! צרו קשר לקבלת ייעוץ חינם.</p>
-      <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">צרו קשר</a>
-    </div>
-  </div>
-</div>
-
-<script>
-// FAQ Accordion functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const faqToggles = document.querySelectorAll('[data-faq-toggle]');
-  
-  faqToggles.forEach(toggle => {
-    toggle.addEventListener('click', function() {
-      const faqItem = this.closest('[data-faq-item]');
-      const faqContent = faqItem.querySelector('[data-faq-content]');
-      const icon = this.querySelector('.faq-question__icon');
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
       
-      // Toggle state
-      if (isExpanded) {
-        // Close
-        this.setAttribute('aria-expanded', 'false');
-        faqContent.setAttribute('aria-hidden', 'true');
-        faqContent.style.maxHeight = '0px';
-        icon.textContent = '+';
-        faqItem.removeAttribute('data-expanded');
-      } else {
-        // Open
-        this.setAttribute('aria-expanded', 'true');
-        faqContent.setAttribute('aria-hidden', 'false');
-        faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
-        icon.textContent = '−';
-        faqItem.setAttribute('data-expanded', 'true');
-      }
-    });
-  });
-});
-</script>
+      {% if collections.faqItems.length > 0 %}
+        <!-- FAQ Categories -->
+        <div class="faq-categories">
+          {% for category, items in collections.faqByCategory %}
+            <div class="faq-category" data-category="{{ category | slug }}">
+              <h3 class="faq-category__title">{{ category }}</h3>
+              
+              <div class="faq-list">
+                {% for item in items %}
+                  <div class="faq-item" data-faq-item>
+                    <button class="faq-question" 
+                            aria-expanded="false" 
+                            aria-controls="faq-answer-{{ loop.index }}"
+                            data-faq-toggle>
+                      <span class="faq-question__text">{{ item.data.question }}</span>
+                      <span class="faq-question__icon" aria-hidden="true">+</span>
+                    </button>
+                    
+                    <div class="faq-answer" 
+                         id="faq-answer-{{ loop.index }}" 
+                         aria-hidden="true"
+                         data-faq-content>
+                      <div class="faq-answer__content">
+                        {{ item.data.answer | safe }}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Professional placeholder when no FAQ items exist -->
+        <div class="faq-placeholder">
+          <div class="faq-categories">
+            <div class="faq-category">
+              <h3 class="faq-category__title">Pricing & Timeline</h3>
+              <div class="faq-list">
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">How much does a professional website cost?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>Website costs vary based on your specific needs and requirements. We offer transparent pricing with packages starting from ₪3,000 for basic business websites. During our free consultation, we'll provide a detailed quote tailored to your project.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">How long does it take to build a website?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>Most business websites are completed within 2-4 weeks. The timeline depends on project complexity, content preparation, and feedback cycles. We'll provide a detailed project timeline during the planning phase.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="faq-category">
+              <h3 class="faq-category__title">Design Process</h3>
+              <div class="faq-list">
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">What's included in your web design service?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>Our comprehensive service includes custom design, mobile-responsive development, content management system, SEO optimization, security setup, and training. We handle everything from concept to launch.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">Can I update my website content myself?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>Absolutely! We build all websites with user-friendly content management systems and provide comprehensive training so you can easily update text, images, and other content without technical knowledge.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- FAQ CTA -->
+      <div class="faq-cta">
+        <h3 class="faq-cta__title">Still Have Questions?</h3>
+        <p class="faq-cta__description">
+          Can't find the answer you're looking for? We're here to help with personalized advice for your specific project.
+        </p>
+        <div class="faq-cta__actions">
+          <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">
+            Get Free Consultation
+          </a>
+          <a href="/faq/" class="btn btn--secondary btn--lg">
+            View All FAQ
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hebrew Content -->
+    <div class="lang-content" data-lang="he">
+      <div class="section__header">
+        <h2 class="section__title">שאלות נפוצות</h2>
+        <p class="section__subtitle">קבלו תשובות לשאלות נפוצות על שירותי עיצוב האתרים שלנו</p>
+      </div>
+      
+      {% if collections.faqItems.length > 0 %}
+        <!-- Hebrew FAQ Categories -->
+        <div class="faq-categories">
+          {% for category, items in collections.faqByCategory %}
+            <div class="faq-category" data-category="{{ category | slug }}">
+              <h3 class="faq-category__title">{{ category }}</h3>
+              
+              <div class="faq-list">
+                {% for item in items %}
+                  <div class="faq-item" data-faq-item>
+                    <button class="faq-question" 
+                            aria-expanded="false" 
+                            aria-controls="faq-answer-he-{{ loop.index }}"
+                            data-faq-toggle>
+                      <span class="faq-question__text">{{ item.data.question_he or item.data.question }}</span>
+                      <span class="faq-question__icon" aria-hidden="true">+</span>
+                    </button>
+                    
+                    <div class="faq-answer" 
+                         id="faq-answer-he-{{ loop.index }}" 
+                         aria-hidden="true"
+                         data-faq-content>
+                      <div class="faq-answer__content">
+                        {{ item.data.answer_he or item.data.answer | safe }}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Hebrew placeholder content -->
+        <div class="faq-placeholder">
+          <div class="faq-categories">
+            <div class="faq-category">
+              <h3 class="faq-category__title">תמחור ולוח זמנים</h3>
+              <div class="faq-list">
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">כמה עולה אתר מקצועי?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>עלויות אתרים משתנות בהתאם לצרכים ולדרישות הספציפיות שלכם. אנחנו מציעים תמחור שקוף עם חבילות המתחילות מ-₪3,000 לאתרי עסקים בסיסיים. במהלך הייעוץ החינמי שלנו, נספק הצעת מחיר מפורטת המותאמת לפרויקט שלכם.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">כמה זמן לוקח לבנות אתר?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>רוב אתרי העסקים מושלמים תוך 2-4 שבועות. לוח הזמנים תלוי במורכבות הפרויקט, הכנת התוכן ומחזורי המשוב. נספק לוח זמנים מפורט לפרויקט במהלך שלב התכנון.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="faq-category">
+              <h3 class="faq-category__title">תהליך עיצוב</h3>
+              <div class="faq-list">
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">מה כלול בשירות עיצוב האתרים שלכם?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>השירות המקיף שלנו כולל עיצוב מותאם, פיתוח רספונסיבי לנייד, מערכת ניהול תוכן, אופטימיזציה לקידום, הגדרת אבטחה והדרכה. אנחנו מטפלים בהכל מרעיון ועד השקה.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="faq-item faq-item--placeholder" data-faq-item>
+                  <button class="faq-question" aria-expanded="false" data-faq-toggle>
+                    <span class="faq-question__text">האם אוכל לעדכן את תוכן האתר בעצמי?</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" aria-hidden="true" data-faq-content>
+                    <div class="faq-answer__content">
+                      <p>בהחלט! אנחנו בונים את כל האתרים עם מערכות ניהול תוכן ידידותיות למשתמש ומספקים הדרכה מקיפה כדי שתוכלו לעדכן בקלות טקסט, תמונות ותוכן אחר ללא ידע טכני.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- Hebrew FAQ CTA -->
+      <div class="faq-cta">
+        <h3 class="faq-cta__title">עדיין יש שאלות?</h3>
+        <p class="faq-cta__description">
+          לא מוצאים את התשובה שאתם מחפשים? אנחנו כאן לעזור עם ייעוץ אישי לפרויקט הספציפי שלכם.
+        </p>
+        <div class="faq-cta__actions">
+          <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">
+            קבלו ייעוץ חינם
+          </a>
+          <a href="/faq/" class="btn btn--secondary btn--lg">
+            צפו בכל השאלות הנפוצות
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
