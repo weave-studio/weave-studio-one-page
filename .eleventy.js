@@ -75,6 +75,11 @@ module.exports = function (eleventyConfig) {
     return (lastSpace > 0 ? truncated.substr(0, lastSpace) : truncated) + '...';
   });
 
+  // Add limit filter for arrays
+  eleventyConfig.addFilter('limit', function(array, limit) {
+    return array.slice(0, limit);
+  });
+
   // Reading time calculator
   eleventyConfig.addFilter('readingTime', (content) => {
     if (!content) return '1 min read';
@@ -86,7 +91,7 @@ module.exports = function (eleventyConfig) {
     return `${minutes} min read`;
   });
 
-  // Fix the existing collections - update the recentPosts collection (find this section and replace)
+  // Recent posts for sidebar/widgets
   eleventyConfig.addCollection('recentPosts', function (collection) {
     return collection.getFilteredByGlob('src/blog/posts/*.md') // Fixed the typo
       .filter(post => !post.data.draft)
@@ -218,14 +223,6 @@ eleventyConfig.addCollection('case_studies', function (collection) {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 3);
   });
-  
-  // Recent posts for sidebar/widgets
-  // eleventyConfig.addCollection('recentPosts', function (collection) {
-  //   return collection.getFilteredByGlob('src/blog/posts/*.md')
-  //     .filter(post => !post.data.draft)
-  //     .sort((a, b) => new Date(b.date) - new Date(a.date))
-  //     .slice(0, 5);
-  // });
 
   // Services collection - ordered by display order, featured first
   eleventyConfig.addCollection('services', function (collection) {

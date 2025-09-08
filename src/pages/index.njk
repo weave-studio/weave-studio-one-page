@@ -700,6 +700,327 @@ permalink: "/"
   </div>
 </section>
 
+<!-- Blog Preview Section - Enhanced with Latest Posts -->
+<section id="blog" class="blog-preview-section">
+  <div class="container">
+    <!-- English Content -->
+    <div class="lang-content" data-lang="en">
+      <div class="section__header">
+        <h2 class="section__title">Latest Insights</h2>
+        <p class="section__subtitle">Tips, strategies, and insights to help your business succeed online</p>
+      </div>
+      
+      <div class="blog-preview-grid">
+        {% if collections.blogPreview.length > 0 %}
+          {% for post in collections.blogPreview %}
+            <article class="blog-preview-card">
+              <a href="{{ post.url }}" class="blog-preview-card__link" aria-label="Read: {{ post.data.title }}">
+                <div class="blog-preview-card__image">
+                  {% if post.data.featured_image %}
+                    <img src="{{ post.data.featured_image }}" 
+                         alt="{{ post.data.featured_image_alt or post.data.title }}" 
+                         loading="lazy">
+                  {% else %}
+                    <div class="blog-preview-card__placeholder">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                        <circle cx="9" cy="9" r="2"/>
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+                
+                <div class="blog-preview-card__content">
+                  <div class="blog-preview-card__meta">
+                    <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+                    {% if post.data.tags %}
+                      <span class="blog-preview-card__category">
+                        {% for tag in post.data.tags %}
+                          {% if tag != "posts" and loop.first %}
+                            {{ tag | replace("-", " ") | title }}
+                          {% endif %}
+                        {% endfor %}
+                      </span>
+                    {% endif %}
+                  </div>
+                  
+                  <h3 class="blog-preview-card__title">{{ post.data.title }}</h3>
+                  
+                  <p class="blog-preview-card__excerpt">
+                    {{ post.data.description or (post.templateContent | excerpt) | safe }}
+                  </p>
+                  
+                  <div class="blog-preview-card__author">
+                    <span class="blog-preview-card__author-name">{{ post.data.author or site.author }}</span>
+                    <span class="blog-preview-card__read-time">{{ post.templateContent | readingTime }}</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          {% endfor %}
+        {% else %}
+          <!-- English placeholder cards -->
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">Web Design Best Practices</h3>
+                <p class="blog-preview-card__excerpt">
+                  Discover the latest trends and techniques in modern web design that help businesses connect with their audience effectively.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">Coming Soon</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16,18 22,12 16,6"/>
+                    <polyline points="8,6 2,12 8,18"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">Performance Optimization Tips</h3>
+                <p class="blog-preview-card__excerpt">
+                  Learn how to create lightning-fast websites that provide excellent user experiences and improve search rankings.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">Coming Soon</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">SEO for Small Businesses</h3>
+                <p class="blog-preview-card__excerpt">
+                  Simple, actionable SEO strategies that help local businesses get found by customers searching online.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">Coming Soon</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">Building Trust Online</h3>
+                <p class="blog-preview-card__excerpt">
+                  Essential elements that help websites build credibility and convert visitors into loyal customers.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">Coming Soon</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endif %}
+      </div>
+      
+      <!-- English Blog CTA -->
+      <div class="blog-preview-cta">
+        <h3 class="blog-preview-cta__title">Want More Insights?</h3>
+        <p class="blog-preview-cta__description">
+          Get the latest tips and strategies delivered to your inbox, or browse our complete collection of articles.
+        </p>
+        <div class="blog-preview-cta__actions">
+          <a href="/blog/" class="btn btn--primary btn--lg">
+            View All Articles
+          </a>
+          <a href="#contact" class="btn btn--secondary btn--lg" data-scroll-to="contact">
+            Get Personalized Advice
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hebrew Content -->
+    <div class="lang-content" data-lang="he">
+      <div class="section__header">
+        <h2 class="section__title">תובנות אחרונות</h2>
+        <p class="section__subtitle">טיפים, אסטרטגיות ותובנות שיעזרו לעסק שלכם להצליח ברשת</p>
+      </div>
+      
+      <div class="blog-preview-grid">
+        {% if collections.blogPreview.length > 0 %}
+          {% for post in collections.blogPreview %}
+            <article class="blog-preview-card">
+              <a href="{{ post.url }}" class="blog-preview-card__link" aria-label="קרא: {{ post.data.title_he or post.data.title }}">
+                <div class="blog-preview-card__image">
+                  {% if post.data.featured_image %}
+                    <img src="{{ post.data.featured_image }}" 
+                         alt="{{ post.data.featured_image_alt or post.data.title_he or post.data.title }}" 
+                         loading="lazy">
+                  {% else %}
+                    <div class="blog-preview-card__placeholder">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                        <circle cx="9" cy="9" r="2"/>
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+                
+                <div class="blog-preview-card__content">
+                  <div class="blog-preview-card__meta">
+                    <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadableHe }}</time>
+                    {% if post.data.tags %}
+                      <span class="blog-preview-card__category">
+                        {% for tag in post.data.tags %}
+                          {% if tag != "posts" and loop.first %}
+                            {{ tag | replace("-", " ") | title }}
+                          {% endif %}
+                        {% endfor %}
+                      </span>
+                    {% endif %}
+                  </div>
+                  
+                  <h3 class="blog-preview-card__title">{{ post.data.title_he or post.data.title }}</h3>
+                  
+                  <p class="blog-preview-card__excerpt">
+                    {{ post.data.description_he or post.data.description or (post.templateContent | excerpt) | safe }}
+                  </p>
+                  
+                  <div class="blog-preview-card__author">
+                    <span class="blog-preview-card__author-name">{{ post.data.author or site.author }}</span>
+                    <span class="blog-preview-card__read-time">{{ post.templateContent | readingTime }} דקות קריאה</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          {% endfor %}
+        {% else %}
+          <!-- Hebrew placeholder cards -->
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">שיטות עבודה מומלצות לעיצוב אתרים</h3>
+                <p class="blog-preview-card__excerpt">
+                  גלו את הטרנדים והטכניקות העדכניות ביותר בעיצוב אתרים מודרני המסייעות לעסקים להתחבר לקהל היעד שלהם ביעילות.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">בקרוב</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16,18 22,12 16,6"/>
+                    <polyline points="8,6 2,12 8,18"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">טיפים לאופטימיזצית ביצועים</h3>
+                <p class="blog-preview-card__excerpt">
+                  למדו איך ליצור אתרים מהירים כברק המספקים חוויות משתמש מצוינות ומשפרים דירוגי חיפוש.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">בקרוב</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">קידום אתרים לעסקים קטנים</h3>
+                <p class="blog-preview-card__excerpt">
+                  אסטרטגיות SEO פשוטות ומעשיות המסייעות לעסקים מקומיים להימצא על ידי לקוחות המחפשים ברשת.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">בקרוב</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          
+          <article class="blog-preview-card blog-preview-card--placeholder">
+            <a href="#contact" class="blog-preview-card__link" data-scroll-to="contact">
+              <div class="blog-preview-card__content">
+                <div class="blog-preview-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <h3 class="blog-preview-card__title">בניית אמון ברשת</h3>
+                <p class="blog-preview-card__excerpt">
+                  אלמנטים חיוניים המסייעים לאתרים לבנות אמינות ולהמיר מבקרים ללקוחות נאמנים.
+                </p>
+                <div class="blog-preview-card__meta">
+                  <span class="blog-preview-card__category">בקרוב</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endif %}
+      </div>
+      
+      <!-- Hebrew Blog CTA -->
+      <div class="blog-preview-cta">
+        <h3 class="blog-preview-cta__title">רוצים עוד תובנות?</h3>
+        <p class="blog-preview-cta__description">
+          קבלו את הטיפים והאסטרטגיות העדכניות ישירות לתיבת הדואר שלכם, או עיינו באוסף המאמרים המלא שלנו.
+        </p>
+        <div class="blog-preview-cta__actions">
+          <a href="/blog/" class="btn btn--primary btn--lg">
+            צפו בכל המאמרים
+          </a>
+          <a href="#contact" class="btn btn--secondary btn--lg" data-scroll-to="contact">
+            קבלו ייעוץ אישי
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="section">
   <div class="container">
     <div class="lang-content" data-lang="en">
@@ -722,19 +1043,6 @@ permalink: "/"
     <div class="lang-content" data-lang="he">
       <h2 class="section__title text-center">צור קשר</h2>
       <p class="text-center text-muted">טופס יצירת קשר יגיע בשלב B5...</p>
-    </div>
-  </div>
-</section>
-
-<section id="blog" class="section" style="background-color: var(--color-bg-section-primary);">
-  <div class="container">
-    <div class="lang-content" data-lang="en">
-      <h2 class="section__title text-center">Latest Insights</h2>
-      <p class="text-center text-muted">Blog preview coming in Phase B4...</p>
-    </div>
-    <div class="lang-content" data-lang="he">
-      <h2 class="section__title text-center">תובנות אחרונות</h2>
-      <p class="text-center text-muted">תצוגה מקדימה של הבלוג תגיע בשלב B4...</p>
     </div>
   </div>
 </section>
