@@ -1,110 +1,149 @@
 ---
 title: "Frequently Asked Questions"
+title_he: "שאלות נפוצות"
 description: "Common questions about our web design services and process"
+description_he: "שאלות נפוצות על שירותי עיצוב האתרים והתהליך שלנו"
 layout: "layouts/page.njk"
 permalink: "/faq/"
 ---
 
 <div class="faq-page">
-  <div class="faq-intro">
-    <h1>Frequently Asked Questions</h1>
-    <p class="lead">Find answers to common questions about our services, process, and pricing.</p>
-  </div>
+  <!-- English Content -->
+  <div class="lang-content" data-lang="en">
+    <div class="faq-intro">
+      <h1>Frequently Asked Questions</h1>
+      <p class="lead">Find answers to common questions about our services, process, and pricing.</p>
+    </div>
 
-  <div class="faq-sections">
-    
-    <!-- General Questions -->
-    <section class="faq-section">
-      <h2 class="faq-section-title">General Questions</h2>
-      <div class="faq-list">
-        
-        <div class="faq-item" data-enhance="accordion">
-          <button class="faq-question" 
-                  data-accordion-trigger
-                  aria-expanded="false"
-                  aria-controls="faq-1">
-            <span class="faq-question-text">What services do you offer?</span>
-            <span class="faq-question-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" 
-               id="faq-1"
-               data-accordion-content
-               style="display: none;">
-            <div class="faq-answer-content">
-              <p>We offer comprehensive web design and development services including:</p>
-              <ul>
-                <li>Custom website design and development</li>
-                <li>WordPress and headless CMS solutions</li>
-                <li>E-commerce development</li>
-                <li>Website redesigns and modernization</li>
-                <li>Performance optimization</li>
-                <li>SEO and accessibility audits</li>
-                <li>Ongoing maintenance and support</li>
-              </ul>
+    {% if collections.faqByCategory %}
+      <div class="faq-sections">
+        {% for category, items in collections.faqByCategory %}
+          <section class="faq-section">
+            <h2 class="faq-section-title">{{ category }}</h2>
+            <div class="faq-list">
+              {% for item in items %}
+                <div class="faq-item" data-faq-item>
+                  <button class="faq-question" 
+                          aria-expanded="false" 
+                          aria-controls="faq-{{ loop.index }}"
+                          data-faq-toggle>
+                    <span class="faq-question__text">{{ item.data.question }}</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" 
+                       id="faq-{{ loop.index }}" 
+                       aria-hidden="true"
+                       data-faq-content>
+                    <div class="faq-answer__content">
+                      {% if item.data.answer %}
+                        {{ item.data.answer | safe }}
+                      {% else %}
+                        {{ item.templateContent | safe }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
-          </div>
-        </div>
-
-        <div class="faq-item" data-enhance="accordion">
-          <button class="faq-question" 
-                  data-accordion-trigger
-                  aria-expanded="false"
-                  aria-controls="faq-2">
-            <span class="faq-question-text">How long does a typical project take?</span>
-            <span class="faq-question-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" 
-               id="faq-2"
-               data-accordion-content
-               style="display: none;">
-            <div class="faq-answer-content">
-              <p>Project timelines vary based on complexity and scope:</p>
-              <ul>
-                <li><strong>Simple websites:</strong> 2-4 weeks</li>
-                <li><strong>Business websites:</strong> 4-8 weeks</li>
-                <li><strong>E-commerce sites:</strong> 8-12 weeks</li>
-                <li><strong>Custom applications:</strong> 12+ weeks</li>
-              </ul>
-              <p>We'll provide a detailed timeline during the proposal phase.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item" data-enhance="accordion">
-          <button class="faq-question" 
-                  data-accordion-trigger
-                  aria-expanded="false"
-                  aria-controls="faq-3">
-            <span class="faq-question-text">What's included in your pricing?</span>
-            <span class="faq-question-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" 
-               id="faq-3"
-               data-accordion-content
-               style="display: none;">
-            <div class="faq-answer-content">
-              <p>Our comprehensive packages typically include:</p>
-              <ul>
-                <li>Custom design and development</li>
-                <li>Mobile-responsive design</li>
-                <li>Content management system</li>
-                <li>Search engine optimization</li>
-                <li>Performance optimization</li>
-                <li>Security best practices</li>
-                <li>Testing and quality assurance</li>
-                <li>Training and documentation</li>
-                <li>30 days of post-launch support</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          </section>
+        {% endfor %}
       </div>
-    </section>
+    {% else %}
+      <div class="faq-placeholder">
+        <p>No FAQ items found. Please check the CMS or add FAQ content.</p>
+      </div>
+    {% endif %}
+
+    <div class="faq-cta">
+      <h2>Still have questions?</h2>
+      <p>We're here to help! Get in touch for a free consultation.</p>
+      <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">Contact Us</a>
+    </div>
   </div>
 
-  <div class="faq-cta">
-    <h2>Still have questions?</h2>
-    <p>We're here to help! Get in touch for a free consultation.</p>
-    <a href="/contact/" class="btn btn--primary btn--lg">Contact Us</a>
+  <!-- Hebrew Content -->
+  <div class="lang-content" data-lang="he">
+    <div class="faq-intro">
+      <h1>שאלות נפוצות</h1>
+      <p class="lead">מצאו תשובות לשאלות נפוצות על השירותים, התהליך והתמחור שלנו.</p>
+    </div>
+
+    {% if collections.faqByCategory %}
+      <div class="faq-sections">
+        {% for category, items in collections.faqByCategory %}
+          <section class="faq-section">
+            <h2 class="faq-section-title">{{ category }}</h2>
+            <div class="faq-list">
+              {% for item in items %}
+                <div class="faq-item" data-faq-item>
+                  <button class="faq-question" 
+                          aria-expanded="false" 
+                          aria-controls="faq-he-{{ loop.index }}"
+                          data-faq-toggle>
+                    <span class="faq-question__text">{{ item.data.question_he or item.data.question }}</span>
+                    <span class="faq-question__icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" 
+                       id="faq-he-{{ loop.index }}" 
+                       aria-hidden="true"
+                       data-faq-content>
+                    <div class="faq-answer__content">
+                      {% if item.data.answer_he %}
+                        {{ item.data.answer_he | safe }}
+                      {% else %}
+                        {{ item.templateContent | safe }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="faq-placeholder">
+        <p>לא נמצאו פריטי שאלות נפוצות. אנא בדקו את ה-CMS או הוסיפו תוכן שאלות נפוצות.</p>
+      </div>
+    {% endif %}
+
+    <div class="faq-cta">
+      <h2>עדיין יש שאלות?</h2>
+      <p>אנחנו כאן לעזור! צרו קשר לקבלת ייעוץ חינם.</p>
+      <a href="#contact" class="btn btn--primary btn--lg" data-scroll-to="contact">צרו קשר</a>
+    </div>
   </div>
 </div>
+
+<script>
+// FAQ Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const faqToggles = document.querySelectorAll('[data-faq-toggle]');
+  
+  faqToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const faqItem = this.closest('[data-faq-item]');
+      const faqContent = faqItem.querySelector('[data-faq-content]');
+      const icon = this.querySelector('.faq-question__icon');
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      
+      // Toggle state
+      if (isExpanded) {
+        // Close
+        this.setAttribute('aria-expanded', 'false');
+        faqContent.setAttribute('aria-hidden', 'true');
+        faqContent.style.maxHeight = '0px';
+        icon.textContent = '+';
+        faqItem.removeAttribute('data-expanded');
+      } else {
+        // Open
+        this.setAttribute('aria-expanded', 'true');
+        faqContent.setAttribute('aria-hidden', 'false');
+        faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
+        icon.textContent = '−';
+        faqItem.setAttribute('data-expanded', 'true');
+      }
+    });
+  });
+});
+</script>
