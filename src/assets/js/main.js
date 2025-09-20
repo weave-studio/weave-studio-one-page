@@ -1947,12 +1947,23 @@
     // =========================================================================
     // Initialize Application
     // =========================================================================
-    
+
     // Initialize when DOM is ready
-    utils.ready(() => {
+    utils.ready(async () => {
         // Create global app instance
         window.WeaveStudio = new WeaveStudioApp();
-        
+
+        // Initialize FAQ module conditionally
+        if (document.querySelector('.faq-section')) {
+            try {
+                const { initFAQ } = await import('./modules/faq.js');
+                initFAQ();
+                console.log('✅ FAQ accordion initialized');
+            } catch (error) {
+                console.warn('Failed to load FAQ module:', error);
+            }
+        }
+
         // Expose utilities for debugging
         if (window.location.hostname === 'localhost' || window.location.search.includes('debug=true')) {
         window.WeaveUtils = utils;

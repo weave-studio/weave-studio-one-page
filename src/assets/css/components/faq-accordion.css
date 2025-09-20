@@ -1,0 +1,371 @@
+/* ==========================================================================
+   FAQ Accordion Component - Design System Compliant
+   ========================================================================== */
+
+/* Section-level styling - matches other sections */
+.faq-section {
+  padding-block: var(--space-16);
+  background-color: var(--color-bg-primary);
+}
+
+.faq-section:nth-child(even) {
+  background-color: var(--color-bg-secondary);
+}
+
+/* Section header - matches .section-header pattern */
+.faq-section .section-header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.faq-section .section-header h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.faq-section .section-header p {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* Accordion container */
+.faq-accordion {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/* Individual FAQ item */
+.faq-item {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-4);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* FAQ question button - matches button patterns */
+.faq-question {
+  width: 100%;
+  padding: var(--space-6);
+  background: none;
+  border: none;
+  text-align: start;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.faq-question:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: -2px;
+  background-color: var(--color-bg-muted);
+}
+
+/* Question text */
+.faq-question-text {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+/* Icon container */
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Icon SVGs */
+.faq-icon-plus,
+.faq-icon-minus {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-text-secondary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke var(--duration-fast) var(--ease-out);
+}
+
+.faq-question:hover .faq-icon-plus,
+.faq-question:hover .faq-icon-minus,
+.faq-question:focus-visible .faq-icon-plus,
+.faq-question:focus-visible .faq-icon-minus {
+  stroke: var(--color-primary-600);
+}
+
+.faq-icon-minus {
+  display: none;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon-plus {
+  display: none;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon-minus {
+  display: block;
+}
+
+/* FAQ answer content */
+.faq-answer {
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Expanded state - controlled by JavaScript */
+.faq-answer[aria-hidden="false"] {
+  opacity: 1 !important;
+  /* max-height will be controlled by JavaScript */
+}
+
+
+
+.faq-answer-content {
+  padding: 0 var(--space-6) var(--space-6);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.faq-answer-content p {
+  margin-bottom: var(--space-4);
+}
+
+.faq-answer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer-content strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.faq-answer-content a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.faq-answer-content a:hover,
+.faq-answer-content a:focus {
+  color: var(--color-primary-700);
+}
+
+/* ==========================================================================
+   Responsive Design - Mobile First
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .faq-section {
+    padding-block: var(--space-12);
+  }
+
+  .faq-section .section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .faq-section .section-header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .faq-section .section-header p {
+    font-size: var(--font-size-base);
+  }
+
+  .faq-question {
+    padding: var(--space-5);
+  }
+
+  .faq-question-text {
+    font-size: var(--font-size-base);
+  }
+
+  .faq-answer-content {
+    padding: 0 var(--space-5) var(--space-5);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ==========================================================================
+   RTL Support - Logical Properties
+   ========================================================================== */
+
+[dir="rtl"] .faq-question {
+  text-align: end;
+}
+
+[dir="rtl"] .faq-icon {
+  order: -1;
+}
+
+[dir="rtl"] .faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(-180deg);
+}
+
+/* ==========================================================================
+   Dark Mode Support
+   ========================================================================== */
+
+[data-theme="dark"] .faq-section {
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .faq-section:nth-child(even) {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] .faq-item {
+  border-color: var(--color-border-medium);
+  background-color: var(--color-bg-primary);
+}
+
+[data-theme="dark"] .faq-question:hover,
+[data-theme="dark"] .faq-question:focus-visible {
+  background-color: var(--color-bg-muted);
+}
+
+[data-theme="dark"] .faq-question-text {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .faq-icon-plus,
+[data-theme="dark"] .faq-icon-minus {
+  stroke: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .faq-question:hover .faq-icon-plus,
+[data-theme="dark"] .faq-question:hover .faq-icon-minus,
+[data-theme="dark"] .faq-question:focus-visible .faq-icon-plus,
+[data-theme="dark"] .faq-question:focus-visible .faq-icon-minus {
+  stroke: var(--color-primary-400);
+}
+
+[data-theme="dark"] .faq-answer-content {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .faq-answer-content strong {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .faq-answer-content a {
+  color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .faq-answer-content a:hover,
+[data-theme="dark"] .faq-answer-content a:focus {
+  color: var(--color-primary-300);
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item {
+    transition: none;
+  }
+
+  .faq-question {
+    transition: none;
+  }
+
+  .faq-icon {
+    transition: none;
+  }
+
+  .faq-answer {
+    transition: none;
+  }
+
+  .faq-answer-content a {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+  .faq-item {
+    border-width: 2px;
+    border-color: var(--color-border-strong);
+  }
+
+  .faq-question:focus-visible {
+    outline-width: 3px;
+    outline-color: var(--color-primary-700);
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .faq-section {
+    padding-block: var(--space-8);
+    break-inside: avoid;
+  }
+
+  .faq-item {
+    border: 1px solid #000;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .faq-question {
+    padding: var(--space-4);
+    cursor: default;
+  }
+
+  .faq-icon {
+    display: none;
+  }
+
+  .faq-answer {
+    max-height: none;
+    opacity: 1;
+  }
+
+  .faq-answer-content {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+}

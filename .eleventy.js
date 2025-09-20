@@ -28,6 +28,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('md', markdownLibrary);
 
+  // Markdown filter for templates
+  eleventyConfig.addFilter('md', function(content) {
+    if (!content) return '';
+    return markdownLibrary.render(content);
+  });
+
   // Date filter
   eleventyConfig.addFilter('readableDate', (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy');

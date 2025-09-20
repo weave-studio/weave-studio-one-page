@@ -1,0 +1,59 @@
+<section class="faq-section" id="faq">
+  <div class="container">
+    <header class="section-header">
+      <h2>
+        {% if site.language == 'he' %}
+          שאלות נפוצות
+        {% else %}
+          Frequently Asked Questions
+        {% endif %}
+      </h2>
+      <p>
+        {% if site.language == 'he' %}
+          כל מה שאתם צריכים לדעת על השירותים שלנו
+        {% else %}
+          Everything you need to know about our services
+        {% endif %}
+      </p>
+    </header>
+
+    <div class="faq-accordion">
+      {% for faq in collections.faqItems %}
+        <div class="faq-item">
+          <button class="faq-question"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-{{ loop.index }}"
+                  id="faq-question-{{ loop.index }}">
+            <span class="faq-question-text">
+              {% if site.language == 'he' %}
+                {{ faq.data.question_he or faq.data.question }}
+              {% else %}
+                {{ faq.data.question }}
+              {% endif %}
+            </span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg class="faq-icon-plus" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M12 4v16m8-8H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="faq-icon-minus" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="faq-answer"
+               id="faq-answer-{{ loop.index }}"
+               aria-labelledby="faq-question-{{ loop.index }}">
+            <div class="faq-answer-content">
+              {% if site.language == 'he' %}
+                {{ faq.data.answer_he or faq.data.answer | md | safe }}
+              {% else %}
+                {{ faq.data.answer | md | safe }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
