@@ -35,7 +35,7 @@ Transform the current homepage placeholder sections into fully functional **Blog
       <h2>Latest Insights</h2>
       <p>Tips and insights for better web design</p>
     </header>
-    
+
     <div class="blog-grid">
       {% for post in collections.posts | limit(4) %}
         <article class="blog-card">
@@ -43,7 +43,7 @@ Transform the current homepage placeholder sections into fully functional **Blog
         </article>
       {% endfor %}
     </div>
-    
+
     <div class="section-cta">
       <a href="/blog/" class="btn btn-outline">View All Posts</a>
     </div>
@@ -74,7 +74,7 @@ Transform the current homepage placeholder sections into fully functional **Blog
       <h2>Frequently Asked Questions</h2>
       <p>Everything you need to know about our services</p>
     </header>
-    
+
     <div class="faq-accordion">
       {% for faq in collections.faq %}
         <div class="faq-item">
@@ -90,6 +90,24 @@ Transform the current homepage placeholder sections into fully functional **Blog
   </div>
 </section>
 ```
+
+### Contact Form Integration (Phase B5 Preview)
+**Goal:** Enhanced contact section with conversion optimization
+
+**Technical Requirements:**
+- **Base:** Existing contact form from `/contact` page
+- **Enhancement:** Two-column layout (form + info)
+- **Features:** Project type selector, budget ranges
+- **Integration:** Netlify forms (already configured)
+- **Validation:** Client-side and server-side validation
+- **Accessibility:** Proper form labels, error messages, ARIA attributes
+
+**Key Components:**
+- Contact form with enhanced fields
+- Trust signals and social proof
+- Multiple CTAs throughout one-page design
+- Form submission handling and confirmation
+- Professional styling matching design system
 
 ## Bilingual Support Requirements
 

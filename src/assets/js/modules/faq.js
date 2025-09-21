@@ -372,3 +372,72 @@ function setupReducedMotion() {
 
 // Initialize reduced motion handling when module loads
 setupReducedMotion();
+
+// Initialize language switching for FAQ content
+setupLanguageSwitching();
+
+/**
+ * Set up language switching for FAQ content
+ */
+function setupLanguageSwitching() {
+  // Listen for language change events
+  window.addEventListener('languageChanged', (event) => {
+    const newLang = event.detail.lang;
+    updateFAQContent(newLang);
+  });
+
+  // Also check for initial language on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentLang = document.documentElement.getAttribute('lang') || 'en';
+    updateFAQContent(currentLang);
+  });
+}
+
+/**
+ * Update FAQ content based on selected language
+ */
+function updateFAQContent(lang) {
+  // Update FAQ section title and subtitle
+  const titleElement = document.querySelector('[data-faq-title]');
+  const subtitleElement = document.querySelector('[data-faq-subtitle]');
+
+  if (titleElement) {
+    updateLanguageContent(titleElement, lang);
+  }
+
+  if (subtitleElement) {
+    updateLanguageContent(subtitleElement, lang);
+  }
+
+  // Update all FAQ questions
+  const questionElements = document.querySelectorAll('[data-faq-question]');
+  questionElements.forEach(element => {
+    updateLanguageContent(element, lang);
+  });
+
+  // Update all FAQ answers
+  const answerElements = document.querySelectorAll('[data-faq-answer]');
+  answerElements.forEach(element => {
+    updateLanguageContent(element, lang);
+  });
+}
+
+/**
+ * Update language content for a specific element
+ */
+function updateLanguageContent(element, lang) {
+  const langContents = element.querySelectorAll('.lang-content');
+
+  langContents.forEach(content => {
+    const contentLang = content.getAttribute('data-lang');
+    if (contentLang === lang) {
+      content.style.display = 'block';
+      content.classList.add('lang-visible');
+
+
+    } else {
+      content.style.display = 'none';
+      content.classList.remove('lang-visible');
+    }
+  });
+}

@@ -1,19 +1,13 @@
 <section class="faq-section" id="faq">
   <div class="container">
     <header class="section-header">
-      <h2>
-        {% if site.language == 'he' %}
-          שאלות נפוצות
-        {% else %}
-          Frequently Asked Questions
-        {% endif %}
+      <h2 data-faq-title>
+        <span class="lang-content" data-lang="en">Frequently Asked Questions</span>
+        <span class="lang-content" data-lang="he">שאלות נפוצות</span>
       </h2>
-      <p>
-        {% if site.language == 'he' %}
-          כל מה שאתם צריכים לדעת על השירותים שלנו
-        {% else %}
-          Everything you need to know about our services
-        {% endif %}
+      <p data-faq-subtitle>
+        <span class="lang-content" data-lang="en">Everything you need to know about our services</span>
+        <span class="lang-content" data-lang="he">כל מה שאתם צריכים לדעת על השירותים שלנו</span>
       </p>
     </header>
 
@@ -24,12 +18,9 @@
                   aria-expanded="false"
                   aria-controls="faq-answer-{{ loop.index }}"
                   id="faq-question-{{ loop.index }}">
-            <span class="faq-question-text">
-              {% if site.language == 'he' %}
-                {{ faq.data.question_he or faq.data.question }}
-              {% else %}
-                {{ faq.data.question }}
-              {% endif %}
+            <span class="faq-question-text" data-faq-question="{{ loop.index }}">
+              <span class="lang-content" data-lang="en">{{ faq.data.question }}</span>
+              <span class="lang-content" data-lang="he">{{ faq.data.question_he or faq.data.question }}</span>
             </span>
             <span class="faq-icon" aria-hidden="true">
               <svg class="faq-icon-plus" viewBox="0 0 24 24" width="20" height="20">
@@ -44,12 +35,13 @@
           <div class="faq-answer"
                id="faq-answer-{{ loop.index }}"
                aria-labelledby="faq-question-{{ loop.index }}">
-            <div class="faq-answer-content">
-              {% if site.language == 'he' %}
-                {{ faq.data.answer_he or faq.data.answer | md | safe }}
-              {% else %}
+            <div class="faq-answer-content" data-faq-answer="{{ loop.index }}">
+              <div class="lang-content" data-lang="en">
                 {{ faq.data.answer | md | safe }}
-              {% endif %}
+              </div>
+              <div class="lang-content" data-lang="he">
+                {{ faq.data.answer_he or faq.data.answer | md | safe }}
+              </div>
             </div>
           </div>
         </div>

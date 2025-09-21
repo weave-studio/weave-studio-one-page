@@ -200,10 +200,30 @@
    - Bilingual functionality testing
    - Performance impact assessment
 
-### B5: Content Migration & SEO ⏳ NEXT PHASE
-**Duration:** 6-8 hours  
-**Status:** Planned  
+### B5: Contact & Conversion ⏳ NEXT PHASE
+**Duration:** 4-6 hours
+**Status:** Planned
 **Dependencies:** B4 completion
+
+**Planned Tasks:**
+- [ ] Contact section enhancement with two-column layout
+- [ ] CTA optimization throughout one-page design
+- [ ] Trust signals and social proof elements
+- [ ] Integration with existing Netlify forms
+- [ ] Project type selector and budget ranges
+- [ ] Multiple conversion points (hero, services, portfolio, FAQ)
+
+**Key Deliverables:**
+- Enhanced contact form with validation and spam protection
+- Strategic CTA placement for maximum conversions
+- Trust signals (testimonials, certifications, social proof)
+- Professional form styling matching design system
+- Form submission handling and confirmation messages
+
+### B6: Content Migration & SEO ⏳ PLANNED
+**Duration:** 6-8 hours
+**Status:** Planned
+**Dependencies:** B5 completion
 
 **Planned Tasks:**
 - [ ] Migrate all Weave Studio content to CMS
@@ -211,10 +231,10 @@
 - [ ] Add Google Analytics and performance monitoring
 - [ ] Configure sitemap and robots.txt
 
-### B6: Performance Optimization ⏳ PLANNED
-**Duration:** 4-6 hours  
-**Status:** Planned  
-**Dependencies:** B5 completion
+### B7: Performance Optimization ⏳ PLANNED
+**Duration:** 4-6 hours
+**Status:** Planned
+**Dependencies:** B6 completion
 
 **Planned Tasks:**
 - [ ] Address performance regression from Phase B2
@@ -223,7 +243,7 @@
 - [ ] Fine-tune Core Web Vitals metrics
 - [ ] Visual polish and design refinements
 
-### B7: Testing & Launch Preparation ⏳ PLANNED
+### B8: Testing & Launch Preparation ⏳ PLANNED
 **Duration:** 6-8 hours  
 **Status:** Planned  
 **Dependencies:** B6 completion
@@ -234,7 +254,7 @@
 - [ ] Performance testing on various connection speeds
 - [ ] User testing and feedback incorporation
 
-### B8: Production Deployment ⏳ PLANNED
+### B9: Production Deployment ⏳ PLANNED
 **Duration:** 2-3 hours  
 **Status:** Planned  
 **Dependencies:** B7 completion
@@ -325,18 +345,19 @@
    - Verify performance baseline
 
 ### Short-term (Next 1-2 weeks)
-1. **Phase B5: Content & SEO**
+1. **Phase B5: Contact & Conversion
+   - Enhanced contact form with validation and spam protection
+   - Strategic CTA placement for maximum conversions
+   - Professional form styling matching design system
+
+2. **Phase B6: Content & SEO**
    - Professional copywriting
    - SEO optimization
    - Analytics integration
 
-2. **Phase B6: Performance & Polish**
-   - Address performance regression
-   - Visual refinements
-   - Core Web Vitals optimization
 
 ### Medium-term (Next 2-3 weeks)
-1. **Phase B7-B8: Launch**
+1. **Phase B7-B9: Launch**
    - Comprehensive testing
    - Production deployment
    - Post-launch monitoring

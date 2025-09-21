@@ -163,6 +163,32 @@
   color: var(--color-text-secondary);
 }
 
+/* Ensure proper formatting for FAQ language content */
+.faq-answer-content .lang-content.lang-visible {
+  white-space: pre-line !important;
+  word-wrap: break-word !important;
+  display: block !important;
+}
+
+.faq-answer-content .lang-content.lang-visible p {
+  margin-bottom: var(--space-4) !important;
+  line-height: var(--line-height-relaxed) !important;
+  display: block !important;
+}
+
+.faq-answer-content .lang-content.lang-visible ul,
+.faq-answer-content .lang-content.lang-visible ol {
+  margin-bottom: var(--space-4) !important;
+  padding-left: var(--space-6) !important;
+  display: block !important;
+}
+
+.faq-answer-content .lang-content.lang-visible li {
+  margin-bottom: var(--space-2) !important;
+  line-height: var(--line-height-relaxed) !important;
+  display: list-item !important;
+}
+
 .faq-answer-content p {
   margin-bottom: var(--space-4);
 }
