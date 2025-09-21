@@ -1,0 +1,266 @@
+<!-- Contact Section Component - Phase B5 -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <!-- English Content -->
+    <div class="lang-content" data-lang="en">
+      <div class="section__header">
+        <h2 class="section__title">Let's Work Together</h2>
+        <p class="section__subtitle">Ready to bring your vision to life? Let's discuss your project.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info & Trust Signals -->
+        <div class="contact-info-section">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <h3>Get in Touch</h3>
+              <div class="contact-details">
+                <a href="mailto:{{ site.email }}" class="contact-link">
+                  <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  {{ site.email }}
+                </a>
+                <p class="contact-meta">We typically respond within 24 hours</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <h3>Free Consultation</h3>
+              <p>30-minute discovery call to discuss your project goals, timeline, and investment.</p>
+            </div>
+
+            <div class="contact-info-item">
+              <h3>Why Choose Us</h3>
+              <ul class="contact-benefits">
+                <li>Fast, beautiful websites that convert</li>
+                <li>Professional process with clear communication</li>
+                <li>Performance-optimized for speed and SEO</li>
+                <li>Ongoing support and maintenance options</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Trust Signals -->
+          {% include "components/trust-signals.njk" %}
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <div class="contact-form-container">
+            <form class="contact-form"
+                  data-enhance="true"
+                  netlify="true"
+                  name="contact-homepage"
+                  method="POST">
+
+              <input type="hidden" name="form-name" value="contact-homepage">
+
+              <!-- Honeypot for spam protection -->
+              <div class="honeypot" style="display: none;">
+                <label for="bot-field-homepage">Don't fill this out if you're human:</label>
+                <input name="bot-field" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-name-en" class="form-label">
+                  Full Name <span class="required">*</span>
+                </label>
+                <input type="text"
+                       id="contact-name-en"
+                       name="name"
+                       class="form-input"
+                       required
+                       autocomplete="name"
+                       data-validation="name">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email-en" class="form-label">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input type="email"
+                       id="contact-email-en"
+                       name="email"
+                       class="form-input"
+                       required
+                       autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-project-type-en" class="form-label">
+                  Project Type <span class="required">*</span>
+                </label>
+                <select id="contact-project-type-en"
+                        name="project_type"
+                        class="form-input"
+                        required>
+                  <option value="">Please select...</option>
+                  <option value="new-website">New Website</option>
+                  <option value="redesign">Website Redesign</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="maintenance">Website Maintenance</option>
+                  <option value="consulting">Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message-en" class="form-label">
+                  Project Details <span class="required">*</span>
+                </label>
+                <textarea id="contact-message-en"
+                          name="message"
+                          class="form-input form-textarea"
+                          rows="5"
+                          required
+                          minlength="20"
+                          placeholder="Tell us about your project goals, requirements, and any specific features you need..."></textarea>
+                <div class="form-hint">Minimum 20 characters</div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn--primary btn--lg btn--full">
+                  <span class="btn__text">Send Message</span>
+                  <span class="btn__loading" style="display: none;">Sending...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hebrew Content -->
+    <div class="lang-content" data-lang="he">
+      <div class="section__header">
+        <h2 class="section__title">בואו נעבוד יחד</h2>
+        <p class="section__subtitle">מוכנים להפיח חיים בחזון שלכם? בואו נדבר על הפרויקט.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info & Trust Signals -->
+        <div class="contact-info-section">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <h3>צור קשר</h3>
+              <div class="contact-details">
+                <a href="mailto:{{ site.email }}" class="contact-link">
+                  <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  {{ site.email }}
+                </a>
+                <p class="contact-meta">אנו בדרך כלל עונים תוך 24 שעות</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <h3>ייעוץ חינם</h3>
+              <p>שיחת גילוי של 30 דקות לדון במטרות הפרויקט, לוח הזמנים וההשקעה.</p>
+            </div>
+
+            <div class="contact-info-item">
+              <h3>למה לבחור בנו</h3>
+              <ul class="contact-benefits">
+                <li>אתרים מהירים ויפים שממירים</li>
+                <li>תהליך מקצועי עם תקשורת ברורה</li>
+                <li>מותאם לביצועים למהירות ולקידום</li>
+                <li>אפשרויות תמיכה ותחזוקה שוטפות</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Trust Signals -->
+          {% include "components/trust-signals.njk" %}
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <div class="contact-form-container">
+            <form class="contact-form"
+                  data-enhance="true"
+                  netlify="true"
+                  name="contact-homepage-he"
+                  method="POST">
+
+              <input type="hidden" name="form-name" value="contact-homepage-he">
+
+              <!-- Honeypot for spam protection -->
+              <div class="honeypot" style="display: none;">
+                <label for="bot-field-homepage-he">Don't fill this out if you're human:</label>
+                <input name="bot-field" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-name-he" class="form-label">
+                  שם מלא <span class="required">*</span>
+                </label>
+                <input type="text"
+                       id="contact-name-he"
+                       name="name"
+                       class="form-input"
+                       required
+                       autocomplete="name"
+                       data-validation="name">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email-he" class="form-label">
+                  כתובת אימייל <span class="required">*</span>
+                </label>
+                <input type="email"
+                       id="contact-email-he"
+                       name="email"
+                       class="form-input"
+                       required
+                       autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-project-type-he" class="form-label">
+                  סוג הפרויקט <span class="required">*</span>
+                </label>
+                <select id="contact-project-type-he"
+                        name="project_type"
+                        class="form-input"
+                        required>
+                  <option value="">אנא בחרו...</option>
+                  <option value="new-website">אתר חדש</option>
+                  <option value="redesign">עיצוב מחדש של אתר</option>
+                  <option value="ecommerce">מסחר אלקטרוני</option>
+                  <option value="maintenance">תחזוקת אתר</option>
+                  <option value="consulting">ייעוץ</option>
+                  <option value="other">אחר</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message-he" class="form-label">
+                  פרטי הפרויקט <span class="required">*</span>
+                </label>
+                <textarea id="contact-message-he"
+                          name="message"
+                          class="form-input form-textarea"
+                          rows="5"
+                          required
+                          minlength="20"
+                          placeholder="ספרו לנו על מטרות הפרויקט, הדרישות וכל תכונות ספציפיות שאתם צריכים..."></textarea>
+                <div class="form-hint">מינימום 20 תווים</div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn--primary btn--lg btn--full">
+                  <span class="btn__text">שלח הודעה</span>
+                  <span class="btn__loading" style="display: none;">שולח...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

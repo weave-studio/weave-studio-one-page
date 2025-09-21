@@ -19,5 +19,5 @@
 ## Commit Formats
 - Sub-step: type(scope): summary  (≤52 chars)
 - End-of-phase:
-  Subject (≤52): phase(Bx): <result>
+  Subject (≤52): type(scope): <result>
   Body: 3–5 bullets, each ≤70 chars.

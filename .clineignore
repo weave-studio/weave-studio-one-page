@@ -94,6 +94,8 @@ LICENSE
 *.md
 !src/**/*.md
 !docs/**/*.md
+!memory-bank/*.md
+!weave-project-docs/*.md # specific to this project
 
 # Configuration files (keep essential ones)
 *.config.js

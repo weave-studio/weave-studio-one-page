@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Contact Section Component - Phase B5
+   Two-column layout with form and trust signals
+   ========================================================================== */
+
+.contact-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-bg-primary);
+}
+
+.contact-section .section__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.contact-section .section__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-tight);
+}
+
+.contact-section .section__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ==========================================================================
+   Contact Grid Layout - Responsive Two Column
+   ========================================================================== */
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Mobile: Single column */
+@media (max-width: 767px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Tablet and Desktop: Two columns */
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   Contact Form Section
+   ========================================================================== */
+
+.contact-form-section {
+  /* No order - maintain source order */
+  /* Override spacing.css global padding */
+  padding: 0 !important;
+  /* Remove inherited borders to avoid double borders */
+  border: none !important;
+  background: transparent !important;
+}
+
+.contact-form-container {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 768px) {
+  .contact-form-container {
+    padding: var(--space-10);
+  }
+}
+
+/* ==========================================================================
+   Form Elements - Consistent with Design System
+   ========================================================================== */
+
+.contact-form .form-group {
+  margin-bottom: var(--space-6);
+}
+
+.contact-form .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.contact-form .form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-snug);
+}
+
+.contact-form .required {
+  color: var(--color-error);
+  margin-left: var(--space-1);
+}
+
+.contact-form .form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-normal);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  box-sizing: border-box;
+}
+
+.contact-form .form-input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+}
+
+.contact-form .form-input:hover {
+  border-color: var(--color-border-strong);
+}
+
+.contact-form .form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.contact-form .form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--font-family-body);
+}
+
+.contact-form .form-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  line-height: var(--line-height-snug);
+}
+
+/* ==========================================================================
+   Contact Info Section
+   ========================================================================== */
+
+.contact-info-section {
+  /* No order - maintain source order */
+  /* Restore appropriate padding instead of 0 */
+  padding: var(--space-8) !important;
+  /* Give it proper card styling to match form container */
+  background-color: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border-light) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.contact-info {
+  /* Override contact-components.css padding */
+  padding: 0 !important;
+}
+
+.contact-info .contact-info-item {
+  margin-bottom: var(--space-8);
+}
+
+.contact-info .contact-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-snug);
+}
+
+.contact-info .contact-details {
+  margin-bottom: var(--space-4);
+}
+
+.contact-info .contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary-600);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.contact-info .contact-link:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+.contact-info .contact-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-primary-600);
+}
+
+.contact-info .contact-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  line-height: var(--line-height-snug);
+}
+
+.contact-info p {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.contact-info .contact-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info .contact-benefits li {
+  position: relative;
+  padding-left: var(--space-6);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-2);
+}
+
+.contact-info .contact-benefits li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info .contact-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   Trust Signals Section
+   ========================================================================== */
+
+.trust-signals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.trust-signal {
+  text-align: center;
+  padding: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.trust-signal__number {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-600);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-1);
+}
+
+.trust-signal__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   RTL Support for Hebrew
+   ========================================================================== */
+
+[dir="rtl"] .contact-form .required {
+  margin-left: 0;
+  margin-right: var(--space-1);
+}
+
+[dir="rtl"] .contact-info .contact-benefits li {
+  padding-left: 0;
+  padding-right: var(--space-6);
+}
+
+[dir="rtl"] .contact-info .contact-benefits li::before {
+  left: auto;
+  right: 0;
+}
+
+/* ==========================================================================
+   Dark Mode Support - Automatic via CSS Custom Properties
+   ========================================================================== */
+
+/* All colors automatically inherit from the design system variables,
+   which are overridden in dark mode. No additional dark mode styles needed
+   since we use semantic color variables throughout. */
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .contact-section {
+    padding: var(--space-8) 0;
+  }
+
+  .contact-section .section__header {
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-section .section__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .contact-form-container {
+    padding: var(--space-6);
+  }
+
+  .trust-signals {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .trust-signal {
+    padding: var(--space-3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-section .section__title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+/* ==========================================================================
+   Focus and Accessibility Enhancements
+   ========================================================================== */
+
+.contact-form .form-input:focus,
+.contact-form select:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+}
+
+.contact-info .contact-link:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .contact-form .form-input {
+    border-width: 2px;
+  }
+
+  .trust-signal {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .contact-form .form-input {
+    transition: none;
+  }
+
+  .contact-info .contact-link {
+    transition: none;
+  }
+}

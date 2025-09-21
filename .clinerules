@@ -67,6 +67,9 @@ Create additional files/folders within memory-bank/ when they help organize:
 - Testing strategies
 - Deployment procedures
 
+### Special Reference Files
+- `agentQuickRef.md` - Agent interaction guidelines and workflow reference for effective collaboration
+
 ## Core Workflows
 
 ### Plan Mode
@@ -161,8 +164,10 @@ REMEMBER: After every memory reset, I begin completely fresh. The Memory Bank is
 - DO NOT commit until I approve the diff
 
 ### End-of-Phase Commit
-- Subject line ≤ 52 characters, e.g.:
-  phase(B3): complete blog & faq section
+- Format: type(scope): summary
+- Subject line ≤ 52 characters (imperative, no period)
+- Types: feat, fix, chore, style, refactor, docs
+- Example: feat(nav): add sticky behavior on scroll
 - Body: 3–5 bullet points, each line ≤ 70 chars
 - Summarize what was done, key decisions, constraints
 - Example body:
