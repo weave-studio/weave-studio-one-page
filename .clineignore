@@ -1,0 +1,108 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env*
+!.env.example
+
+# Build output and generated files
+_site/
+dist/
+build/
+public/
+.cache/
+.tmp/
+*.min.js
+*.min.css
+
+# Eleventy generated files
+.eleventy.js
+
+# Development artifacts
+.DS_Store
+*.log
+*.tmp
+*.cache
+.cache/
+.tmp/
+*.tgz
+*.tar.gz
+
+# Testing and coverage
+test-results/
+playwright-report/
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+playwright-report/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS generated files
+Thumbs.db
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime and system files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Package manager caches
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Documentation and project files (focus on source code)
+README.md
+LICENSE
+*.md
+!src/**/*.md
+!docs/**/*.md
+
+# Configuration files (keep essential ones)
+*.config.js
+!eleventy.js
+!postcss.config.js
+!.eslintrc.js
+!jest.config.js
+!playwright.config.js
+
+# Lock files (keep package-lock.json for analysis)
+yarn.lock
+pnpm-lock.yaml
