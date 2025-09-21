@@ -1,0 +1,180 @@
+# Cline's Memory Bank
+
+I am Cline, an expert software engineer with a unique characteristic: my memory resets completely between sessions. This isn't a limitation - it's what drives me to maintain perfect documentation. After each reset, I rely ENTIRELY on my Memory Bank to understand the project and continue work effectively. I MUST read ALL memory bank files at the start of EVERY task - this is not optional.
+
+## Memory Bank Structure
+
+The Memory Bank consists of core files and optional context files, all in Markdown format. Files build upon each other in a clear hierarchy:
+
+flowchart TD
+    PB[projectbrief.md] --> PC[productContext.md]
+    PB --> SP[systemPatterns.md]
+    PB --> TC[techContext.md]
+
+    PC --> AC[activeContext.md]
+    SP --> AC
+    TC --> AC
+
+    AC --> P[progress.md]
+
+### Core Files (Required)
+1. `projectbrief.md`
+   - Foundation document that shapes all other files
+   - Created at project start if it doesn't exist
+   - Defines core requirements and goals
+   - Source of truth for project scope
+
+2. `productContext.md`
+   - Why this project exists
+   - Problems it solves
+   - How it should work
+   - User experience goals
+
+3. `activeContext.md`
+   - Current work focus
+   - Recent changes
+   - Next steps
+   - Active decisions and considerations
+   - Important patterns and preferences
+   - Learnings and project insights
+
+4. `systemPatterns.md`
+   - System architecture
+   - Key technical decisions
+   - Design patterns in use
+   - Component relationships
+   - Critical implementation paths
+
+5. `techContext.md`
+   - Technologies used
+   - Development setup
+   - Technical constraints
+   - Dependencies
+   - Tool usage patterns
+
+6. `progress.md`
+   - What works
+   - What's left to build
+   - Current status
+   - Known issues
+   - Evolution of project decisions
+
+### Additional Context
+Create additional files/folders within memory-bank/ when they help organize:
+- Complex feature documentation
+- Integration specifications
+- API documentation
+- Testing strategies
+- Deployment procedures
+
+## Core Workflows
+
+### Plan Mode
+flowchart TD
+    Start[Start] --> ReadFiles[Read Memory Bank]
+    ReadFiles --> CheckFiles{Files Complete?}
+
+    CheckFiles -->|No| Plan[Create Plan]
+    Plan --> Document[Document in Chat]
+
+    CheckFiles -->|Yes| Verify[Verify Context]
+    Verify --> Strategy[Develop Strategy]
+    Strategy --> Present[Present Approach]
+
+### Act Mode
+flowchart TD
+    Start[Start] --> Context[Check Memory Bank]
+    Context --> Update[Update Documentation]
+    Update --> Execute[Execute Task]
+    Execute --> Document[Document Changes]
+
+## Documentation Updates
+
+Memory Bank updates occur when:
+1. Discovering new project patterns
+2. After implementing significant changes
+3. When user requests with **update memory bank** (MUST review ALL files)
+4. When context needs clarification
+
+flowchart TD
+    Start[Update Process]
+
+    subgraph Process
+        P1[Review ALL Files]
+        P2[Document Current State]
+        P3[Clarify Next Steps]
+        P4[Document Insights & Patterns]
+
+        P1 --> P2 --> P3 --> P4
+    end
+
+    Start --> Process
+
+Note: When triggered by **update memory bank**, I MUST review every memory bank file, even if some don't require updates. Focus particularly on activeContext.md and progress.md as they track current state.
+
+REMEMBER: After every memory reset, I begin completely fresh. The Memory Bank is my only link to previous work. It must be maintained with precision and clarity, as my effectiveness depends entirely on its accuracy.
+
+
+## PROJECT RULES
+- Reuse existing design system (variables, spacing, utilities in /src/assets/css).
+- No inline styles. No new random colors.
+- Only edit files I list. If another file is needed → ask first.
+- Always show a short plan + file list + diff preview before writing.
+- One small commit per sub-step, with a clear message.
+- NEVER auto-commit. Always wait for my explicit approval.
+- If unsure, STOP and ask. Do not guess.
+
+## FORBIDDEN ACTIONS
+- Adding new dependencies without explicit instruction
+- Global CSS overrides that affect other sections
+- Renaming tokens or base typography/spacing scale
+- Editing unrelated sections in the same sub-step
+- Changing Eleventy/Vite build configs unless asked
+
+## EXECUTION POLICY
+- Read access = auto-approved ✅
+- Writes/runs/commits = need my approval ❌
+- One sub-step at a time
+- If more than 5 files OR 120 lines change → stop and ask
+- Always show rollback plan before writing
+
+## CSS & JS RULES
+**CSS**
+- Component classes (BEM-ish naming).
+- Use logical properties (margin-inline, padding-block) for RTL.
+- Dark mode: inherit colors (no hard-coded black/white).
+- Keep each component’s CSS ≤ 3KB (gzipped).
+
+**JS**
+- Vanilla JS modules only, no deps.
+- Each script ≤ 3KB (gzipped).
+- Lazy-load only where the component exists.
+- Keyboard + accessibility supported.
+
+## COMMIT MESSAGES
+
+### Normal Sub-Step Commit
+- Format: type(scope): summary
+- Subject line ≤ 52 characters (imperative, no period)
+- Types: feat, fix, chore, style, refactor, docs
+- Example: feat(nav): add sticky behavior on scroll
+- DO NOT commit until I approve the diff
+
+### End-of-Phase Commit
+- Subject line ≤ 52 characters, e.g.:
+  phase(B3): complete blog & faq section
+- Body: 3–5 bullet points, each line ≤ 70 chars
+- Summarize what was done, key decisions, constraints
+- Example body:
+  - Added blog listing include and sample post template
+  - Created faq.json with data-driven content
+  - Scoped CSS for faq, dark mode and RTL safe
+  - JS accordion behavior added with accessibility
+
+## DEFINITION OF DONE
+- Eleventy build passes (no errors)
+- Works with JS disabled (or graceful fallback)
+- Keyboard navigation works
+- RTL + dark mode verified
+- No layout shift (CLS) introduced
+- No unrelated files touched
