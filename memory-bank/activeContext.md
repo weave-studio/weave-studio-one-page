@@ -37,6 +37,13 @@
 - [ ] Performance optimization (address Lighthouse regression)
 - [ ] CMS content migration and additional sections
 
+**Design Polish Issues (Added 26/09/2025):**
+- [ ] Typography improvement - inconsistent font sizing throughout site
+- [ ] Color palette improvement - notably light mode colors need refinement
+- [ ] Smooth scroll offset fix - currently scrolls 30px above target sections
+- [ ] Profile image sizing - too large on tablet display
+- [ ] Page title cleanup - remove duplicate "Weave Studio" from title display
+
 **Note:** New sections (Welcome, Performance) moved to Phase B7 to keep Phase B6 focused on content updates.
 
 ### Phase B6.4: GitHub Pages Deployment ⏳ READY TO START

@@ -4,48 +4,98 @@
       
       <!-- Footer main content -->
       <div class="site-footer__main">
+        <!-- Section 1: Company Info -->
         <div class="site-footer__section">
-          <h3 class="site-footer__heading">{{ site.name }}</h3>
-          <p class="site-footer__description">{{ site.description }}</p>
-          
-          {% if site.social %}
-            <div class="site-footer__social">
-              <h4 class="sr-only">Follow us</h4>
-              {% for social in site.social %}
-                <a href="{{ social.url }}" 
-                   class="site-footer__social-link"
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="{{ social.name }}">
-                  <!-- Simple icon placeholder -->
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <circle cx="10" cy="10" r="8"/>
-                  </svg>
-                  <span class="sr-only">{{ social.name }}</span>
-                </a>
-              {% endfor %}
+          <!-- English -->
+          <div class="lang-content" data-lang="en">
+            <h3 class="site-footer__heading">{{ site.name }}</h3>
+            <p class="site-footer__description">{{ site.description }}</p>
+            {% if site.social %}
+              <div class="site-footer__social">
+                <h4 class="sr-only">Follow us</h4>
+                {% for social in site.social %}
+                  <a href="{{ social.url }}" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8"/></svg>
+                    <span class="sr-only">{{ social.name }}</span>
+                  </a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <!-- Hebrew -->
+          <div class="lang-content" data-lang="he">
+            <h3 class="site-footer__heading">{{ site.name }}</h3>
+            <p class="site-footer__description">{{ site.description_he }}</p>
+            {% if site.social %}
+              <div class="site-footer__social">
+                <h4 class="sr-only">עקבו אחרינו</h4>
+                {% for social in site.social %}
+                  <a href="{{ social.url }}" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8"/></svg>
+                    <span class="sr-only">{{ social.name }}</span>
+                  </a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Section 2: Branding -->
+        <div class="site-footer__section">
+          <!-- English -->
+          <div class="lang-content" data-lang="en">
+          <div class="site-footer__logo">
+            <img src="/weave-studio-one-page/assets/images/weave-studio-logo.svg" alt="Weave Studio" width="120" height="40">
+          </div>
+            <p class="site-footer__tagline">Weave. Got you covered.</p>
+          </div>
+          <!-- Hebrew -->
+          <div class="lang-content" data-lang="he">
+            <div class="site-footer__logo">
+              <img src="/weave-studio-one-page/assets/images/weave-studio-logo.svg" alt="Weave Studio" width="120" height="40">
             </div>
+            <p class="site-footer__tagline">וויב. אנחנו דואגים לך.</p>
+          </div>
+        </div>
+
+        <!-- Section 3: Navigation -->
+        <div class="site-footer__section">
+          {% if navigation.footer %}
+            {% for section in navigation.footer %}
+              <!-- English -->
+              <div class="lang-content" data-lang="en">
+                <h3 class="site-footer__heading">{{ section.title }}</h3>
+                <ul class="site-footer__links">
+                  {% for link in section.links %}
+                    <li>
+                      <a href="{{ link.url }}" class="site-footer__link" {% if link.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                        {{ link.text }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- Hebrew -->
+              <div class="lang-content" data-lang="he">
+                <h3 class="site-footer__heading">{{ section.title_he }}</h3>
+                <ul class="site-footer__links">
+                  {% for link in section.links %}
+                    <li>
+                      <a href="{{ link.url }}" class="site-footer__link" {% if link.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                        {{ link.text_he }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
           {% endif %}
         </div>
 
-        {% if navigation.footer %}
-          {% for section in navigation.footer %}
-            <div class="site-footer__section">
-              <h3 class="site-footer__heading">{{ section.title }}</h3>
-              <ul class="site-footer__links">
-                {% for link in section.links %}
-                  <li>
-                    <a href="{{ link.url }}" 
-                       class="site-footer__link"
-                       {% if link.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                      {{ link.text }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        {% endif %}
+        <!-- Section 4: Placeholder for future content -->
+        <div class="site-footer__section">
+          <!-- Can be used for additional content later -->
+        </div>
       </div>
 
       <!-- Footer bottom -->

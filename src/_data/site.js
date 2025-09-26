@@ -1,10 +1,10 @@
 // src/_data/site.js - Weave Studio with auto language detection
 module.exports = {
   name: "Weave Studio",
-  tagline: "Fast, Beautiful Websites for Small Businesses",
-  tagline_he: "אתרים מהירים ויפים לעסקים קטנים",
-  description: "Professional web design and development that helps small businesses grow online with fast, conversion-optimized websites.",
-  description_he: "עיצוב ופיתוח אתרים מקצועיים המסייעים לעסקים קטנים לצמוח באינטרנט עם אתרים מהירים ומותאמים להמרות.",
+  tagline: "Fast, Beautiful Websites",
+  tagline_he: "אתרים מהירים ויפים",
+  description: "Beautifully designed websites that actually work. Custom-coded for small businesses, freelancers, and creatives who value quality.",
+  description_he: "אתרים מעוצבים יפה שבאמת עובדים. פיתוח מותאם אישית לעסקים קטנים, פרילנסרים ויוצרים שמעריכים איכות.",
   
   url: process.env.SITE_URL || "https://weave-studio.github.io/weave-studio-one-page",
   
@@ -16,7 +16,7 @@ module.exports = {
   // Business owner information
   author: "Assaf Yechiel",
   business_name: "Weave Studio",
-  email: process.env.CONTACT_EMAIL || "info@weavewebdesign.com ",
+  email: process.env.CONTACT_EMAIL || "weavewebdesign@gmail.com",
   
   // Business details
   services: [
@@ -29,7 +29,7 @@ module.exports = {
   ],
   
   // SEO and social
-  keywords: "web design Tel Aviv, אתרי אינטרנט תל אביב, website design Israel, עיצוב אתרים ישראל, freelance web designer, web design, web development, small business websites, e-commerce, SEO, website maintenance",
+  keywords: "web design, אתרי אינטרנט, website design Israel, עיצוב אתרים ישראל, freelance web designer, web design, web development, small business websites, e-commerce, SEO, website maintenance",
   image: "/assets/images/weave-studio-logo.svg",
   themeColor: "#2563eb", // Primary blue
   
@@ -51,16 +51,16 @@ module.exports = {
       locale: "en_US", 
       direction: "ltr",
       name: "Weave Studio",
-      tagline: "Fast, Beautiful Websites for Small Businesses",
-      description: "Professional web design and development that helps small businesses grow online with fast, conversion-optimized websites."
+      tagline: "Fast, Beautiful Websites",
+      description: "Beautifully designed websites that actually work. Custom-coded for small businesses, freelancers, and creatives who value quality."
     },
     he: {
       language: "he",
       locale: "he_IL",
       direction: "rtl", 
       name: "Weave Studio",
-      tagline: "אתרים מהירים ויפים לעסקים קטנים",
-      description: "עיצוב ופיתוח אתרים מקצועיים המסייעים לעסקים קטנים לצמוח באינטרנט עם אתרים מהירים ומותאמים להמרות."
+      tagline: "אתרים מהירים ויפים",
+      description: "אתרים מעוצבים יפה שבאמת עובדים. פיתוח מותאם אישית לעסקים קטנים, פרילנסרים ויוצרים שמעריכים איכות."
     }
   },
   

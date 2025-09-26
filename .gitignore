@@ -21,7 +21,6 @@ public/
 # Eleventy specific
 .eleventy.js
 .eleventyignore
-.eleventy.js
 
 # Development
 .DS_Store

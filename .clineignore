@@ -18,9 +18,6 @@ public/
 *.min.js
 *.min.css
 
-# Eleventy generated files
-.eleventy.js
-
 # Development artifacts
 .DS_Store
 *.log

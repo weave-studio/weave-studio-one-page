@@ -4,38 +4,38 @@
    ========================================================================== */
 
 /* Import order: Base → Components → Utilities → Themes */
-@import url('./base/reset.css');
-@import url('./base/typography.css');
-@import url('./base/layout.css');
+@import url('/assets/css/base/reset.css');
+@import url('/assets/css/base/typography.css');
+@import url('/assets/css/base/layout.css');
 
-@import url('./components/buttons.css');
-@import url('./components/header.css');          
-@import url('./components/navigation.css');      
-@import url('./components/footer.css');          
-@import url('./components/theme-toggle.css');    
-@import url('./components/page-layouts.css'); 
-@import url('./components/cms-components.css'); 
-@import url('./components/services-components.css');
-@import url('./components/portfolio-components.css');
-@import url('./components/blog-components.css');
-@import url('./components/faq-accordion.css');
-@import url('./components/faq-components.css');
-@import url('./components/contact-components.css');
-@import url('./components/contact-section.css');
-@import url('./components/case-study-components.css');
-@import url('./components/hero.css');
-@import url('./components/hero-animations.css');
-/* @import url('./components/cards.css'); */
-/* @import url('./components/forms.css'); */
+@import url('/assets/css/components/buttons.css');
+@import url('/assets/css/components/header.css');
+@import url('/assets/css/components/navigation.css');
+@import url('/assets/css/components/footer.css');
+@import url('/assets/css/components/theme-toggle.css');
+@import url('/assets/css/components/page-layouts.css');
+@import url('/assets/css/components/cms-components.css');
+@import url('/assets/css/components/services-components.css');
+@import url('/assets/css/components/portfolio-components.css');
+@import url('/assets/css/components/blog-components.css');
+@import url('/assets/css/components/faq-accordion.css');
+@import url('/assets/css/components/faq-components.css');
+@import url('/assets/css/components/contact-components.css');
+@import url('/assets/css/components/contact-section.css');
+@import url('/assets/css/components/case-study-components.css');
+@import url('/assets/css/components/hero.css');
+@import url('/assets/css/components/hero-animations.css');
+/* @import url('/assets/css/components/cards.css'); */
+/* @import url('/assets/css/components/forms.css'); */
 
-@import url('./utilities/spacing.css');
-@import url('./utilities/grid.css');
-@import url('./utilities/animations.css');
-/* @import url('./utilities/text.css'); */
-/* @import url('./utilities/display.css'); */
+@import url('/assets/css/utilities/spacing.css');
+@import url('/assets/css/utilities/grid.css');
+@import url('/assets/css/utilities/animations.css');
+/* @import url('/assets/css/utilities/text.css'); */
+/* @import url('/assets/css/utilities/display.css'); */
 
-@import url('./themes/dark.css');
-@import url('./themes/rtl.css');
+@import url('/assets/css/themes/dark.css');
+@import url('/assets/css/themes/rtl.css');
 
 /* ==========================================================================
    CSS Custom Properties (Design Tokens)
