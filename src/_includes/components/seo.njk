@@ -38,7 +38,67 @@
 
 <!-- Favicons -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<meta name="theme-color" content="{{ themeColor or site.themeColor or '#1a1a1a' }}">
+<link rel="icon" type="image/svg+xml" href="/assets/images/weave-studio-logo.svg">
+<link rel="apple-touch-icon" href="/assets/images/weave-studio-logo.svg">
+<meta name="theme-color" content="{{ themeColor or site.themeColor or '#2563eb' }}">
+<meta name="msapplication-TileColor" content="#2563eb">
 
 <!-- RSS Feed -->
 <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS Feed" href="/feed.xml">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}{{ site.logo }}",
+  "description": "{{ site.description }}",
+  "founder": {
+    "@type": "Person",
+    "name": "{{ site.author }}"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IL"
+  },
+  "sameAs": [
+    {% for social in site.social %}
+    "{{ social.url }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Design & Development Services",
+    "itemListElement": [
+      {% for service in site.services %}
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "{{ service }}",
+          "description": "{{ service }} services for small businesses"
+        }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+<!-- WebSite Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}",
+  "description": "{{ site.description }}",
+  "inLanguage": "{{ site.language }}",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "{{ site.name }}"
+  }
+}
+</script>

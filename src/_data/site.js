@@ -30,7 +30,7 @@ module.exports = {
   
   // SEO and social
   keywords: "web design Tel Aviv, אתרי אינטרנט תל אביב, website design Israel, עיצוב אתרים ישראל, freelance web designer, web design, web development, small business websites, e-commerce, SEO, website maintenance",
-  image: "/assets/images/og-weave-studio.jpg",
+  image: "/assets/images/weave-studio-logo.svg",
   themeColor: "#2563eb", // Primary blue
   
   // Logo
