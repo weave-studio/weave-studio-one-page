@@ -1,34 +1,47 @@
-# Active Context: Fast-Track Launch Complete - GitHub Pages Deployment Ready
+# Active Context: WEBSITE LAUNCHED - Critical Issues Discovered During Testing
 
 ## Current Work Focus
 
-### Phase B6: Fast-Track Launch ✅ COMPLETED
-**Status:** Complete - Launch preparation finished
-**Completed:** CSS fixes, headshot integration, SEO setup
-**Git Commit:** `feat(launch): complete fast-track launch preparation`
-**Duration:** 2.5-3 hours (delivered on time)
-**Completion Date:** 26/09/2025
+### WEBSITE STATUS: LIVE BUT WITH CRITICAL ISSUES
+**Launch Date:** 26/09/2025
+**Live URL:** https://weave-studio.github.io/weave-studio-one-page
+**Testing Date:** 27/09/2025
+**Status:** Professional appearance achieved, but functionality issues discovered
 
-**Key Achievements:**
-- ✅ **CSS Stability:** Fixed critical dark mode issues and reverted broken changes
-- ✅ **Headshot Integration:** Added `assaf-profile.jpg` to homepage with bilingual support and consistent sizing
-- ✅ **SEO Foundation:** Complete meta tags, Open Graph, Twitter cards, structured data, and favicon setup
-- ✅ **Bilingual Polish:** Fixed Hebrew layout and overlay text consistency
-- ✅ **Production Ready:** All core features tested and build verified
+**Launch Achievements:**
+- ✅ **Successful Deployment:** GitHub Pages with automated CI/CD
+- ✅ **Visual Design:** Professional appearance maintained
+- ✅ **Bilingual Support:** English/Hebrew switching works
+- ✅ **Core Navigation:** Desktop and mobile menus functional
+- ✅ **Theme System:** Dark mode toggle operational
+- ✅ **Asset Loading:** CSS and JS load correctly in production
 
-**Completed Tasks (Fast-Track Launch):**
-- [x] **URGENT:** Fix critical CSS issues (revert broken dark mode changes) ✅ COMPLETED - 26/09/2025
-- [x] Step 6.2: Add professional headshot to about section ✅ COMPLETED - 26/09/2025
-- [x] Step 6.3: Basic SEO setup (meta tags, structured data, favicons) ✅ COMPLETED - 26/09/2025
+**Critical Issues Discovered (27/09/2025):**
+- ❌ **Contact Form:** 405 Method Not Allowed (GitHub Pages doesn't support POST)
+- ❌ **Development Server:** Broken by hardcoded repo prefix in asset paths
+- ❌ **Mobile UX:** Rotating text cutoff, horizontal scroll, FAQ touch conflicts
+- ❌ **Missing Assets:** Favicon.ico, blog index page for "View All" link
+- ❌ **Accessibility:** Screen reader confusion with rotating text
 
-**Original Phase B6 Objectives (Preserved for Reference):**
-1. **Content Creation:** Write professional copy and create starter blog posts
-2. **Content Migration:** Move existing content to CMS for easy management
-3. **SEO Foundation:** Implement comprehensive SEO optimization
-4. **Analytics Setup:** Configure tracking and performance monitoring
+### Phase B6.1: Critical Post-Launch Fixes 🔴 URGENT (NOW ACTIVE)
+**Status:** Required - Must fix before any new features
+**Priority:** Critical - Affects functionality and development workflow
+**Estimated Duration:** 4-6 hours
+**Discovery Date:** 27/09/2025
 
-**Completed Tasks (Original B6):**
-- [x] Step 6.1: Write and add professional copy (replace placeholder text with benefit-focused messaging for existing sections only) ✅ COMPLETED - 26/09/2025
+**Critical Fixes Needed:**
+- [ ] **Form Processing Solution:** Replace Netlify forms with Formspree or switch to Netlify hosting
+- [ ] **Development Server Fix:** Configure Eleventy pathPrefix for production-only builds
+- [ ] **Mobile UX Fixes:** Rotating text cutoff at 320px, contact section horizontal scroll, FAQ touch conflicts
+- [ ] **Missing Assets:** Add favicon.ico, create blog index page for "View All" link
+- [ ] **Accessibility:** Improve screen reader experience with rotating text
+
+**Technical Solutions:**
+- **Form:** Implement Formspree integration or migrate to Netlify hosting
+- **PathPrefix:** Configure environment-aware asset paths in .eleventy.js
+- **Mobile:** CSS responsive fixes for small breakpoints
+- **Assets:** Add favicon, create blog.njk page
+- **A11y:** Add aria-live region or pause controls for text rotator
 
 **Deferred to Post-Launch:**
 - [ ] Create starter blog posts (5-8 posts for credibility and SEO targeting)
@@ -46,29 +59,11 @@
 
 **Note:** New sections (Welcome, Performance) moved to Phase B7 to keep Phase B6 focused on content updates.
 
-### Phase B6.4: GitHub Pages Deployment ⏳ READY TO START
-**Status:** Ready - Next immediate step
-**Estimated Duration:** 35-50 minutes
-**Priority:** Critical - Get website live
-**Dependencies:** B6 completion ✅
-
-**Deployment Plan:**
-1. **Pre-Launch Preparation** (15-30 min): Environment setup, final testing, content review
-2. **GitHub Pages Setup** (10 min): Enable Pages, create GitHub Actions workflow
-3. **Deploy & Launch** (10 min): Push code, auto-deploy, verify live site
-4. **Post-Launch Polish** (Ongoing): Address visual issues, gather feedback
-
-**Success Criteria:**
-- ✅ Website live at `https://[username].github.io/[repo-name]`
-- ✅ All functionality working on production
-- ✅ Professional appearance maintained
-- ✅ Fast iteration capability for design polish
-
 ### Phase B7: Performance Optimization (+ New Sections & Features) ⏳ PLANNED
-**Status:** Planned
+**Status:** Planned - Blocked by B6.1 completion
 **Estimated Duration:** 8-10 hours
 **Priority:** Medium - Performance and new features
-**Dependencies:** Phase B6 completion
+**Dependencies:** Phase B6.1 completion
 
 **Objectives:**
 1. **Service Offerings Implementation:** Create static grid cards with icons for service offerings
@@ -94,47 +89,68 @@
 
 ## Project Status Summary
 
-**Overall Completion:** 75%
+**Overall Completion:** 83% (Updated 27/09/2025)
 - **Phase A:** ✅ Complete (10/10 phases) - Template foundation
-- **Phase B:** 🔄 In Progress (5/9 phases complete) - Weave Studio implementation
-- **Current Phase:** B6 - Content & SEO
+- **Phase B:** 🔄 In Progress (6/10 phases complete) - Weave Studio implementation
+- **Current Phase:** B6.1 - Critical Post-Launch Fixes
 - **Timeline:** Week 6 of 6-8 week project
+- **Website Status:** LIVE on GitHub Pages with critical issues discovered
 
-## Next Phase Overview (B6)
+## Current Reality (27/09/2025)
+
+### What Actually Happened
+- ✅ **Phase B6 Fast-Track Launch:** Completed successfully (2.5-3 hours)
+- ✅ **Website Deployed:** Live at https://weave-studio.github.io/weave-studio-one-page
+- ✅ **Automated CI/CD:** GitHub Actions working perfectly
+- ❌ **Critical Issues Discovered:** Comprehensive testing revealed 5 major problems
+
+### Current Priorities (Must Fix First)
+1. **Form Processing:** GitHub Pages can't handle contact forms
+2. **Development Workflow:** Local dev server broken by asset path changes
+3. **Mobile Experience:** UX issues on small screens
+4. **Missing Assets:** Favicon and blog page needed
+5. **Accessibility:** Screen reader issues with rotating text
+
+## Next Phase Overview (B6.1 - Critical Fixes)
 
 ### Primary Objectives
-1. **Content Creation:** Write professional copy and create starter blog posts
-2. **Content Migration:** Move existing content to CMS for easy management
-3. **SEO Optimization:** Implement meta tags, structured data, sitemap
-4. **Analytics Setup:** Google Analytics, performance monitoring
+1. **Fix Contact Form:** Implement Formspree or migrate to Netlify hosting
+2. **Restore Dev Server:** Configure environment-aware pathPrefix
+3. **Mobile UX Fixes:** Resolve responsive design issues
+4. **Add Missing Assets:** Favicon, blog index page
+5. **Accessibility:** Improve screen reader experience
 
 ### Key Deliverables
-- Professional copywriting for all sections (benefit-focused messaging)
-- 5-8 starter blog posts for credibility and SEO targeting
-- Professional images (portfolio screenshots, headshot, blog featured images)
-- Content migrated to CMS for easy management
-- SEO-optimized meta tags, structured data, and analytics setup
-- Sitemap, robots.txt, and content management workflows configured
+- Working contact form that sends emails
+- Functional local development environment
+- Mobile-friendly experience across all devices
+- Complete asset loading (favicon, images)
+- WCAG 2.1 AA compliant accessibility
+- Professional user experience maintained
 
 ### Success Criteria
-- All homepage content professionally written and benefit-focused
-- Blog has 5-8 starter posts targeting relevant keywords
-- Professional images added and optimized
-- Content properly migrated to CMS
-- SEO score 90+ in Lighthouse with proper analytics tracking
-- CMS workflow documented and tested
+- Contact form successfully processes submissions
+- Local development server works without path issues
+- Mobile testing passes on 320px+ screens
+- All assets load without 404 errors
+- Screen readers can navigate rotating text properly
+- No console errors in production
 
-## Known Issues (Carry Forward)
-- **Performance Regression:** Lighthouse score at 68 (target 90+)
-- **RTL Text Issues:** Hebrew text rotator positioning needs fixes
-- **Timeline Pressure:** 2-3 weeks remaining for B6-B9 completion
+## Known Issues (Updated 27/09/2025)
+- **Form Processing:** GitHub Pages limitation (405 Method Not Allowed)
+- **Development Server:** Asset paths broken by hardcoded repo prefix
+- **Mobile UX:** Text cutoff, horizontal scroll, touch conflicts
+- **Missing Assets:** Favicon.ico, blog index page
+- **Accessibility:** Screen reader confusion with text rotator
+- **Performance Regression:** Lighthouse score at 68 (deferred)
 
-## Immediate Next Steps
-1. **Start Phase B6:** Professional content creation and migration
-   - Step 6.1: Write and add professional copy (benefit-focused messaging)
-   - Step 6.2: Create 5-8 starter blog posts for credibility and SEO
-   - Step 6.3: Add professional images (portfolio, headshot, blog featured images)
-   - Migrate existing content to CMS for easy management
-2. **Address RTL Issues:** Fix Hebrew text rotator positioning
-3. **Plan Performance Optimization:** Schedule for Phase B7
-4. **Content Strategy:** Develop messaging and value propositions
+## Immediate Next Steps (Priority Order)
+1. **Create New Conversation:** Start B6.1 Critical Fixes phase
+   - Set up Formspree integration for contact form
+   - Configure Eleventy pathPrefix for environment-aware paths
+   - Fix mobile responsive issues
+   - Add favicon.ico and create blog page
+   - Improve accessibility for rotating text
+2. **Test All Fixes:** Comprehensive validation before Phase B7
+3. **Document Solutions:** Update memory bank with fix implementations
+4. **Plan Phase B7:** Performance optimization and new features
