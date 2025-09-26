@@ -6,7 +6,7 @@ module.exports = {
   description: "Professional web design and development that helps small businesses grow online with fast, conversion-optimized websites.",
   description_he: "עיצוב ופיתוח אתרים מקצועיים המסייעים לעסקים קטנים לצמוח באינטרנט עם אתרים מהירים ומותאמים להמרות.",
   
-  url: process.env.SITE_URL || "https://weavewebdesign.com ",
+  url: process.env.SITE_URL || "https://weave-studio.github.io/weave-studio-one-page",
   
   // Default to English, auto-detect based on location
   language: "en", // Default language
