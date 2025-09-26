@@ -232,7 +232,7 @@
 **Dependencies:** B5 completion
 
 **Planned Tasks:**
-- [ ] Step 6.1: Write and add professional copy (replace placeholder text with benefit-focused messaging)
+- [x] Step 6.1: Write and add professional copy (replace placeholder text with benefit-focused messaging for existing sections only) ✅ COMPLETED - 26/09/2025
 - [ ] Step 6.2: Create and add starter blog posts (5-8 posts for credibility and SEO targeting)
 - [ ] Step 6.3: Add professional images (portfolio screenshots, headshot, blog featured images)
 - [ ] Migrate existing content to CMS for easy management
@@ -240,16 +240,23 @@
 - [ ] Add Google Analytics and performance monitoring
 - [ ] Configure sitemap and robots.txt
 
-### B7: Performance Optimization ⏳ PLANNED
-**Duration:** 4-6 hours
+### B7: Performance Optimization (+ New Sections & Features) ⏳ PLANNED
+**Duration:** 10-12 hours
 **Status:** Planned
 **Dependencies:** B6 completion
 
 **Planned Tasks:**
+- [ ] Add Welcome section (new component between hero and about)
+- [ ] Implement Service Offerings subsection (static grid cards with icons)
+- [ ] Add Key Features subsection to Services section (with styling)
+- [ ] Add Pricing Options subsection to Services section (with styling)
+- [ ] Add Money Back Guarantee mini section to Services section (with styling)
+- [ ] Add Featured Project section to Portfolio (Event Landing Page case study)
+- [ ] Add Performance section (new component before portfolio)
 - [ ] Address performance regression from Phase B2
-- [ ] Implement critical CSS inlining
+- [ ] Implement critical CSS inlining and optimization
 - [ ] Optimize images and implement responsive image sets
-- [ ] Fine-tune Core Web Vitals metrics
+- [ ] Fine-tune Core Web Vitals metrics (LCP, FID, CLS)
 - [ ] Visual polish and design refinements
 
 ### B8: Testing & Launch Preparation ⏳ PLANNED

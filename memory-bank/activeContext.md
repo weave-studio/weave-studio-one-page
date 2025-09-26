@@ -15,8 +15,8 @@
 - ✅ Responsive design and WCAG 2.1 AA accessibility compliance
 - ✅ CTA optimization for one-pager (contextual placement)
 
-### Phase B6: Content & SEO ⏳ NEXT PHASE
-**Status:** Planned → Ready to Start
+### Phase B6: Content & SEO ⏳ IN PROGRESS
+**Status:** In Progress - Step 6.1 Complete
 **Estimated Duration:** 6-8 hours
 **Priority:** High - Content and discoverability
 **Dependencies:** Phase B5 completion ✅
@@ -27,14 +27,46 @@
 3. **SEO Foundation:** Implement comprehensive SEO optimization
 4. **Analytics Setup:** Configure tracking and performance monitoring
 
-**Planned Tasks:**
-- [ ] Step 6.1: Write and add professional copy (replace placeholder text with benefit-focused messaging)
+**Completed Tasks:**
+- [x] Step 6.1: Write and add professional copy (replace placeholder text with benefit-focused messaging for existing sections only) ✅ COMPLETED - 26/09/2025
+
+**Remaining Tasks:**
 - [ ] Step 6.2: Create and add starter blog posts (5-8 posts for credibility and SEO targeting)
 - [ ] Step 6.3: Add professional images (portfolio screenshots, headshot, blog featured images)
 - [ ] Migrate existing content to CMS for easy management
 - [ ] Optimize meta tags and structured data
 - [ ] Add Google Analytics and performance monitoring
 - [ ] Configure sitemap and robots.txt
+
+**Note:** New sections (Welcome, Performance) moved to Phase B7 to keep Phase B6 focused on content updates.
+
+### Phase B7: Performance Optimization (+ New Sections & Features) ⏳ PLANNED
+**Status:** Planned
+**Estimated Duration:** 8-10 hours
+**Priority:** Medium - Performance and new features
+**Dependencies:** Phase B6 completion
+
+**Objectives:**
+1. **Service Offerings Implementation:** Create static grid cards with icons for service offerings
+2. **Key Features Section:** Add technical benefits subsection to services
+3. **Money Back Guarantee:** Add trust-building mini section
+4. **Performance Optimization:** Address Lighthouse score regression and Core Web Vitals
+5. **New Sections:** Add Welcome and Performance sections
+6. **Visual Polish:** Design refinements and component consistency
+
+**Planned Tasks:**
+- [ ] Add Welcome section (new component between hero and about)
+- [ ] Implement Service Offerings subsection (static grid cards with icons)
+- [ ] Add Key Features subsection to Services section (with styling)
+- [ ] Add Pricing Options subsection to Services section (with styling)
+- [ ] Add Money Back Guarantee mini section to Services section (with styling)
+- [ ] Add Featured Project section to Portfolio (Event Landing Page case study)
+- [ ] Add Performance section (new component before portfolio)
+- [ ] Address performance regression from Phase B2 (Lighthouse 68 → 90+)
+- [ ] Implement critical CSS inlining and optimization
+- [ ] Optimize images and implement responsive image sets
+- [ ] Fine-tune Core Web Vitals metrics (LCP, FID, CLS)
+- [ ] Visual polish and design refinements
 
 ## Project Status Summary
 
