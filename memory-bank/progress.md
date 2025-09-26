@@ -249,17 +249,49 @@
 - ✅ **Production Ready**: All core features tested and build verified
 - ✅ **Live Deployment**: Successfully deployed to GitHub Pages with automated CI/CD
 
-**Deferred to Post-Launch:**
-- [ ] Create starter blog posts (5-8 posts for credibility and SEO targeting)
-- [ ] Add professional portfolio screenshots
-- [ ] Advanced SEO (Google Analytics, sitemap, robots.txt)
-- [ ] Performance optimization (address Lighthouse regression from 79→68)
-- [ ] CMS content migration and additional sections
+**Post-Launch Testing Results (27/09/2025):**
+- ✅ **Visual Design**: Professional appearance achieved
+- ✅ **Bilingual Support**: English/Hebrew switching works
+- ✅ **Navigation**: Desktop and mobile menus functional
+- ✅ **Dark Mode**: Theme switching operational
+- ❌ **Contact Form**: 405 Method Not Allowed (GitHub Pages limitation)
+- ❌ **Dev Server**: Broken by hardcoded repo prefix in asset paths
+- ❌ **Mobile UX**: Rotating text cutoff, horizontal scroll, FAQ touch conflicts
+- ❌ **Missing Assets**: Favicon.ico, blog page for "View All" link
+- ❌ **Accessibility**: Screen reader confusion with rotating text
+
+**Critical Issues Discovered:**
+- **Form Processing**: GitHub Pages doesn't support server-side forms (Netlify forms don't work)
+- **Development Workflow**: Asset paths with repo prefix break local development
+- **Mobile Experience**: Several responsive design issues at small breakpoints
+- **Missing Resources**: Favicon and blog index page needed
+- **Screen Reader UX**: Rotating text accessibility needs improvement
+
+### B6.1: Critical Post-Launch Fixes 🔴 URGENT
+**Duration:** 4-6 hours
+**Status:** Required - Issues discovered during testing
+**Dependencies:** B6 completion
+**Priority:** Critical - Affects functionality and development workflow
+**Discovery Date:** 27/09/2025
+
+**Critical Issues to Fix:**
+- [ ] **Form Processing Solution**: Replace Netlify forms with Formspree or switch to Netlify hosting (GitHub Pages doesn't support POST)
+- [ ] **Development Server Fix**: Configure Eleventy pathPrefix for production-only builds (dev server broken by hardcoded repo prefix)
+- [ ] **Mobile UX Fixes**: Rotating text cutoff at 320px, contact section horizontal scroll, FAQ touch conflicts
+- [ ] **Missing Assets**: Add favicon.ico, create blog index page for "View All" link
+- [ ] **Accessibility**: Improve screen reader experience with rotating text
+
+**Technical Solutions:**
+- **Form**: Implement Formspree integration or migrate to Netlify hosting
+- **PathPrefix**: Configure environment-aware asset paths in .eleventy.js
+- **Mobile**: CSS responsive fixes for small breakpoints
+- **Assets**: Add favicon, create blog.njk page
+- **A11y**: Add aria-live region or pause controls for text rotator
 
 ### B7: Performance Optimization (+ New Sections & Features) ⏳ PLANNED
 **Duration:** 10-12 hours
 **Status:** Planned
-**Dependencies:** B6 completion
+**Dependencies:** B6.1 completion
 
 **Planned Tasks:**
 - [ ] Add Welcome section (new component between hero and about)
