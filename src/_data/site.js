@@ -6,7 +6,7 @@ module.exports = {
   description: "Beautifully designed websites that actually work. Custom-coded for small businesses, freelancers, and creatives who value quality.",
   description_he: "אתרים מעוצבים יפה שבאמת עובדים. פיתוח מותאם אישית לעסקים קטנים, פרילנסרים ויוצרים שמעריכים איכות.",
   
-  url: process.env.SITE_URL || "https://weave-studio.github.io/weave-studio-one-page",
+  url: process.env.SITE_URL || (process.env.NODE_ENV === 'production' ? "https://weave-studio.github.io/weave-studio-one-page" : "http://localhost:8080"),
   
   // Default to English, auto-detect based on location
   language: "en", // Default language
@@ -30,11 +30,11 @@ module.exports = {
   
   // SEO and social
   keywords: "web design, אתרי אינטרנט, website design Israel, עיצוב אתרים ישראל, freelance web designer, web design, web development, small business websites, e-commerce, SEO, website maintenance",
-  image: "/weave-studio-one-page/assets/images/weave-studio-logo.svg",
+  image: "/assets/images/weave-studio-logo.svg",
   themeColor: "#2563eb", // Primary blue
-  
+
   // Logo
-  logo: "/weave-studio-one-page/assets/images/weave-studio-logo.svg",
+  logo: "/assets/images/weave-studio-logo.svg",
   
   // Language configuration
   languages: {

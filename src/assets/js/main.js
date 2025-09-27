@@ -1497,13 +1497,23 @@
     
         setupSubmission(enhancement) {
         const { form } = enhancement;
-        
+
         form.addEventListener('submit', async (e) => {
             if (!enhancement.isValid) return;
-    
+
             const submitButton = utils.$('[type="submit"]', form);
             const originalText = submitButton ? submitButton.textContent : '';
-    
+
+            // Check if we're on GitHub Pages (temporary hosting)
+            const isGitHubPages = window.location.hostname.includes('github.io');
+
+            if (isGitHubPages) {
+                // Prevent actual submission and show migration message
+                e.preventDefault();
+                this.showMigrationMessage(form);
+                return;
+            }
+
             try {
             // Show loading state
             if (submitButton) {
@@ -1511,26 +1521,26 @@
                 submitButton.textContent = 'Sending...';
                 submitButton.classList.add('btn--loading');
             }
-    
+
             // Handle form submission based on action
             if (form.action && !form.action.startsWith('#')) {
                 // Let browser handle normal submission
                 return;
             }
-    
+
             // Handle AJAX submission
             e.preventDefault();
             await this.submitFormAjax(form);
-            
+
             this.showSuccessMessage(form);
             form.reset();
-            
+
             // Clear validation states
             const validatedInputs = utils.$$('.was-validated', form);
             validatedInputs.forEach(input => {
                 input.classList.remove('was-validated', 'is-valid', 'is-invalid');
             });
-            
+
             } catch (error) {
             console.error('Form submission error:', error);
             this.showErrorMessage(form, error.message);
@@ -1585,9 +1595,35 @@
         }, 5000);
         }
     
+        showMigrationMessage(form) {
+        this.removeMessage(form);
+
+        const message = document.createElement('div');
+        message.className = 'form-message form-message--info';
+        message.innerHTML = `
+            <div class="form-message__icon">ℹ️</div>
+            <div class="form-message__text">
+                <strong>Thank you for your interest!</strong><br>
+                Forms will be fully functional once we complete our hosting migration to Netlify.<br>
+                <a href="mailto:weavewebdesign@gmail.com" style="color: inherit; text-decoration: underline;">Contact us directly</a> in the meantime.
+            </div>
+        `;
+        message.setAttribute('role', 'status');
+        message.setAttribute('aria-live', 'polite');
+
+        form.parentElement.insertBefore(message, form);
+
+        // Keep message visible longer for important information
+        setTimeout(() => {
+            if (message.parentElement) {
+                message.remove();
+            }
+        }, 8000);
+        }
+
         showErrorMessage(form, errorText) {
         this.removeMessage(form);
-        
+
         const message = document.createElement('div');
         message.className = 'form-message form-message--error';
         message.innerHTML = `
@@ -1596,9 +1632,9 @@
         `;
         message.setAttribute('role', 'alert');
         message.setAttribute('aria-live', 'assertive');
-    
+
         form.parentElement.insertBefore(message, form);
-        
+
         setTimeout(() => {
             if (message.parentElement) {
             message.remove();

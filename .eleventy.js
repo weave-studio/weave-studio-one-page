@@ -381,7 +381,10 @@ eleventyConfig.addCollection('case_studies', function (collection) {
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
-    
+
+    // Configure pathPrefix for production builds (GitHub Pages)
+    pathPrefix: process.env.NODE_ENV === 'production' ? '/weave-studio-one-page' : '',
+
     dir: {
       input: 'src',
       includes: '_includes',
