@@ -165,10 +165,10 @@ REMEMBER: After every memory reset, I begin completely fresh. The Memory Bank is
 
 ### End-of-Phase Commit
 - Format: type(scope): summary
-- Subject line ≤ 52 characters (imperative, no period)
+- Subject line ≤ 50 characters (imperative, no period)
 - Types: feat, fix, chore, style, refactor, docs
 - Example: feat(nav): add sticky behavior on scroll
-- Body: 3–5 bullet points, each line ≤ 70 chars
+- Body: 3–5 bullet points, each line ≤ 72 chars
 - Summarize what was done, key decisions, constraints
 - Example body:
   - Added blog listing include and sample post template

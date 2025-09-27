@@ -17,7 +17,7 @@
 - JS is vanilla, tiny (≤3KB gz), lazy-loaded, and a11y-friendly.
 
 ## Commit Formats
-- Sub-step: type(scope): summary  (≤52 chars)
+- Sub-step: type(scope): summary  (≤50 chars)
 - End-of-phase:
-  Subject (≤52): type(scope): <result>
-  Body: 3–5 bullets, each ≤70 chars.
+  Subject (≤50): type(scope): <result>
+  Body: 3–5 bullets, each ≤72 chars.
