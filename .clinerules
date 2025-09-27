@@ -141,6 +141,9 @@ REMEMBER: After every memory reset, I begin completely fresh. The Memory Bank is
 - If more than 5 files OR 120 lines change → stop and ask
 - Always show rollback plan before writing
 
+## CONTEXT MANAGEMENT
+- **If context usage exceeds 70%, I MUST immediately propose /newtask. The context for the new task must be the distillation of the current conversation, AND it must also explicitly include the contents of the `activeContext.md` and `progress.md` files.**
+
 ## CSS & JS RULES
 **CSS**
 - Component classes (BEM-ish naming).
