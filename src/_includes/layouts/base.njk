@@ -18,7 +18,7 @@
   <link id="hebrew-fonts" href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&display=swap" rel="stylesheet" disabled>
  
   <!-- Main CSS -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
   
   <!-- Theme detection script (inline for performance) -->
   <script>
@@ -60,8 +60,8 @@
   </script>
 
   <!-- Preload critical resources -->
-  <link rel="preload" href="/assets/css/main.css" as="style">
-  <link rel="preload" href="/assets/js/main.js" as="script">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/main.js" as="script">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -202,7 +202,7 @@
   </script>
 
   <!-- Main JavaScript -->
-  <script src="/assets/js/main.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 
   <!-- Netlify Identity Widget for CMS access -->
   <script>
@@ -219,15 +219,15 @@
 
 <!-- Load hero components only on homepage -->
 {% if page.url == "/" %}
-<script src="/assets/js/hero-components.js" defer></script>
+<script src="assets/js/hero-components.js" defer></script>
 {% endif %}
 
 <!-- Load blog components only when blog section is present -->
 {% if page.url == "/" or "/blog/" in page.url %}
-<script src="/assets/js/blog-components.js" defer></script>
+<script src="assets/js/blog-components.js" defer></script>
 {% endif %}
 
-<script src="/assets/js/faq-components.js" defer></script>
+<script src="assets/js/faq-components.js" defer></script>
 
 </body>
 </html>
